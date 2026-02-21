@@ -4,6 +4,7 @@
   "private": true,
   "description": "Vehicle Cost Ledger",
   "scripts": {
+    "dev": "pnpm --filter \"./apps/**\" dev",
     "root:lint": "eslint . --cache",
     "root:lint:fix": "pnpm run root:lint --fix",
     "lint": "pnpm run root:lint && pnpm -r run lint",
