@@ -1,0 +1,13 @@
+{
+  "name": "vcl",
+  "private": true,
+  "description": "Vehicle Cost Ledger",
+  "scripts": {
+    "lint": "eslint . --cache",
+    "lint:fix": "pnpm run lint --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^7.4.3",
+    "eslint": "^10.0.1"
+  }
+}
