@@ -8,7 +8,8 @@
     "root:lint": "eslint . --cache",
     "root:lint:fix": "pnpm run root:lint --fix",
     "lint": "pnpm run root:lint && pnpm -r run lint",
-    "lint:fix": "pnpm run root:lint:fix && pnpm -r run lint:fix"
+    "lint:fix": "pnpm run root:lint:fix && pnpm -r run lint:fix",
+    "typecheck": "pnpm -r run typecheck"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.4.3",

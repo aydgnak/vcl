@@ -7,6 +7,10 @@
     "rootDir": "./",
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "paths": {
+      "@app/*": ["./src/*"],
+      "@generated/*": ["./generated/*"]
+    },
     "resolvePackageJsonExports": true,
     "types": [
       "node"
