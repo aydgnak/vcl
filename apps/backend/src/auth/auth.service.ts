@@ -6,6 +6,7 @@ import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
 import { Request, Response } from 'express'
 import ms, { StringValue } from 'ms'
+import { PayloadType } from './types'
 
 @Injectable()
 export class AuthService {
@@ -36,6 +37,26 @@ export class AuthService {
   async login(req: Request, res: Response) {
     const payload = req.user
 
+    const accessToken = this.generateAccessToken(payload, res)
+    const refreshToken = this.generateRefreshToken(payload, res)
+
+    return {
+      accessToken,
+      refreshToken,
+    }
+  }
+
+  async refresh(req: Request, res: Response) {
+    const payload = req.user
+
+    const accessToken = this.generateAccessToken(payload, res)
+
+    return {
+      accessToken,
+    }
+  }
+
+  private generateAccessToken(payload: PayloadType, res: Response) {
     const accessToken = this.jwtService.sign(payload)
 
     res.cookie('accessToken', accessToken, {
@@ -45,12 +66,27 @@ export class AuthService {
       maxAge: ms(this.configService.get<StringValue>('JWT_ACCESS_EXPIRES_IN')),
     })
 
-    return {
-      accessToken,
-    }
+    return accessToken
+  }
+
+  private generateRefreshToken(payload: PayloadType, res: Response) {
+    const refreshToken = this.jwtService.sign(payload, {
+      secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
+      expiresIn: this.configService.get<StringValue>('JWT_REFRESH_EXPIRES_IN'),
+    })
+
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      secure: this.configService.get<string>('NODE_ENV') === 'production',
+      sameSite: 'lax',
+      maxAge: ms(this.configService.get<StringValue>('JWT_REFRESH_EXPIRES_IN')),
+    })
+
+    return refreshToken
   }
 
   async logout(res: Response) {
     res.clearCookie('accessToken')
+    res.clearCookie('refreshToken')
   }
 }

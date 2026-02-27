@@ -2,7 +2,7 @@ import type { Request, Response } from 'express'
 import { Controller, Post, Req, Res, UseGuards } from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { Public } from './decorators'
-import { LocalAuthGuard } from './guards'
+import { JwtRefreshAuthGuard, LocalAuthGuard } from './guards'
 
 @Public()
 @Controller('auth')
@@ -18,6 +18,15 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ) {
     return this.authService.login(req, res)
+  }
+
+  @Post('refresh')
+  @UseGuards(JwtRefreshAuthGuard)
+  async refresh(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return this.authService.refresh(req, res)
   }
 
   @Post('logout')
