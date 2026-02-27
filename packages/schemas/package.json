@@ -1,0 +1,35 @@
+{
+  "name": "schemas",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --cache",
+    "lint:fix": "pnpm run lint --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "valibot": "^1.2.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "7.5.0",
+    "eslint": "10.0.2",
+    "tsup": "^8.4.0",
+    "typescript": "5.9.3"
+  }
+}
