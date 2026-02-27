@@ -17,8 +17,8 @@
   "devDependencies": {
     "@antfu/eslint-config": "7.5.0",
     "eslint": "10.0.2",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7"
+    "husky": "9.1.7",
+    "lint-staged": "16.2.7"
   },
   "lint-staged": {
     "*.{js,mjs}": "eslint --fix --cache"
