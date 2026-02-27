@@ -27,5 +27,8 @@
     "@nuxt/eslint": "1.15.2",
     "eslint": "10.0.2",
     "typescript": "5.9.3"
+  },
+  "lint-staged": {
+    "*.{js,ts,mjs,vue}": "eslint --fix --cache"
   }
 }

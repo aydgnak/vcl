@@ -11,10 +11,16 @@
     "root:lint:fix": "pnpm run root:lint --fix",
     "lint": "pnpm run root:lint && pnpm -r run lint",
     "lint:fix": "pnpm run root:lint:fix && pnpm -r run lint:fix",
-    "typecheck": "pnpm -r run typecheck"
+    "typecheck": "pnpm -r run typecheck",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@antfu/eslint-config": "7.5.0",
-    "eslint": "10.0.2"
+    "eslint": "10.0.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
+  },
+  "lint-staged": {
+    "*.{js,mjs}": "eslint --fix --cache"
   }
 }

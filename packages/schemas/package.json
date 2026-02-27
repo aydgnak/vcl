@@ -31,5 +31,8 @@
     "eslint": "10.0.2",
     "tsup": "^8.4.0",
     "typescript": "5.9.3"
+  },
+  "lint-staged": {
+    "*.{js,ts,mjs}": "eslint --fix --cache"
   }
 }
