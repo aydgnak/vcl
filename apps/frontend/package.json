@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "7.5.0",
-    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/eslint": "1.15.2",
     "eslint": "10.0.2",
     "typescript": "5.9.3"
   }
