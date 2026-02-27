@@ -5,4 +5,5 @@ import { registerAs } from '@nestjs/config'
 export default registerAs('common', (): CommonO => ({
   PORT: env.PORT,
   NODE_ENV: env.NODE_ENV,
+  CLIENT_URL: env.CLIENT_URL,
 }))
