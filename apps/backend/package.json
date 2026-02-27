@@ -19,12 +19,12 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^11.0.1",
+    "@nestjs/common": "^11.1.14",
     "@nestjs/config": "^4.0.3",
-    "@nestjs/core": "^11.0.1",
+    "@nestjs/core": "^11.1.14",
     "@nestjs/jwt": "^11.0.2",
     "@nestjs/passport": "^11.0.5",
-    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/platform-express": "^11.1.14",
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/client": "^7.4.1",
     "bcrypt": "^6.0.0",
@@ -36,11 +36,11 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1",
+    "rxjs": "^7.8.2",
     "valibot": "^1.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "7.4.3",
+    "@antfu/eslint-config": "7.5.0",
     "@nestjs/cli": "11.0.16",
     "@nestjs/schematics": "11.0.9",
     "@nestjs/testing": "11.1.14",
@@ -54,7 +54,7 @@
     "@types/passport-local": "1.0.38",
     "@types/supertest": "6.0.3",
     "dotenv": "17.3.1",
-    "eslint": "10.0.1",
+    "eslint": "10.0.2",
     "globals": "16.5.0",
     "jest": "30.2.0",
     "prisma": "7.4.1",
