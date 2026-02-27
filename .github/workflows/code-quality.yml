@@ -1,0 +1,139 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  commitlint:
+    name: PR Title Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+            revert
+
+  bundle-size:
+    name: Bundle Size
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm run build:packages
+
+      - name: Prepare Nuxt
+        run: pnpm --filter frontend exec nuxt prepare
+
+      - name: Build frontend
+        run: pnpm --filter frontend run build
+
+      - name: Calculate bundle size
+        id: size
+        run: |
+          SIZE=$(du -sh apps/frontend/.output | cut -f1)
+          SIZE_BYTES=$(du -sb apps/frontend/.output | cut -f1)
+          echo "size=$SIZE" >> "$GITHUB_OUTPUT"
+          echo "bytes=$SIZE_BYTES" >> "$GITHUB_OUTPUT"
+          echo "Bundle size: $SIZE ($SIZE_BYTES bytes)"
+
+      - name: Comment PR with bundle size
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const size = '${{ steps.size.outputs.size }}';
+            const bytes = '${{ steps.size.outputs.bytes }}';
+            const body = `## 📦 Frontend Bundle Size\n\n| Metric | Value |\n|--------|-------|\n| **Total Size** | ${size} |\n| **Bytes** | ${Number(bytes).toLocaleString()} bytes |\n\n*Measured from \`apps/frontend/.output\`*`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const existing = comments.find(c =>
+              c.user.type === 'Bot' && c.body.includes('Frontend Bundle Size')
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+  duplicate-code:
+    name: Duplicate Code Detection
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install jscpd
+        run: pnpm add -g jscpd
+
+      - name: Run duplicate detection
+        run: |
+          jscpd \
+            --pattern "apps/**/*.{ts,vue}" \
+            --pattern "packages/**/*.ts" \
+            --ignore "**/node_modules/**,**/generated/**,**/.nuxt/**,**/dist/**" \
+            --threshold 5 \
+            --reporters console \
+            --blame
