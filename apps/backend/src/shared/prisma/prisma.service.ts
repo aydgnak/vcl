@@ -1,5 +1,5 @@
 import { ConfigSchema } from '@app/core/config'
-import { PrismaClient } from '@generated/prisma/client'
+import { PrismaClient } from '@app/generated/prisma/client'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { PrismaPg } from '@prisma/adapter-pg'
