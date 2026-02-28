@@ -15,7 +15,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "7.5.0",
+    "@antfu/eslint-config": "7.6.1",
     "eslint": "10.0.2",
     "husky": "9.1.7",
     "lint-staged": "16.2.7"
