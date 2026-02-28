@@ -41,7 +41,7 @@
     "valibot": "^1.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "7.5.0",
+    "@antfu/eslint-config": "7.6.1",
     "@nestjs/cli": "11.0.16",
     "@nestjs/schematics": "11.0.9",
     "@nestjs/testing": "11.1.14",
