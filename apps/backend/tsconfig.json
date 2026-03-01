@@ -8,7 +8,8 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "paths": {
-      "@app/*": ["./src/*"]
+      "@app/*": ["./src/*"],
+      "@i18n": ["./i18n.d.ts"]
     },
     "resolvePackageJsonExports": true,
     "types": [

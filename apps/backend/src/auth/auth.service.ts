@@ -1,11 +1,13 @@
 import { ConfigSchema } from '@app/core/config'
 import { UserService } from '@app/user'
+import { I18nTranslations } from '@i18n'
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
 import { Request, Response } from 'express'
 import ms, { StringValue } from 'ms'
+import { I18nService } from 'nestjs-i18n'
 import { PayloadType } from './types'
 
 @Injectable()
@@ -14,6 +16,7 @@ export class AuthService {
     private readonly userService: UserService,
     private readonly configService: ConfigService<ConfigSchema, true>,
     private readonly jwtService: JwtService,
+    private readonly i18n: I18nService<I18nTranslations>,
   ) {}
 
   async validateUserWithLocal(email: string, password: string) {
@@ -26,7 +29,7 @@ export class AuthService {
     const isPasswordMatch = await compare(password, user.password)
 
     if (!isPasswordMatch) {
-      throw new UnauthorizedException('Username or password is incorrect')
+      throw new UnauthorizedException(this.i18n.t('auth.unauthorized'))
     }
 
     const { password: userPassword, ...result } = user
