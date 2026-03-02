@@ -1,0 +1,25 @@
+{
+  "shared": {
+    "toast": {
+      "title": {
+        "success": "Successful",
+        "error": "Error"
+      }
+    }
+  },
+  "login": {
+    "fields": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      }
+    },
+    "button": {
+      "label": "Login"
+    }
+  }
+}

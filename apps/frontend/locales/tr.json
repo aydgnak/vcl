@@ -1,0 +1,25 @@
+{
+  "shared": {
+    "toast": {
+      "title": {
+        "success": "Başarılı",
+        "error": "Hata"
+      }
+    }
+  },
+  "login": {
+    "fields": {
+      "email": {
+        "label": "E-Posta",
+        "placeholder": "E-postanızı girin"
+      },
+      "password": {
+        "label": "Parola",
+        "placeholder": "Parolanızı girin"
+      }
+    },
+    "button": {
+      "label": "Giriş Yap"
+    }
+  }
+}

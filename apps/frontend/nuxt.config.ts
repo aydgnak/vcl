@@ -2,14 +2,10 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  runtimeConfig: {
-    public: {
-      apiBaseUrl: '',
-    },
-  },
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
+    '@nuxtjs/i18n',
   ],
   eslint: {
     config: {
@@ -19,4 +15,16 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css',
   ],
+  i18n: {
+    langDir: '../locales',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'tr', name: 'Türkçe', file: 'tr.json' },
+    ],
+    defaultLocale: 'tr',
+    strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      cookieKey: 'locale',
+    },
+  },
 })

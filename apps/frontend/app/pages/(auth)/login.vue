@@ -4,25 +4,28 @@ import type { LoginI } from 'schemas'
 import { loginSchema } from 'schemas'
 
 const toast = useToast()
+const { t } = useI18n()
 
-const fields: (AuthFormField & { name: keyof LoginI })[] = [
+const fields = computed<(AuthFormField & { name: keyof LoginI })[]>(() => [
   {
     type: 'email',
     name: 'email',
-    label: 'Email',
+    label: t('login.fields.email.label'),
     required: true,
     icon: 'i-lucide-mail',
-    placeholder: 'Enter your email',
+    placeholder: t('login.fields.email.placeholder'),
+    defaultValue: 'asd@mail.com',
   },
   {
     type: 'password',
     name: 'password',
-    label: 'Password',
+    label: t('login.fields.password.label'),
     required: true,
     icon: 'i-lucide-lock',
-    placeholder: 'Enter your password',
+    placeholder: t('login.fields.password.placeholder'),
+    defaultValue: '1234',
   },
-]
+])
 
 const isSubmitted = ref<boolean>(false)
 function onSubmit() {
@@ -31,7 +34,7 @@ function onSubmit() {
   setTimeout(() => {
     toast.add({
       icon: 'i-lucide-check-circle',
-      title: 'Test Success',
+      title: t('shared.toast.title.success'),
       description: 'This is a test toast message.',
     })
 
@@ -49,6 +52,9 @@ function onSubmit() {
         :schema="loginSchema"
         :fields="fields"
         :loading="isSubmitted"
+        :submit="{
+          label: t('login.button.label'),
+        }"
         @submit="onSubmit"
       />
     </UPageCard>
