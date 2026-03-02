@@ -14,7 +14,6 @@ const fields = computed<(AuthFormField & { name: keyof LoginI })[]>(() => [
     required: true,
     icon: 'i-lucide-mail',
     placeholder: t('login.fields.email.placeholder'),
-    defaultValue: 'asd@mail.com',
   },
   {
     type: 'password',
@@ -23,7 +22,6 @@ const fields = computed<(AuthFormField & { name: keyof LoginI })[]>(() => [
     required: true,
     icon: 'i-lucide-lock',
     placeholder: t('login.fields.password.placeholder'),
-    defaultValue: '1234',
   },
 ])
 

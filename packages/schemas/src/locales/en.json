@@ -1,0 +1,9 @@
+{
+  "shared": {
+    "required": "This field is required",
+    "minLength": "This field must be at least {requirement} characters"
+  },
+  "auth": {
+    "email": "Enter a valid email address"
+  }
+}

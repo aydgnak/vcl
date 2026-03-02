@@ -1,0 +1,9 @@
+{
+  "shared": {
+    "required": "Bu alan zorunludur",
+    "minLength": "Bu alan en az {requirement} karakter olmalıdır"
+  },
+  "auth": {
+    "email": "Geçerli bir email adresi giriniz"
+  }
+}

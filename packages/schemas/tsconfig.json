@@ -4,6 +4,10 @@
     "rootDir": ".",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "paths": {
+      "@utils/*": ["./src/utils/*"]
+    },
+    "resolveJsonModule": true,
     "strict": true,
     "declaration": true,
     "outDir": "./dist",

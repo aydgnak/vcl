@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@nuxt/ui": "^4.5.0",
+    "@valibot/i18n": "^1.0.0",
     "nuxt": "^4.3.1",
     "schemas": "workspace:*",
     "tailwindcss": "^4.2.1",
