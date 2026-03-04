@@ -20,6 +20,13 @@
     },
     "button": {
       "label": "Giriş Yap"
+    },
+    "providers": {
+      "google": "Google ile Giriş Yap"
+    },
+    "separator": "veya",
+    "toast": {
+      "error": "Geçersiz e-posta veya parola"
     }
   }
 }

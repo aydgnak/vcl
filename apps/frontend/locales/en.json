@@ -20,6 +20,13 @@
     },
     "button": {
       "label": "Login"
+    },
+    "providers": {
+      "google": "Continue with Google"
+    },
+    "separator": "or",
+    "toast": {
+      "error": "Invalid email or password"
     }
   }
 }

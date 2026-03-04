@@ -1,4 +1,5 @@
 import { ConfigSchema } from '@app/core/config'
+import { AuthProvider } from '@app/generated/prisma/client'
 import { UserService } from '@app/user'
 import { I18nTranslations } from '@i18n'
 import { Injectable, UnauthorizedException } from '@nestjs/common'
@@ -35,6 +36,15 @@ export class AuthService {
     const { password: userPassword, ...result } = user
 
     return result
+  }
+
+  async validateUserWithOAuth(provider: AuthProvider, providerId: string, email: string) {
+    const user = await this.userService.findOrCreateByOAuth({ provider, providerId, email })
+
+    return {
+      uuid: user.uuid,
+      email: user.email,
+    } satisfies PayloadType
   }
 
   async login(req: Request, res: Response) {

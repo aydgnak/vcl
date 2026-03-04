@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import type { AuthFormField } from '@nuxt/ui'
+import type { AuthFormField, FormSubmitEvent } from '@nuxt/ui'
 import type { LoginI } from 'schemas'
 import { loginSchema } from 'schemas'
 
 const toast = useToast()
 const { t } = useI18n()
+const { login } = useAuth()
+const { public: { apiBaseUrl } } = useRuntimeConfig()
 
 const fields = computed<(AuthFormField & { name: keyof LoginI })[]>(() => [
   {
@@ -25,19 +27,35 @@ const fields = computed<(AuthFormField & { name: keyof LoginI })[]>(() => [
   },
 ])
 
+const providers = computed(() => [
+  {
+    label: t('login.providers.google'),
+    icon: 'i-simple-icons-google',
+    onClick: () => {
+      navigateTo(`${apiBaseUrl}/auth/google`, { external: true })
+    },
+  },
+])
+
 const isSubmitted = ref<boolean>(false)
-function onSubmit() {
+async function onSubmit(event: FormSubmitEvent<LoginI>) {
   isSubmitted.value = true
 
-  setTimeout(() => {
+  try {
+    await login(event.data.email, event.data.password)
+    await navigateTo('/')
+  }
+  catch {
     toast.add({
-      icon: 'i-lucide-check-circle',
-      title: t('shared.toast.title.success'),
-      description: 'This is a test toast message.',
+      icon: 'i-lucide-circle-x',
+      title: t('shared.toast.title.error'),
+      description: t('login.toast.error'),
+      color: 'error',
     })
-
+  }
+  finally {
     isSubmitted.value = false
-  }, 2000)
+  }
 }
 </script>
 
@@ -49,6 +67,8 @@ function onSubmit() {
         description="Vehicle Cost Ledger"
         :schema="loginSchema"
         :fields="fields"
+        :providers="providers"
+        :separator="t('login.separator')"
         :loading="isSubmitted"
         :submit="{
           label: t('login.button.label'),

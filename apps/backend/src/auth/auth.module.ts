@@ -7,7 +7,7 @@ import { JwtModule } from '@nestjs/jwt'
 import { AuthController } from './auth.controller'
 import { AuthService } from './auth.service'
 import { JwtAuthGuard } from './guards'
-import { JwtRefreshStrategy, JwtStrategy, LocalStrategy } from './strategies'
+import { GoogleStrategy, JwtRefreshStrategy, JwtStrategy, LocalStrategy } from './strategies'
 
 @Module({
   imports: [
@@ -30,6 +30,7 @@ import { JwtRefreshStrategy, JwtStrategy, LocalStrategy } from './strategies'
     LocalStrategy,
     JwtStrategy,
     JwtRefreshStrategy,
+    GoogleStrategy,
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,

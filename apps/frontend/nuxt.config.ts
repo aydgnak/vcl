@@ -7,6 +7,11 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/i18n',
   ],
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: '',
+    },
+  },
   eslint: {
     config: {
       standalone: false,
