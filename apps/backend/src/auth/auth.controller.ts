@@ -4,7 +4,7 @@ import { Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { AuthService } from './auth.service'
 import { Public } from './decorators'
-import { GoogleAuthGuard, JwtAuthGuard, JwtRefreshAuthGuard, LocalAuthGuard } from './guards'
+import { GoogleAuthGuard, JwtRefreshAuthGuard, LocalAuthGuard } from './guards'
 
 @Public()
 @Controller('auth')
@@ -54,11 +54,5 @@ export class AuthController {
     await this.authService.login(req, res)
 
     res.redirect(this.configService.get('CLIENT_URL'))
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('me')
-  async me(@Req() req: Request) {
-    return req.user
   }
 }

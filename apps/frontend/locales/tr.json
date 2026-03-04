@@ -1,13 +1,15 @@
 {
-  "shared": {
-    "toast": {
-      "title": {
-        "success": "Başarılı",
-        "error": "Hata"
-      }
-    }
+  "language": {
+    "label": "Dil",
+    "tr": "TR",
+    "en": "EN",
+    "trFull": "Türkçe",
+    "enFull": "English"
   },
   "login": {
+    "form": {
+      "description": "Vehicle Cost Ledger"
+    },
     "fields": {
       "email": {
         "label": "E-Posta",
@@ -25,8 +27,66 @@
       "google": "Google ile Giriş Yap"
     },
     "separator": "veya",
+    "providersHint": "Google ile tek tıkta devam edebilir veya e-posta/parola ile giriş yapabilirsiniz.",
     "toast": {
       "error": "Geçersiz e-posta veya parola"
+    }
+  },
+  "logout": {
+    "button": {
+      "label": "Çıkış Yap"
+    }
+  },
+  "dashboard": {
+    "kicker": "Filo görünümü",
+    "welcome": "Tekrar hoş geldin, {email}",
+    "subtitle": "Araç maliyetlerini tek ekrandan takip et, eğilimleri izle ve yaklaşan işleri kaçırma.",
+    "currentMonth": "Bu ay",
+    "cards": {
+      "totalCost": "Toplam Gider",
+      "fuel": "Yakıt",
+      "maintenance": "Bakım",
+      "average": "Aylık Ortalama",
+      "vsPrevious": "önceki aya göre",
+      "samplePeriod": "Örnek veri dönemi",
+      "lastSixMonths": "Son 6 ay"
+    },
+    "trend": {
+      "title": "Aylık Gider Trendi",
+      "lastSixMonths": "Son 6 ay"
+    },
+    "reminders": {
+      "title": "Yaklaşan Hatırlatmalar",
+      "subtitle": "Kritik bakım ve yenileme tarihleri",
+      "items": {
+        "oil": "Yağ değişimi (Clio)",
+        "insurance": "Trafik sigortası yenileme",
+        "inspection": "Araç muayenesi planla"
+      }
+    },
+    "expenses": {
+      "title": "Son İşlemler",
+      "subtitle": "Son kaydedilen maliyet hareketleri"
+    },
+    "vehicles": {
+      "title": "Araç Bazlı Özet",
+      "subtitle": "Aylık maliyet ve bakım durumu",
+      "costPerKm": "Km başı maliyet",
+      "lastService": "Son bakım"
+    },
+    "categories": {
+      "fuel": "Yakıt",
+      "maintenance": "Bakım",
+      "insurance": "Sigorta",
+      "parking": "Otopark"
+    },
+    "months": {
+      "jan": "Oca",
+      "feb": "Şub",
+      "mar": "Mar",
+      "apr": "Nis",
+      "may": "May",
+      "jun": "Haz"
     }
   }
 }

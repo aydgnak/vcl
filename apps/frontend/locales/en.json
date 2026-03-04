@@ -1,13 +1,15 @@
 {
-  "shared": {
-    "toast": {
-      "title": {
-        "success": "Successful",
-        "error": "Error"
-      }
-    }
+  "language": {
+    "label": "Language",
+    "tr": "TR",
+    "en": "EN",
+    "trFull": "Turkish",
+    "enFull": "English"
   },
   "login": {
+    "form": {
+      "description": "Vehicle Cost Ledger"
+    },
     "fields": {
       "email": {
         "label": "Email",
@@ -25,8 +27,66 @@
       "google": "Continue with Google"
     },
     "separator": "or",
+    "providersHint": "Continue with Google in one click or sign in with your email and password.",
     "toast": {
       "error": "Invalid email or password"
+    }
+  },
+  "logout": {
+    "button": {
+      "label": "Logout"
+    }
+  },
+  "dashboard": {
+    "kicker": "Fleet overview",
+    "welcome": "Welcome back, {email}",
+    "subtitle": "Track vehicle costs on one screen, monitor trends, and stay ahead of upcoming tasks.",
+    "currentMonth": "This month",
+    "cards": {
+      "totalCost": "Total Cost",
+      "fuel": "Fuel",
+      "maintenance": "Maintenance",
+      "average": "Monthly Average",
+      "vsPrevious": "vs previous month",
+      "samplePeriod": "Sample data period",
+      "lastSixMonths": "Last 6 months"
+    },
+    "trend": {
+      "title": "Monthly Cost Trend",
+      "lastSixMonths": "Last 6 months"
+    },
+    "reminders": {
+      "title": "Upcoming Reminders",
+      "subtitle": "Critical maintenance and renewal dates",
+      "items": {
+        "oil": "Oil change (Clio)",
+        "insurance": "Traffic insurance renewal",
+        "inspection": "Schedule vehicle inspection"
+      }
+    },
+    "expenses": {
+      "title": "Recent Transactions",
+      "subtitle": "Most recently recorded cost entries"
+    },
+    "vehicles": {
+      "title": "Vehicle Summary",
+      "subtitle": "Monthly cost and maintenance status",
+      "costPerKm": "Cost per km",
+      "lastService": "Last service"
+    },
+    "categories": {
+      "fuel": "Fuel",
+      "maintenance": "Maintenance",
+      "insurance": "Insurance",
+      "parking": "Parking"
+    },
+    "months": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun"
     }
   }
 }

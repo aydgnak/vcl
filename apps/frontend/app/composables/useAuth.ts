@@ -3,49 +3,76 @@ interface AuthUser {
   email: string
 }
 
+interface LoginResponse {
+  accessToken: string
+  refreshToken: string
+  user: AuthUser
+}
+
+interface RefreshResponse {
+  accessToken: string
+  user: AuthUser
+}
+
+function isAuthUser(data: unknown): data is AuthUser {
+  if (typeof data !== 'object' || data === null) {
+    return false
+  }
+
+  const user = data as Partial<AuthUser>
+
+  return typeof user.uuid === 'string'
+    && user.uuid.length > 0
+    && typeof user.email === 'string'
+    && user.email.length > 0
+}
+
 export function useAuth() {
   const user = useState<AuthUser | null>('auth-user', () => null)
   const { public: { apiBaseUrl } } = useRuntimeConfig()
 
-  const isLoggedIn = computed(() => user.value !== null)
+  const isLoggedIn = computed(() => {
+    if (user.value === null) {
+      return false
+    }
+
+    return user.value.uuid.length > 0 && user.value.email.length > 0
+  })
 
   async function login(email: string, password: string) {
-    const data = await $fetch<{ accessToken: string, refreshToken: string }>(`${apiBaseUrl}/auth/login`, {
+    const data = await $fetch<LoginResponse>(`${apiBaseUrl}/auth/login`, {
       method: 'POST',
       body: { email, password },
       credentials: 'include',
     })
 
-    await fetchUser()
+    user.value = isAuthUser(data.user) ? data.user : null
 
     return data
   }
 
-  async function fetchUser() {
-    try {
-      const data = await $fetch<AuthUser>(`${apiBaseUrl}/auth/me`, {
-        credentials: 'include',
-      })
-
-      user.value = data
-    }
-    catch {
-      user.value = null
-    }
-  }
-
   async function refresh() {
     try {
-      await $fetch(`${apiBaseUrl}/auth/refresh`, {
+      const headers = import.meta.server ? useRequestHeaders(['cookie']) : undefined
+
+      const data = await $fetch<RefreshResponse>(`${apiBaseUrl}/auth/refresh`, {
         method: 'POST',
         credentials: 'include',
+        cache: 'no-store',
+        headers: {
+          ...headers,
+          'cache-control': 'no-cache',
+          'pragma': 'no-cache',
+        },
       })
 
-      await fetchUser()
+      user.value = isAuthUser(data.user) ? data.user : null
     }
     catch {
       user.value = null
     }
+
+    return user.value
   }
 
   async function logout() {
@@ -64,7 +91,6 @@ export function useAuth() {
     user,
     isLoggedIn,
     login,
-    fetchUser,
     refresh,
     logout,
   }

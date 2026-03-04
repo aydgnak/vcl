@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   async login(req: Request, res: Response) {
-    const payload = req.user
+    const payload = this.toPayload(req.user)
 
     const accessToken = this.generateAccessToken(payload, res)
     const refreshToken = this.generateRefreshToken(payload, res)
@@ -56,16 +56,27 @@ export class AuthService {
     return {
       accessToken,
       refreshToken,
+      user: payload,
     }
   }
 
   async refresh(req: Request, res: Response) {
-    const payload = req.user
+    const payload = this.toPayload(req.user)
 
     const accessToken = this.generateAccessToken(payload, res)
 
     return {
       accessToken,
+      user: payload,
+    }
+  }
+
+  private toPayload(user: Request['user']): PayloadType {
+    const payload = user
+
+    return {
+      uuid: payload.uuid,
+      email: payload.email,
     }
   }
 
@@ -99,7 +110,13 @@ export class AuthService {
   }
 
   async logout(res: Response) {
-    res.clearCookie('accessToken')
-    res.clearCookie('refreshToken')
+    const cookieOptions = {
+      httpOnly: true,
+      secure: this.configService.get<string>('NODE_ENV') === 'production',
+      sameSite: 'lax' as const,
+    }
+
+    res.clearCookie('accessToken', cookieOptions)
+    res.clearCookie('refreshToken', cookieOptions)
   }
 }
