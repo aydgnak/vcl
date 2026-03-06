@@ -17,9 +17,6 @@
     }
   },
   "login": {
-    "form": {
-      "description": "Filo çalışma alanına devam etmek için giriş yap"
-    },
     "fields": {
       "email": {
         "label": "E-Posta",
@@ -45,9 +42,6 @@
     }
   },
   "register": {
-    "form": {
-      "description": "Hesabını oluştur ve araç maliyetlerini takip etmeye başla"
-    },
     "fields": {
       "email": {
         "label": "E-Posta",
@@ -69,7 +63,6 @@
       "google": "Google ile Kayıt Ol"
     },
     "separator": "veya",
-    "passwordPolicy": "En az 8 karakter, bir büyük harf, bir küçük harf, bir rakam ve bir özel karakter kullanın.",
     "loginPrompt": "Zaten hesabın var mı?",
     "loginAction": "Giriş yap",
     "toast": {

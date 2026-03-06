@@ -18,6 +18,7 @@ const registerFormSchema = object({
 const { t } = useI18n()
 const { register } = useAuth()
 const { public: { apiBaseUrl } } = useRuntimeConfig()
+const appConfig = useAppConfig()
 
 definePageMeta({
   layout: 'auth',
@@ -62,6 +63,11 @@ const providers = computed(() => [
 
 const isSubmitted = ref<boolean>(false)
 const registerError = ref<string | null>(null)
+const showPassword = ref<boolean>(false)
+const showPasswordConfirm = ref<boolean>(false)
+
+const eyeIcon = computed(() => appConfig.ui?.icons?.eye || 'i-lucide-eye')
+const eyeOffIcon = computed(() => appConfig.ui?.icons?.eyeOff || 'i-lucide-eye-off')
 
 function getStatusCode(error: unknown) {
   if (typeof error !== 'object' || error === null) {
@@ -114,7 +120,7 @@ async function onSubmit(event: FormSubmitEvent<RegisterI>) {
   <UPageCard class="w-full border border-white/10 bg-slate-900/80 shadow-[0_30px_80px_rgba(2,6,23,0.45)] backdrop-blur">
     <UAuthForm
       title="VCL"
-      :description="t('register.form.description')"
+      description="Vehicle Cost Ledger"
       :schema="registerFormSchema"
       :fields="fields"
       :providers="providers"
@@ -140,10 +146,59 @@ async function onSubmit(event: FormSubmitEvent<RegisterI>) {
         </Transition>
       </template>
 
+      <template #password-field="{ state }">
+        <UInput
+          id="register-password"
+          v-model="state.password"
+          data-slot="password"
+          class="w-full"
+          :type="showPassword ? 'text' : 'password'"
+          icon="i-lucide-lock"
+          :placeholder="t('register.fields.password.placeholder')"
+        >
+          <template #trailing>
+            <UButton
+              type="button"
+              color="neutral"
+              variant="link"
+              size="sm"
+              :icon="showPassword ? eyeOffIcon : eyeIcon"
+              :aria-label="showPassword ? 'Hide password' : 'Show password'"
+              :aria-pressed="showPassword"
+              aria-controls="register-password"
+              @click="showPassword = !showPassword"
+            />
+          </template>
+        </UInput>
+      </template>
+
+      <template #passwordConfirm-field="{ state }">
+        <UInput
+          id="register-password-confirm"
+          v-model="state.passwordConfirm"
+          data-slot="password"
+          class="w-full"
+          :type="showPasswordConfirm ? 'text' : 'password'"
+          icon="i-lucide-shield-check"
+          :placeholder="t('register.fields.passwordConfirm.placeholder')"
+        >
+          <template #trailing>
+            <UButton
+              type="button"
+              color="neutral"
+              variant="link"
+              size="sm"
+              :icon="showPasswordConfirm ? eyeOffIcon : eyeIcon"
+              :aria-label="showPasswordConfirm ? 'Hide password' : 'Show password'"
+              :aria-pressed="showPasswordConfirm"
+              aria-controls="register-password-confirm"
+              @click="showPasswordConfirm = !showPasswordConfirm"
+            />
+          </template>
+        </UInput>
+      </template>
+
       <template #footer>
-        <p class="mb-2 text-center text-xs text-muted">
-          {{ t('register.passwordPolicy') }}
-        </p>
         <p class="text-center text-xs text-muted">
           {{ t('register.loginPrompt') }}
           <NuxtLink to="/login" class="font-semibold text-cyan-300 transition-colors duration-200 hover:text-cyan-200">

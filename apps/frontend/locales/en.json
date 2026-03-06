@@ -17,9 +17,6 @@
     }
   },
   "login": {
-    "form": {
-      "description": "Sign in to continue with your fleet workspace"
-    },
     "fields": {
       "email": {
         "label": "Email",
@@ -45,9 +42,6 @@
     }
   },
   "register": {
-    "form": {
-      "description": "Create your account and start tracking vehicle costs"
-    },
     "fields": {
       "email": {
         "label": "Email",
@@ -69,7 +63,6 @@
       "google": "Sign up with Google"
     },
     "separator": "or",
-    "passwordPolicy": "Use at least 8 characters with uppercase, lowercase, number, and special character.",
     "loginPrompt": "Already have an account?",
     "loginAction": "Sign in",
     "toast": {

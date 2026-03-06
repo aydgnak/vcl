@@ -75,7 +75,7 @@ async function onSubmit(event: FormSubmitEvent<LoginI>) {
   <UPageCard class="w-full border border-white/10 bg-slate-900/80 shadow-[0_30px_80px_rgba(2,6,23,0.45)] backdrop-blur">
     <UAuthForm
       title="VCL"
-      :description="t('login.form.description')"
+      description="Vehicle Cost Ledger"
       :schema="loginSchema"
       :fields="fields"
       :providers="providers"
