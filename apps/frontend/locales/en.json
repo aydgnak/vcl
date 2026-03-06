@@ -6,16 +6,6 @@
     "trFull": "Turkish",
     "enFull": "English"
   },
-  "authLayout": {
-    "kicker": "Secure access",
-    "title": "Manage fleet costs from one focused workspace",
-    "subtitle": "Sign in with your work account and keep all vehicle expenses, reminders, and trends in sync.",
-    "features": {
-      "fast": "One-click Google sign in or classic email/password access.",
-      "secure": "Session refresh flow keeps your account protected in every request.",
-      "multiLanguage": "Switch between Turkish and English at any time."
-    }
-  },
   "login": {
     "fields": {
       "email": {
@@ -75,6 +65,22 @@
   "logout": {
     "button": {
       "label": "Logout"
+    }
+  },
+  "settings": {
+    "menu": {
+      "label": "Settings"
+    },
+    "title": "Settings",
+    "subtitle": "You can manage account preferences from this panel.",
+    "nav": {
+      "general": "General"
+    },
+    "general": {
+      "searchPlaceholder": "Search language..."
+    },
+    "actions": {
+      "close": "Close"
     }
   },
   "dashboard": {

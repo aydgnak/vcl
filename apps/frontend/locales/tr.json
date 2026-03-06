@@ -6,16 +6,6 @@
     "trFull": "Türkçe",
     "enFull": "English"
   },
-  "authLayout": {
-    "kicker": "Güvenli erişim",
-    "title": "Filo maliyetlerini tek bir odak panelinden yönet",
-    "subtitle": "İş hesabınla giriş yap, araç giderlerini, hatırlatmaları ve eğilimleri senkron tut.",
-    "features": {
-      "fast": "Google ile tek tıkta veya e-posta/parola ile hızlı giriş.",
-      "secure": "Oturum yenileme akışı her istekte hesabını korur.",
-      "multiLanguage": "Türkçe ve İngilizce arasında istediğin an geçiş yap."
-    }
-  },
   "login": {
     "fields": {
       "email": {
@@ -75,6 +65,22 @@
   "logout": {
     "button": {
       "label": "Çıkış Yap"
+    }
+  },
+  "settings": {
+    "menu": {
+      "label": "Ayarlar"
+    },
+    "title": "Ayarlar",
+    "subtitle": "Hesap tercihlerini bu panelden yonetebilirsin.",
+    "nav": {
+      "general": "Genel"
+    },
+    "general": {
+      "searchPlaceholder": "Dil ara..."
+    },
+    "actions": {
+      "close": "Kapat"
     }
   },
   "dashboard": {

@@ -1,13 +1,139 @@
 <script setup lang="ts">
-import LanguageSwitcher from './LanguageSwitcher.vue'
+import SettingsGeneralTab from '~/components/settings/SettingsGeneralTab.vue'
 
 const { t } = useI18n()
+const route = useRoute()
+const router = useRouter()
 const { isLoggedIn, user, logout } = useAuth()
+const isSettingsModalOpen = ref<boolean>(false)
+
+type SettingsTabKey = 'general'
+
+const activeSettingsTab = ref<SettingsTabKey>('general')
+
+const settingsTabs = computed(() => [
+  {
+    value: 'general' as const,
+    label: t('settings.nav.general'),
+    icon: 'i-lucide-settings-2',
+  },
+])
+
+const settingsTabComponents = {
+  general: SettingsGeneralTab,
+} as const
+
+const activeSettingsTabComponent = computed(() => settingsTabComponents[activeSettingsTab.value])
+const activeSettingsTabLabel = computed(() => {
+  return settingsTabs.value.find(tab => tab.value === activeSettingsTab.value)?.label ?? ''
+})
+
+const settingsHashPrefix = '#settings/'
+const legacySettingsHashPrefix = '#settings-'
+
+const settingsHashByTab: Record<SettingsTabKey, string> = {
+  general: '#settings/general',
+}
+
+function isSettingsHash(hash: string): boolean {
+  return hash.startsWith(settingsHashPrefix) || hash.startsWith(legacySettingsHashPrefix)
+}
+
+function getSettingsTabFromHash(hash: string): SettingsTabKey | null {
+  let tab: string | null = null
+
+  if (hash.startsWith(settingsHashPrefix)) {
+    tab = hash.slice(settingsHashPrefix.length)
+  }
+  else if (hash.startsWith(legacySettingsHashPrefix)) {
+    tab = hash.slice(legacySettingsHashPrefix.length)
+  }
+
+  if (!tab) {
+    return null
+  }
+
+  if (tab === 'general' || tab === 'security') {
+    return 'general'
+  }
+
+  return null
+}
+
+watch(
+  () => route.hash,
+  (hash) => {
+    if (!import.meta.client) {
+      return
+    }
+
+    const tab = getSettingsTabFromHash(hash)
+
+    if (tab) {
+      if (activeSettingsTab.value !== tab) {
+        activeSettingsTab.value = tab
+      }
+
+      if (!isSettingsModalOpen.value) {
+        isSettingsModalOpen.value = true
+      }
+
+      const normalizedHash = settingsHashByTab[tab]
+
+      if (hash !== normalizedHash) {
+        void router.replace({ path: route.path, query: route.query, hash: normalizedHash })
+      }
+
+      return
+    }
+
+    if (isSettingsHash(hash)) {
+      void router.replace({ path: route.path, query: route.query, hash: '' })
+      return
+    }
+
+    if (isSettingsModalOpen.value) {
+      isSettingsModalOpen.value = false
+    }
+  },
+  { immediate: true },
+)
+
+watch(
+  [isSettingsModalOpen, activeSettingsTab],
+  ([isOpen, activeTab]) => {
+    if (!import.meta.client) {
+      return
+    }
+
+    if (!isOpen) {
+      if (isSettingsHash(route.hash)) {
+        void router.replace({ path: route.path, query: route.query, hash: '' })
+      }
+
+      return
+    }
+
+    const nextHash = settingsHashByTab[activeTab]
+
+    if (route.hash !== nextHash) {
+      void router.replace({ path: route.path, query: route.query, hash: nextHash })
+    }
+  },
+)
 
 const userMenuItems = computed(() => [[
   {
     type: 'label' as const,
     label: user.value?.email ?? '-',
+  },
+  {
+    label: t('settings.menu.label'),
+    icon: 'i-lucide-settings',
+    onSelect: () => {
+      activeSettingsTab.value = 'general'
+      isSettingsModalOpen.value = true
+    },
   },
   {
     type: 'separator' as const,
@@ -41,7 +167,6 @@ async function onLogout() {
           </NuxtLink>
 
           <div class="flex items-center gap-1.5">
-            <LanguageSwitcher />
             <UDropdownMenu
               :items="userMenuItems"
               :content="{ align: 'end', sideOffset: 8 }"
@@ -64,5 +189,69 @@ async function onLogout() {
     <main class="flex-1 bg-slate-950">
       <slot />
     </main>
+
+    <UModal
+      v-if="isLoggedIn"
+      v-model:open="isSettingsModalOpen"
+      :title="t('settings.title')"
+      :description="t('settings.subtitle')"
+      :close="false"
+      :ui="{
+        content: 'w-[calc(100vw-2rem)] sm:max-w-4xl h-[78vh] overflow-hidden border border-white/10 bg-slate-900/98 text-slate-100 shadow-[0_40px_120px_rgba(2,6,23,0.65)]',
+      }"
+    >
+      <template #content="{ close }">
+        <div class="grid h-[78vh] grid-cols-1 overflow-hidden md:grid-cols-[15rem_minmax(0,1fr)]">
+          <aside class="border-b border-white/10 bg-slate-950/85 p-2 md:border-b-0 md:border-r md:p-3">
+            <div class="mb-2 flex items-center justify-between px-2 py-1">
+              <p class="text-sm font-medium text-slate-100">
+                {{ t('settings.title') }}
+              </p>
+              <UButton
+                color="neutral"
+                variant="ghost"
+                size="sm"
+                icon="i-lucide-x"
+                class="h-7 w-7 p-0"
+                :aria-label="t('settings.actions.close')"
+                @click="close"
+              />
+            </div>
+
+            <nav class="grid grid-cols-1 gap-1">
+              <button
+                v-for="tab in settingsTabs"
+                :key="tab.value"
+                type="button"
+                class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors"
+                :class="activeSettingsTab === tab.value
+                  ? 'bg-white/14 text-slate-100'
+                  : 'text-slate-300 hover:bg-white/6 hover:text-slate-100'"
+                @click="activeSettingsTab = tab.value"
+              >
+                <UIcon :name="tab.icon" class="size-4 shrink-0" />
+                <span class="truncate">{{ tab.label }}</span>
+              </button>
+            </nav>
+          </aside>
+
+          <section class="flex min-h-0 flex-col bg-slate-900/70">
+            <div class="border-b border-white/10 px-4 py-3 md:px-6">
+              <h2 class="text-base font-semibold text-slate-100">
+                {{ activeSettingsTabLabel }}
+              </h2>
+            </div>
+
+            <div class="min-h-0 flex-1 overflow-y-auto">
+              <component
+                :is="activeSettingsTabComponent"
+                v-if="activeSettingsTabComponent"
+                :key="activeSettingsTab"
+              />
+            </div>
+          </section>
+        </div>
+      </template>
+    </UModal>
   </div>
 </template>
