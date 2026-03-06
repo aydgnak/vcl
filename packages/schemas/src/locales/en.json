@@ -4,6 +4,10 @@
     "minLength": "This field must be at least {requirement} characters"
   },
   "auth": {
-    "email": "Enter a valid email address"
+    "email": "Enter a valid email address",
+    "passwordLowercase": "Password must include at least one lowercase letter",
+    "passwordUppercase": "Password must include at least one uppercase letter",
+    "passwordNumber": "Password must include at least one number",
+    "passwordSpecialChar": "Password must include at least one special character"
   }
 }

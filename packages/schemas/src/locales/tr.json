@@ -4,6 +4,10 @@
     "minLength": "Bu alan en az {requirement} karakter olmalıdır"
   },
   "auth": {
-    "email": "Geçerli bir email adresi giriniz"
+    "email": "Geçerli bir email adresi giriniz",
+    "passwordLowercase": "Şifre en az bir küçük harf içermelidir",
+    "passwordUppercase": "Şifre en az bir büyük harf içermelidir",
+    "passwordNumber": "Şifre en az bir rakam içermelidir",
+    "passwordSpecialChar": "Şifre en az bir özel karakter içermelidir"
   }
 }

@@ -6,9 +6,19 @@
     "trFull": "Turkish",
     "enFull": "English"
   },
+  "authLayout": {
+    "kicker": "Secure access",
+    "title": "Manage fleet costs from one focused workspace",
+    "subtitle": "Sign in with your work account and keep all vehicle expenses, reminders, and trends in sync.",
+    "features": {
+      "fast": "One-click Google sign in or classic email/password access.",
+      "secure": "Session refresh flow keeps your account protected in every request.",
+      "multiLanguage": "Switch between Turkish and English at any time."
+    }
+  },
   "login": {
     "form": {
-      "description": "Vehicle Cost Ledger"
+      "description": "Sign in to continue with your fleet workspace"
     },
     "fields": {
       "email": {
@@ -27,9 +37,46 @@
       "google": "Continue with Google"
     },
     "separator": "or",
-    "providersHint": "Continue with Google in one click or sign in with your email and password.",
+    "registerPrompt": "Don't have an account?",
+    "registerAction": "Create one",
     "toast": {
-      "error": "Invalid email or password"
+      "error": "Invalid email or password",
+      "registered": "Your account is ready. Sign in to continue."
+    }
+  },
+  "register": {
+    "form": {
+      "description": "Create your account and start tracking vehicle costs"
+    },
+    "fields": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Create a password"
+      },
+      "passwordConfirm": {
+        "label": "Confirm Password",
+        "placeholder": "Re-enter your password"
+      }
+    },
+    "button": {
+      "label": "Create Account"
+    },
+    "providers": {
+      "google": "Sign up with Google"
+    },
+    "separator": "or",
+    "passwordPolicy": "Use at least 8 characters with uppercase, lowercase, number, and special character.",
+    "loginPrompt": "Already have an account?",
+    "loginAction": "Sign in",
+    "toast": {
+      "passwordMismatch": "Passwords do not match.",
+      "unavailable": "Register endpoint is not available yet.",
+      "conflict": "An account with this email already exists.",
+      "error": "We could not create your account right now."
     }
   },
   "logout": {

@@ -6,9 +6,19 @@
     "trFull": "Türkçe",
     "enFull": "English"
   },
+  "authLayout": {
+    "kicker": "Güvenli erişim",
+    "title": "Filo maliyetlerini tek bir odak panelinden yönet",
+    "subtitle": "İş hesabınla giriş yap, araç giderlerini, hatırlatmaları ve eğilimleri senkron tut.",
+    "features": {
+      "fast": "Google ile tek tıkta veya e-posta/parola ile hızlı giriş.",
+      "secure": "Oturum yenileme akışı her istekte hesabını korur.",
+      "multiLanguage": "Türkçe ve İngilizce arasında istediğin an geçiş yap."
+    }
+  },
   "login": {
     "form": {
-      "description": "Vehicle Cost Ledger"
+      "description": "Filo çalışma alanına devam etmek için giriş yap"
     },
     "fields": {
       "email": {
@@ -27,9 +37,46 @@
       "google": "Google ile Giriş Yap"
     },
     "separator": "veya",
-    "providersHint": "Google ile tek tıkta devam edebilir veya e-posta/parola ile giriş yapabilirsiniz.",
+    "registerPrompt": "Hesabın yok mu?",
+    "registerAction": "Kayıt ol",
     "toast": {
-      "error": "Geçersiz e-posta veya parola"
+      "error": "Geçersiz e-posta veya parola",
+      "registered": "Hesabın hazır. Devam etmek için giriş yap."
+    }
+  },
+  "register": {
+    "form": {
+      "description": "Hesabını oluştur ve araç maliyetlerini takip etmeye başla"
+    },
+    "fields": {
+      "email": {
+        "label": "E-Posta",
+        "placeholder": "E-postanızı girin"
+      },
+      "password": {
+        "label": "Parola",
+        "placeholder": "Bir parola oluşturun"
+      },
+      "passwordConfirm": {
+        "label": "Parolayı Doğrula",
+        "placeholder": "Parolanızı tekrar girin"
+      }
+    },
+    "button": {
+      "label": "Hesap Oluştur"
+    },
+    "providers": {
+      "google": "Google ile Kayıt Ol"
+    },
+    "separator": "veya",
+    "passwordPolicy": "En az 8 karakter, bir büyük harf, bir küçük harf, bir rakam ve bir özel karakter kullanın.",
+    "loginPrompt": "Zaten hesabın var mı?",
+    "loginAction": "Giriş yap",
+    "toast": {
+      "passwordMismatch": "Parolalar eşleşmiyor.",
+      "unavailable": "Kayıt servisi henüz hazır değil.",
+      "conflict": "Bu e-posta ile zaten bir hesap var.",
+      "error": "Hesap şu anda oluşturulamadı."
     }
   },
   "logout": {

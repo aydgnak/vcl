@@ -3,10 +3,10 @@ import { object } from 'valibot'
 import { emailSchema } from './email'
 import { passwordSchema } from './password'
 
-export const loginSchema = object({
+export const registerSchema = object({
   email: emailSchema,
   password: passwordSchema,
 })
 
-export type LoginI = InferInput<typeof loginSchema>
-export type LoginO = InferOutput<typeof loginSchema>
+export type RegisterI = InferInput<typeof registerSchema>
+export type RegisterO = InferOutput<typeof registerSchema>

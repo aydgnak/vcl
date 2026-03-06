@@ -1,7 +1,10 @@
 import type { ConfigSchema } from '@app/core/config'
 import type { Request, Response } from 'express'
-import { Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common'
+import type { RegisterI } from 'schemas'
+import { ValibotPipe } from '@app/shared'
+import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
+import { registerSchema } from 'schemas'
 import { AuthService } from './auth.service'
 import { Public } from './decorators'
 import { GoogleAuthGuard, JwtRefreshAuthGuard, LocalAuthGuard } from './guards'
@@ -21,6 +24,14 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ) {
     return this.authService.login(req, res)
+  }
+
+  @Post('register')
+  async register(
+    @Body(new ValibotPipe(registerSchema)) body: RegisterI,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return this.authService.register(body.email, body.password, res)
   }
 
   @Post('refresh')

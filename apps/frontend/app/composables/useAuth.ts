@@ -14,6 +14,10 @@ interface RefreshResponse {
   user: AuthUser
 }
 
+interface RegisterResponse {
+  user: AuthUser
+}
+
 function isAuthUser(data: unknown): data is AuthUser {
   if (typeof data !== 'object' || data === null) {
     return false
@@ -41,6 +45,18 @@ export function useAuth() {
 
   async function login(email: string, password: string) {
     const data = await $fetch<LoginResponse>(`${apiBaseUrl}/auth/login`, {
+      method: 'POST',
+      body: { email, password },
+      credentials: 'include',
+    })
+
+    user.value = isAuthUser(data.user) ? data.user : null
+
+    return data
+  }
+
+  async function register(email: string, password: string) {
+    const data = await $fetch<RegisterResponse>(`${apiBaseUrl}/auth/register`, {
       method: 'POST',
       body: { email, password },
       credentials: 'include',
@@ -91,6 +107,7 @@ export function useAuth() {
     user,
     isLoggedIn,
     login,
+    register,
     refresh,
     logout,
   }

@@ -16,6 +16,15 @@ export class UserService {
     })
   }
 
+  async createByLocal({ email, password }: { email: string, password: string }) {
+    return this.prisma.user.create({
+      data: {
+        email,
+        password,
+      },
+    })
+  }
+
   async findByOAuthProvider(provider: AuthProvider, providerId: string) {
     return this.prisma.account.findUnique({
       where: {
