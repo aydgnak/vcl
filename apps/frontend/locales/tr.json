@@ -77,6 +77,14 @@
       "general": "Genel"
     },
     "general": {
+      "appearance": {
+        "label": "Görünüm",
+        "options": {
+          "system": "Sistem",
+          "dark": "Koyu",
+          "light": "Açık"
+        }
+      },
       "searchPlaceholder": "Dil ara..."
     },
     "actions": {

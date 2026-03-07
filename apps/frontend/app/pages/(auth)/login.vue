@@ -72,7 +72,7 @@ async function onSubmit(event: FormSubmitEvent<LoginI>) {
 </script>
 
 <template>
-  <UPageCard class="w-full border border-white/10 bg-slate-900/80 shadow-[0_30px_80px_rgba(2,6,23,0.45)] backdrop-blur">
+  <UPageCard class="w-full border border-slate-200/80 bg-white/90 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[0_30px_80px_rgba(2,6,23,0.45)]">
     <UAuthForm
       title="VCL"
       description="Vehicle Cost Ledger"
@@ -119,7 +119,7 @@ async function onSubmit(event: FormSubmitEvent<LoginI>) {
       <template #footer>
         <p class="text-center text-xs text-muted">
           {{ t('login.registerPrompt') }}
-          <NuxtLink to="/register" class="font-semibold text-cyan-300 transition-colors duration-200 hover:text-cyan-200">
+          <NuxtLink to="/register" class="font-semibold text-cyan-700 transition-colors duration-200 hover:text-cyan-600 dark:text-cyan-300 dark:hover:text-cyan-200">
             {{ t('login.registerAction') }}
           </NuxtLink>
         </p>

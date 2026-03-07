@@ -77,6 +77,14 @@
       "general": "General"
     },
     "general": {
+      "appearance": {
+        "label": "Appearance",
+        "options": {
+          "system": "System",
+          "dark": "Dark",
+          "light": "Light"
+        }
+      },
       "searchPlaceholder": "Search language..."
     },
     "actions": {

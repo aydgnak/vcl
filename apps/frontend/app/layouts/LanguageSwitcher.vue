@@ -70,7 +70,7 @@ async function changeLanguage(code: 'tr' | 'en') {
       color="neutral"
       variant="ghost"
       size="sm"
-      class="h-8 rounded-md px-2.5 text-xs font-medium tracking-wide text-slate-100/90 transition-colors duration-200 hover:bg-white/10"
+      class="h-8 rounded-md px-2.5 text-xs font-medium tracking-wide text-slate-700 transition-colors duration-200 hover:bg-slate-100 dark:text-slate-100/90 dark:hover:bg-white/10"
       :aria-label="t('language.label')"
     >
       <span class="inline-flex items-center gap-1.5">

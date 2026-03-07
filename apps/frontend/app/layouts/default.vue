@@ -155,14 +155,14 @@ async function onLogout() {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-slate-950">
+  <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <header
       v-if="isLoggedIn"
-      class="sticky top-0 z-40 bg-slate-950/65 backdrop-blur supports-[backdrop-filter]:bg-slate-950/55"
+      class="sticky top-0 z-40 bg-white/75 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:bg-slate-950/65 dark:supports-[backdrop-filter]:bg-slate-950/55"
     >
       <div class="mx-auto w-full max-w-7xl px-4 py-3 md:px-8 md:py-4">
-        <div class="flex h-12 items-center justify-between rounded-xl border border-white/12 bg-slate-900/70 px-3 shadow-[0_8px_24px_rgba(2,6,23,0.35)] md:px-4">
-          <NuxtLink to="/" class="text-base font-semibold tracking-[0.12em] text-slate-100/95">
+        <div class="flex h-12 items-center justify-between rounded-xl border border-slate-200/80 bg-white/80 px-3 shadow-[0_8px_24px_rgba(15,23,42,0.12)] dark:border-white/12 dark:bg-slate-900/70 dark:shadow-[0_8px_24px_rgba(2,6,23,0.35)] md:px-4">
+          <NuxtLink to="/" class="text-base font-semibold tracking-[0.12em] text-slate-900/95 dark:text-slate-100/95">
             VCL
           </NuxtLink>
 
@@ -177,7 +177,7 @@ async function onLogout() {
                 variant="ghost"
                 size="sm"
                 leading
-                class="h-8 w-8 justify-center p-0 transition-colors duration-200 hover:bg-white/10"
+                class="h-8 w-8 justify-center p-0 transition-colors duration-200 hover:bg-slate-100 dark:hover:bg-white/10"
                 :avatar="{ alt: user?.email ?? 'User', size: 'sm' }"
               />
             </UDropdownMenu>
@@ -186,7 +186,7 @@ async function onLogout() {
       </div>
     </header>
 
-    <main class="flex-1 bg-slate-950">
+    <main class="flex-1 bg-slate-50 dark:bg-slate-950">
       <slot />
     </main>
 
@@ -197,14 +197,14 @@ async function onLogout() {
       :description="t('settings.subtitle')"
       :close="false"
       :ui="{
-        content: 'w-[calc(100vw-2rem)] sm:max-w-4xl h-[78vh] overflow-hidden border border-white/10 bg-slate-900/98 text-slate-100 shadow-[0_40px_120px_rgba(2,6,23,0.65)]',
+        content: 'w-[calc(100vw-2rem)] sm:max-w-4xl h-[78vh] overflow-hidden border border-slate-200/80 bg-white/98 text-slate-900 shadow-[0_30px_90px_rgba(15,23,42,0.16)] dark:border-white/10 dark:bg-slate-900/98 dark:text-slate-100 dark:shadow-[0_40px_120px_rgba(2,6,23,0.65)]',
       }"
     >
       <template #content="{ close }">
         <div class="grid h-[78vh] grid-cols-1 overflow-hidden md:grid-cols-[15rem_minmax(0,1fr)]">
-          <aside class="border-b border-white/10 bg-slate-950/85 p-2 md:border-b-0 md:border-r md:p-3">
+          <aside class="border-b border-slate-200 bg-slate-100/85 p-2 dark:border-white/10 dark:bg-slate-950/85 md:border-b-0 md:border-r md:p-3">
             <div class="mb-2 flex items-center justify-between px-2 py-1">
-              <p class="text-sm font-medium text-slate-100">
+              <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
                 {{ t('settings.title') }}
               </p>
               <UButton
@@ -212,7 +212,7 @@ async function onLogout() {
                 variant="ghost"
                 size="sm"
                 icon="i-lucide-x"
-                class="h-7 w-7 p-0"
+                class="h-7 w-7 items-center justify-center p-0 transition-colors duration-150 hover:bg-slate-200 active:bg-slate-300/80 dark:hover:bg-white/10 dark:active:bg-white/15"
                 :aria-label="t('settings.actions.close')"
                 @click="close"
               />
@@ -225,8 +225,8 @@ async function onLogout() {
                 type="button"
                 class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors"
                 :class="activeSettingsTab === tab.value
-                  ? 'bg-white/14 text-slate-100'
-                  : 'text-slate-300 hover:bg-white/6 hover:text-slate-100'"
+                  ? 'bg-slate-200 text-slate-900 dark:bg-white/14 dark:text-slate-100'
+                  : 'text-slate-600 hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/6 dark:hover:text-slate-100'"
                 @click="activeSettingsTab = tab.value"
               >
                 <UIcon :name="tab.icon" class="size-4 shrink-0" />
@@ -235,9 +235,9 @@ async function onLogout() {
             </nav>
           </aside>
 
-          <section class="flex min-h-0 flex-col bg-slate-900/70">
-            <div class="border-b border-white/10 px-4 py-3 md:px-6">
-              <h2 class="text-base font-semibold text-slate-100">
+          <section class="flex min-h-0 flex-col bg-white/70 dark:bg-slate-900/70">
+            <div class="border-b border-slate-200 px-4 py-3 dark:border-white/10 md:px-6">
+              <h2 class="text-base font-semibold text-slate-900 dark:text-slate-100">
                 {{ activeSettingsTabLabel }}
               </h2>
             </div>

@@ -124,100 +124,97 @@ function formatCurrency(value: number) {
 
 function reminderVariant(priority: ReminderItem['priority']) {
   if (priority === 'high') {
-    return 'bg-red-500/15 text-red-300 border-red-400/30'
+    return 'bg-red-500/12 text-red-700 border-red-300/70 dark:bg-red-500/15 dark:text-red-300 dark:border-red-400/30'
   }
 
   if (priority === 'medium') {
-    return 'bg-amber-500/15 text-amber-300 border-amber-400/30'
+    return 'bg-amber-500/12 text-amber-700 border-amber-300/70 dark:bg-amber-500/15 dark:text-amber-300 dark:border-amber-400/30'
   }
 
-  return 'bg-emerald-500/15 text-emerald-300 border-emerald-400/30'
+  return 'bg-emerald-500/12 text-emerald-700 border-emerald-300/70 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/30'
 }
 </script>
 
 <template>
-  <div class="relative min-h-full overflow-hidden bg-slate-950 text-slate-100">
-    <div class="pointer-events-none absolute -left-24 top-12 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl" />
-    <div class="pointer-events-none absolute -right-20 top-48 h-80 w-80 rounded-full bg-emerald-400/10 blur-3xl" />
-
+  <div class="relative min-h-full overflow-hidden bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <div class="relative mx-auto w-full max-w-7xl space-y-6 px-4 py-6 md:px-8 md:py-8">
-      <section class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur md:p-7">
-        <p class="text-xs uppercase tracking-[0.2em] text-cyan-300">
+      <section class="rounded-2xl border border-slate-200/80 bg-white/80 p-5 backdrop-blur dark:border-white/10 dark:bg-white/5 md:p-7">
+        <p class="text-xs uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-300">
           {{ t('dashboard.kicker') }}
         </p>
         <div class="mt-3 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 class="text-2xl font-semibold text-white md:text-3xl">
+            <h1 class="text-2xl font-semibold text-slate-900 dark:text-white md:text-3xl">
               {{ t('dashboard.welcome', { email: user?.email || '-' }) }}
             </h1>
-            <p class="mt-2 text-sm text-slate-300">
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               {{ t('dashboard.subtitle') }}
             </p>
           </div>
 
-          <div class="inline-flex items-center rounded-xl border border-cyan-300/30 bg-cyan-300/10 px-3 py-2 text-sm text-cyan-100">
+          <div class="inline-flex items-center rounded-xl border border-cyan-300/60 bg-cyan-100/70 px-3 py-2 text-sm text-cyan-800 dark:border-cyan-300/30 dark:bg-cyan-300/10 dark:text-cyan-100">
             {{ t('dashboard.currentMonth') }}: {{ formatCurrency(latestMonthTotal) }}
           </div>
         </div>
       </section>
 
       <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
-          <p class="text-xs uppercase tracking-wider text-slate-400">
+        <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-4 dark:border-white/10 dark:bg-slate-900/70">
+          <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
             {{ t('dashboard.cards.totalCost') }}
           </p>
           <p class="mt-3 text-2xl font-semibold">
             {{ formatCurrency(latestMonthTotal) }}
           </p>
-          <p class="mt-2 text-xs" :class="monthChange >= 0 ? 'text-emerald-300' : 'text-rose-300'">
+          <p class="mt-2 text-xs" :class="monthChange >= 0 ? 'text-emerald-600 dark:text-emerald-300' : 'text-rose-600 dark:text-rose-300'">
             {{ monthChange >= 0 ? '+' : '' }}{{ monthChange }}% {{ t('dashboard.cards.vsPrevious') }}
           </p>
         </article>
 
-        <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
-          <p class="text-xs uppercase tracking-wider text-slate-400">
+        <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-4 dark:border-white/10 dark:bg-slate-900/70">
+          <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
             {{ t('dashboard.cards.fuel') }}
           </p>
           <p class="mt-3 text-2xl font-semibold">
             {{ formatCurrency(categoryTotals.fuel) }}
           </p>
-          <p class="mt-2 text-xs text-slate-400">
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
             {{ t('dashboard.cards.samplePeriod') }}
           </p>
         </article>
 
-        <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
-          <p class="text-xs uppercase tracking-wider text-slate-400">
+        <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-4 dark:border-white/10 dark:bg-slate-900/70">
+          <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
             {{ t('dashboard.cards.maintenance') }}
           </p>
           <p class="mt-3 text-2xl font-semibold">
             {{ formatCurrency(categoryTotals.maintenance) }}
           </p>
-          <p class="mt-2 text-xs text-slate-400">
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
             {{ t('dashboard.cards.samplePeriod') }}
           </p>
         </article>
 
-        <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-4">
-          <p class="text-xs uppercase tracking-wider text-slate-400">
+        <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-4 dark:border-white/10 dark:bg-slate-900/70">
+          <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
             {{ t('dashboard.cards.average') }}
           </p>
           <p class="mt-3 text-2xl font-semibold">
             {{ formatCurrency(averageMonthlyCost) }}
           </p>
-          <p class="mt-2 text-xs text-slate-400">
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
             {{ t('dashboard.cards.lastSixMonths') }}
           </p>
         </article>
       </section>
 
       <section class="grid grid-cols-1 gap-4 xl:grid-cols-3">
-        <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-5 xl:col-span-2">
+        <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-5 dark:border-white/10 dark:bg-slate-900/70 xl:col-span-2">
           <div class="flex items-center justify-between">
             <h2 class="text-lg font-semibold">
               {{ t('dashboard.trend.title') }}
             </h2>
-            <span class="text-xs text-slate-400">{{ t('dashboard.trend.lastSixMonths') }}</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400">{{ t('dashboard.trend.lastSixMonths') }}</span>
           </div>
 
           <div class="mt-5 grid grid-cols-6 gap-3">
@@ -231,18 +228,18 @@ function reminderVariant(priority: ReminderItem['priority']) {
                 :class="getTrendBarClass(index)"
                 :style="{ height: getBarHeight(point.total) }"
               />
-              <p class="text-xs text-slate-300">
+              <p class="text-xs text-slate-600 dark:text-slate-300">
                 {{ t(point.month) }}
               </p>
             </div>
           </div>
         </article>
 
-        <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
+        <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-5 dark:border-white/10 dark:bg-slate-900/70">
           <h2 class="text-lg font-semibold">
             {{ t('dashboard.reminders.title') }}
           </h2>
-          <p class="mt-1 text-sm text-slate-400">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             {{ t('dashboard.reminders.subtitle') }}
           </p>
 
@@ -265,11 +262,11 @@ function reminderVariant(priority: ReminderItem['priority']) {
       </section>
 
       <section class="grid grid-cols-1 gap-4 xl:grid-cols-3">
-        <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-5 xl:col-span-2">
+        <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-5 dark:border-white/10 dark:bg-slate-900/70 xl:col-span-2">
           <h2 class="text-lg font-semibold">
             {{ t('dashboard.expenses.title') }}
           </h2>
-          <p class="mt-1 text-sm text-slate-400">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             {{ t('dashboard.expenses.subtitle') }}
           </p>
 
@@ -277,32 +274,32 @@ function reminderVariant(priority: ReminderItem['priority']) {
             <div
               v-for="item in expenses"
               :key="item.id"
-              class="grid grid-cols-1 gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-3 text-sm md:grid-cols-5 md:items-center"
+              class="grid grid-cols-1 gap-2 rounded-xl border border-slate-200/80 bg-slate-50/70 px-3 py-3 text-sm dark:border-white/10 dark:bg-white/[0.03] md:grid-cols-5 md:items-center"
             >
-              <p class="text-slate-300">
+              <p class="text-slate-600 dark:text-slate-300">
                 {{ item.date }}
               </p>
-              <p class="font-medium text-white">
+              <p class="font-medium text-slate-900 dark:text-white">
                 {{ item.vehicle }}
               </p>
-              <p class="text-slate-300">
+              <p class="text-slate-600 dark:text-slate-300">
                 {{ t(`dashboard.categories.${item.category}`) }}
               </p>
-              <p class="text-slate-300">
+              <p class="text-slate-600 dark:text-slate-300">
                 {{ item.note }}
               </p>
-              <p class="text-right font-semibold text-cyan-200">
+              <p class="text-right font-semibold text-cyan-700 dark:text-cyan-200">
                 {{ formatCurrency(item.amount) }}
               </p>
             </div>
           </div>
         </article>
 
-        <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
+        <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-5 dark:border-white/10 dark:bg-slate-900/70">
           <h2 class="text-lg font-semibold">
             {{ t('dashboard.vehicles.title') }}
           </h2>
-          <p class="mt-1 text-sm text-slate-400">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             {{ t('dashboard.vehicles.subtitle') }}
           </p>
 
@@ -310,25 +307,25 @@ function reminderVariant(priority: ReminderItem['priority']) {
             <div
               v-for="vehicle in vehicles"
               :key="vehicle.id"
-              class="rounded-xl border border-white/10 bg-white/[0.03] p-3"
+              class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3 dark:border-white/10 dark:bg-white/[0.03]"
             >
               <div class="flex items-center justify-between gap-3">
                 <div>
-                  <p class="font-medium text-white">
+                  <p class="font-medium text-slate-900 dark:text-white">
                     {{ vehicle.name }}
                   </p>
-                  <p class="text-xs text-slate-400">
+                  <p class="text-xs text-slate-500 dark:text-slate-400">
                     {{ vehicle.plate }}
                   </p>
                 </div>
-                <p class="text-sm font-semibold text-cyan-200">
+                <p class="text-sm font-semibold text-cyan-700 dark:text-cyan-200">
                   {{ formatCurrency(vehicle.monthlyCost) }}
                 </p>
               </div>
 
-              <div class="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-300">
-                <p>{{ t('dashboard.vehicles.costPerKm') }}: <span class="text-white">{{ vehicle.costPerKm }} TL</span></p>
-                <p>{{ t('dashboard.vehicles.lastService') }}: <span class="text-white">{{ vehicle.lastServiceAt }}</span></p>
+              <div class="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300">
+                <p>{{ t('dashboard.vehicles.costPerKm') }}: <span class="text-slate-900 dark:text-white">{{ vehicle.costPerKm }} TL</span></p>
+                <p>{{ t('dashboard.vehicles.lastService') }}: <span class="text-slate-900 dark:text-white">{{ vehicle.lastServiceAt }}</span></p>
               </div>
             </div>
           </div>

@@ -1,12 +1,34 @@
 <script setup lang="ts">
 const { locale, setLocale, t } = useI18n()
+const colorMode = useColorMode()
 
 type LocaleCode = 'tr' | 'en'
+type ColorModePreference = 'system' | 'dark' | 'light'
 
 interface LocaleOption {
   code: LocaleCode
   fullLabel: string
 }
+
+interface ColorModeOption {
+  value: ColorModePreference
+  label: string
+}
+
+const colorModeOptions = computed<ColorModeOption[]>(() => [
+  {
+    value: 'system',
+    label: t('settings.general.appearance.options.system'),
+  },
+  {
+    value: 'dark',
+    label: t('settings.general.appearance.options.dark'),
+  },
+  {
+    value: 'light',
+    label: t('settings.general.appearance.options.light'),
+  },
+])
 
 const localeOptions = computed<LocaleOption[]>(() => [
   {
@@ -28,6 +50,17 @@ const selectedLocale = computed<LocaleCode>({
   },
 })
 
+const selectedColorMode = computed<ColorModePreference>({
+  get() {
+    return colorMode.preference === 'dark' || colorMode.preference === 'light'
+      ? colorMode.preference
+      : 'system'
+  },
+  set(value) {
+    colorMode.preference = value
+  },
+})
+
 async function changeLanguage(code: LocaleCode) {
   if (locale.value === code) {
     return
@@ -38,9 +71,28 @@ async function changeLanguage(code: LocaleCode) {
 </script>
 
 <template>
-  <div class="border-b border-white/10 px-4 py-3.5 md:px-6">
+  <div class="border-b border-slate-200 dark:border-white/10 px-4 py-3.5 md:px-6">
     <div class="flex items-center justify-between gap-4">
-      <p class="text-sm text-slate-200">
+      <p class="text-sm text-slate-700 dark:text-slate-200">
+        {{ t('settings.general.appearance.label') }}
+      </p>
+
+      <USelectMenu
+        v-model="selectedColorMode"
+        :items="colorModeOptions"
+        value-key="value"
+        label-key="label"
+        color="neutral"
+        variant="outline"
+        size="md"
+        class="min-w-52"
+      />
+    </div>
+  </div>
+
+  <div class="border-b border-slate-200 dark:border-white/10 px-4 py-3.5 md:px-6">
+    <div class="flex items-center justify-between gap-4">
+      <p class="text-sm text-slate-700 dark:text-slate-200">
         {{ t('language.label') }}
       </p>
 
