@@ -224,7 +224,7 @@ function reminderVariant(priority: ReminderItem['priority']) {
               class="group flex h-48 flex-col items-center justify-end gap-2"
             >
               <div
-                class="w-full rounded-t-md bg-gradient-to-t transition-all duration-300 group-hover:brightness-110"
+                class="w-full rounded-t-md bg-linear-to-t transition-all duration-300 group-hover:brightness-110"
                 :class="getTrendBarClass(index)"
                 :style="{ height: getBarHeight(point.total) }"
               />
@@ -274,7 +274,7 @@ function reminderVariant(priority: ReminderItem['priority']) {
             <div
               v-for="item in expenses"
               :key="item.id"
-              class="grid grid-cols-1 gap-2 rounded-xl border border-slate-200/80 bg-slate-50/70 px-3 py-3 text-sm dark:border-white/10 dark:bg-white/[0.03] md:grid-cols-5 md:items-center"
+              class="grid grid-cols-1 gap-2 rounded-xl border border-slate-200/80 bg-slate-50/70 px-3 py-3 text-sm dark:border-white/10 dark:bg-white/3 md:grid-cols-5 md:items-center"
             >
               <p class="text-slate-600 dark:text-slate-300">
                 {{ item.date }}
@@ -307,7 +307,7 @@ function reminderVariant(priority: ReminderItem['priority']) {
             <div
               v-for="vehicle in vehicles"
               :key="vehicle.id"
-              class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3 dark:border-white/10 dark:bg-white/[0.03]"
+              class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3 dark:border-white/10 dark:bg-white/3"
             >
               <div class="flex items-center justify-between gap-3">
                 <div>

@@ -158,7 +158,7 @@ async function onLogout() {
   <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <header
       v-if="isLoggedIn"
-      class="sticky top-0 z-40 bg-white/75 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:bg-slate-950/65 dark:supports-[backdrop-filter]:bg-slate-950/55"
+      class="sticky top-0 z-40 bg-white/75 backdrop-blur supports-backdrop-filter:bg-white/70 dark:bg-slate-950/65 dark:supports-backdrop-filter:bg-slate-950/55"
     >
       <div class="mx-auto w-full max-w-7xl px-4 py-3 md:px-8 md:py-4">
         <div class="flex h-12 items-center justify-between rounded-xl border border-slate-200/80 bg-white/80 px-3 shadow-[0_8px_24px_rgba(15,23,42,0.12)] dark:border-white/12 dark:bg-slate-900/70 dark:shadow-[0_8px_24px_rgba(2,6,23,0.35)] md:px-4">
