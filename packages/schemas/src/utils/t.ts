@@ -3,6 +3,8 @@ import { fallbackLocale, locales } from '../locales'
 
 export type NestedMessages = Record<string, string | Record<string, string | Record<string, string>>>
 
+const INTERPOLATION_PATTERN = /\{(\w+)\}/g
+
 function resolve(obj: NestedMessages, key: string): string | undefined {
   const parts = key.split('.')
   let current: unknown = obj
@@ -17,7 +19,7 @@ function resolve(obj: NestedMessages, key: string): string | undefined {
 }
 
 function interpolate(message: string, params: Record<string, unknown>, issue: Record<string, unknown>): string {
-  return message.replace(/\{(\w+)\}/g, (match, name: string) => {
+  return message.replace(INTERPOLATION_PATTERN, (match, name: string) => {
     if (name in params)
       return String(params[name])
     if (name in issue)
