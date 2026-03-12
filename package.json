@@ -15,10 +15,10 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "7.6.1",
-    "eslint": "10.0.2",
+    "@antfu/eslint-config": "7.7.0",
+    "eslint": "10.0.3",
     "husky": "9.1.7",
-    "lint-staged": "16.3.1"
+    "lint-staged": "16.3.2"
   },
   "lint-staged": {
     "*.{js,mjs}": "eslint --fix --cache"
