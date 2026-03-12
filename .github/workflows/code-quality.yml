@@ -59,17 +59,14 @@ jobs:
       - name: Build packages
         run: pnpm run build:packages
 
-      - name: Prepare Nuxt
-        run: pnpm --filter frontend exec nuxt prepare
-
       - name: Build frontend
         run: pnpm --filter frontend run build
 
       - name: Calculate bundle size
         id: size
         run: |
-          SIZE=$(du -sh apps/frontend/.output | cut -f1)
-          SIZE_BYTES=$(du -sb apps/frontend/.output | cut -f1)
+          SIZE=$(du -sh apps/frontend/.next | cut -f1)
+          SIZE_BYTES=$(du -sb apps/frontend/.next | cut -f1)
           echo "size=$SIZE" >> "$GITHUB_OUTPUT"
           echo "bytes=$SIZE_BYTES" >> "$GITHUB_OUTPUT"
           echo "Bundle size: $SIZE ($SIZE_BYTES bytes)"
@@ -80,7 +77,7 @@ jobs:
           script: |
             const size = '${{ steps.size.outputs.size }}';
             const bytes = '${{ steps.size.outputs.bytes }}';
-            const body = `## 📦 Frontend Bundle Size\n\n| Metric | Value |\n|--------|-------|\n| **Total Size** | ${size} |\n| **Bytes** | ${Number(bytes).toLocaleString()} bytes |\n\n*Measured from \`apps/frontend/.output\`*`;
+            const body = `## 📦 Frontend Bundle Size\n\n| Metric | Value |\n|--------|-------|\n| **Total Size** | ${size} |\n| **Bytes** | ${Number(bytes).toLocaleString()} bytes |\n\n*Measured from \`apps/frontend/.next\`*`;
 
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
@@ -131,9 +128,9 @@ jobs:
       - name: Run duplicate detection
         run: |
           jscpd \
-            --pattern "apps/**/*.{ts,vue}" \
+            --pattern "apps/**/*.{ts,tsx}" \
             --pattern "packages/**/*.ts" \
-            --ignore "**/node_modules/**,**/generated/**,**/.nuxt/**,**/dist/**" \
+            --ignore "**/node_modules/**,**/generated/**,**/.next/**,**/dist/**" \
             --threshold 5 \
             --reporters console \
             --blame
