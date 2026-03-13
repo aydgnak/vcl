@@ -1,7 +1,5 @@
 export default function RootPage() {
   return (
-    <div>
-      Root Page
-    </div>
+    <main className="min-h-[calc(100dvh-4rem)]" />
   )
 }
