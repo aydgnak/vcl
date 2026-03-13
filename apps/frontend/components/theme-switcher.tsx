@@ -2,6 +2,7 @@
 
 import { Button, useIsHydrated } from '@heroui/react'
 import { useTheme } from 'next-themes'
+import { useI18n } from '@/i18n/use-i18n'
 
 type ThemeMode = 'system' | 'light' | 'dark'
 
@@ -11,7 +12,7 @@ interface IconProps {
 
 interface ThemeOption {
   icon: (props: IconProps) => React.JSX.Element
-  label: string
+  labelKey: string
   value: ThemeMode
 }
 
@@ -50,9 +51,9 @@ function MoonIcon({ className }: IconProps) {
 }
 
 const THEME_OPTIONS: ThemeOption[] = [
-  { icon: SystemIcon, label: 'Sistem', value: 'system' },
-  { icon: SunIcon, label: 'Açık', value: 'light' },
-  { icon: MoonIcon, label: 'Koyu', value: 'dark' },
+  { icon: SystemIcon, labelKey: 'header.theme.system', value: 'system' },
+  { icon: SunIcon, labelKey: 'header.theme.light', value: 'light' },
+  { icon: MoonIcon, labelKey: 'header.theme.dark', value: 'dark' },
 ]
 
 const THEME_ORDER: ThemeMode[] = ['system', 'light', 'dark']
@@ -65,6 +66,7 @@ function getNextTheme(theme: ThemeMode): ThemeMode {
 }
 
 export function ThemeSwitcher() {
+  const { t } = useI18n()
   const { setTheme, theme } = useTheme()
   const isHydrated = useIsHydrated()
 
@@ -78,13 +80,15 @@ export function ThemeSwitcher() {
   const nextTheme = getNextTheme(renderedTheme)
   const nextOption = THEME_OPTIONS.find(option => option.value === nextTheme) ?? THEME_OPTIONS[0]
   const ActiveIcon = activeOption.icon
+  const activeLabel = t(activeOption.labelKey)
+  const nextLabel = t(nextOption.labelKey)
 
   return (
     <Button
       type="button"
       isIconOnly
       size="sm"
-      aria-label={`Tema: ${activeOption.label}. Sonraki: ${nextOption.label}`}
+      aria-label={t('header.theme.ariaLabel', { current: activeLabel, next: nextLabel })}
       variant="outline"
       className="rounded-xl bg-surface text-foreground hover:bg-default/70"
       onPress={() => setTheme(nextTheme)}

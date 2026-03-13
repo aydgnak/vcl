@@ -1,0 +1,14 @@
+{
+  "header": {
+    "theme": {
+      "ariaLabel": "Theme: {current}. Next: {next}",
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System"
+    }
+  },
+  "home": {
+    "description": "This text is rendered based on your selected language.",
+    "title": "i18n test message"
+  }
+}

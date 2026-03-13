@@ -1,0 +1,14 @@
+{
+  "header": {
+    "theme": {
+      "ariaLabel": "Tema: {current}. Sonraki: {next}",
+      "dark": "Koyu",
+      "light": "Açık",
+      "system": "Sistem"
+    }
+  },
+  "home": {
+    "description": "Bu metin seçilen dile göre render edilir.",
+    "title": "i18n test mesajı"
+  }
+}

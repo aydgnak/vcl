@@ -1,3 +1,4 @@
+import { LocaleSwitcher } from '@/components/locale-switcher'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 
 export function AppHeader() {
@@ -8,7 +9,10 @@ export function AppHeader() {
           VCL
         </p>
 
-        <ThemeSwitcher />
+        <div className="flex items-center gap-2">
+          <LocaleSwitcher />
+          <ThemeSwitcher />
+        </div>
       </div>
     </header>
   )
