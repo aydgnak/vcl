@@ -5,6 +5,50 @@
       "dark": "Koyu",
       "light": "Açık",
       "system": "Sistem"
+    },
+    "user": {
+      "ariaLabel": "Kullanıcı menüsünü aç",
+      "logout": "Çıkış yap",
+      "loggingOut": "Çıkış yapılıyor..."
+    }
+  },
+  "auth": {
+    "login": {
+      "page": {
+        "title": "Giriş yap",
+        "subtitle": "Hesabınızla devam edin"
+      },
+      "email": {
+        "label": "E-posta",
+        "placeholder": "E-posta adresinizi girin"
+      },
+      "password": {
+        "label": "Şifre",
+        "placeholder": "Şifrenizi girin"
+      },
+      "submit": "Giriş yap",
+      "submitting": "Giriş yapılıyor...",
+      "google": "Google ile devam et",
+      "separator": "ya da",
+      "errorDefault": "Giriş yapılamadı. Lütfen tekrar deneyin.",
+      "switch": {
+        "prompt": "Hesabınız yok mu?",
+        "action": "Hesap oluştur"
+      }
+    },
+    "register": {
+      "page": {
+        "title": "Hesap oluştur",
+        "subtitle": "Yeni hesabınızı oluşturun"
+      },
+      "google": "Google ile hesap oluştur",
+      "submit": "Hesap oluştur",
+      "submitting": "Hesap oluşturuluyor...",
+      "errorDefault": "Hesap oluşturulamadı. Lütfen tekrar deneyin.",
+      "switch": {
+        "prompt": "Zaten hesabınız var mı?",
+        "action": "Giriş yap"
+      }
     }
   },
   "home": {

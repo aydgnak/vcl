@@ -1,5 +1,6 @@
 import { LocaleSwitcher } from '@/components/locale-switcher'
 import { ThemeSwitcher } from '@/components/theme-switcher'
+import { UserMenu } from '@/components/user-menu'
 
 export function AppHeader() {
   return (
@@ -12,6 +13,7 @@ export function AppHeader() {
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
           <ThemeSwitcher />
+          <UserMenu />
         </div>
       </div>
     </header>

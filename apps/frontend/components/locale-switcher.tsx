@@ -55,7 +55,7 @@ export function LocaleSwitcher() {
       <Dropdown.Trigger
         type="button"
         aria-label={LOCALE_MENU_ARIA_LABEL}
-        className="inline-flex items-center gap-2 rounded-xl border border-border/70 bg-surface px-2.5 py-1.5 text-xs font-semibold tracking-wide text-foreground hover:bg-default/70"
+        className="inline-flex items-center gap-2 rounded-md border border-border/70 bg-surface px-2.5 py-1.5 text-xs font-semibold tracking-wide text-foreground hover:bg-default/70"
         isDisabled={isPending}
       >
         <span className="inline-flex items-center gap-2">
@@ -64,7 +64,7 @@ export function LocaleSwitcher() {
         </span>
       </Dropdown.Trigger>
 
-      <Dropdown.Popover placement="bottom end">
+      <Dropdown.Popover placement="bottom end" className="rounded-lg">
         <Dropdown.Menu
           aria-label={LOCALE_MENU_ARIA_LABEL}
           className="min-w-40"
@@ -82,7 +82,7 @@ export function LocaleSwitcher() {
                 textValue={option.label}
                 aria-label={option.label}
                 onAction={() => onLocaleChange(locale)}
-                className={isActive ? 'bg-default/40' : undefined}
+                className={isActive ? 'rounded-md bg-default/40' : 'rounded-md'}
               >
                 <span className={isActive ? 'flex items-center gap-2 text-sm font-semibold' : 'flex items-center gap-2 text-sm'}>
                   <span aria-hidden="true">{option.flag}</span>

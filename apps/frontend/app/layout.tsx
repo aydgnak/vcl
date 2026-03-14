@@ -1,4 +1,3 @@
-import { AppHeader } from '@/components/app-header'
 import { getDictionary, resolveRequestLocale } from '@/i18n/dictionaries'
 import { Providers } from './providers'
 import './globals.css'
@@ -16,7 +15,6 @@ export default async function RootLayout({
       <body className="antialiased">
         <Providers locale={locale} messages={messages}>
           <div className="min-h-screen bg-background text-foreground">
-            <AppHeader />
             {children}
           </div>
         </Providers>

@@ -5,6 +5,50 @@
       "dark": "Dark",
       "light": "Light",
       "system": "System"
+    },
+    "user": {
+      "ariaLabel": "Open user menu",
+      "logout": "Log out",
+      "loggingOut": "Logging out..."
+    }
+  },
+  "auth": {
+    "login": {
+      "page": {
+        "title": "Sign in",
+        "subtitle": "Continue with your account"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "submit": "Sign in",
+      "submitting": "Signing in...",
+      "google": "Continue with Google",
+      "separator": "or",
+      "errorDefault": "Unable to sign in. Please try again.",
+      "switch": {
+        "prompt": "Don't have an account?",
+        "action": "Create one"
+      }
+    },
+    "register": {
+      "page": {
+        "title": "Create account",
+        "subtitle": "Set up your new account"
+      },
+      "google": "Create with Google",
+      "submit": "Create account",
+      "submitting": "Creating account...",
+      "errorDefault": "Unable to create account. Please try again.",
+      "switch": {
+        "prompt": "Already have an account?",
+        "action": "Sign in"
+      }
     }
   },
   "home": {

@@ -90,7 +90,7 @@ export function ThemeSwitcher() {
       size="sm"
       aria-label={t('header.theme.ariaLabel', { current: activeLabel, next: nextLabel })}
       variant="outline"
-      className="rounded-xl bg-surface text-foreground hover:bg-default/70"
+      className="rounded-md bg-surface text-foreground hover:bg-default/70"
       onPress={() => setTheme(nextTheme)}
     >
       <ActiveIcon className="size-4" />

@@ -24,7 +24,7 @@ export class AuthService {
     const user = await this.userService.findByEmail(this.normalizeEmail(email))
 
     if (!user || user.password === null) {
-      return null
+      throw new UnauthorizedException(this.i18n.t('auth.unauthorized'))
     }
 
     const isPasswordMatch = await compare(password, user.password)

@@ -1,2 +1,9 @@
 @import "tailwindcss";
 @import "@heroui/styles";
+
+@layer base {
+  :root {
+    --radius: 0.375rem;
+    --field-radius: calc(var(--radius) * 1.33);
+  }
+}
