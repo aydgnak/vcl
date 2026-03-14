@@ -7,6 +7,10 @@ import type { Path } from "nestjs-i18n";
 export type I18nTranslations = {
     "auth": {
         "unauthorized": string;
+        "passwordAlreadySet": string;
+        "passwordNotSet": string;
+        "currentPasswordInvalid": string;
+        "passwordRemovalRequiresProvider": string;
     };
 };
 /* prettier-ignore */

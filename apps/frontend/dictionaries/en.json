@@ -8,6 +8,7 @@
     },
     "user": {
       "ariaLabel": "Open user menu",
+      "settings": "Settings",
       "logout": "Log out",
       "loggingOut": "Logging out..."
     }
@@ -54,5 +55,71 @@
   "home": {
     "description": "This text is rendered based on your selected language.",
     "title": "i18n test message"
+  },
+  "settings": {
+    "title": "Settings",
+    "tabs": {
+      "general": "General",
+      "security": "Security"
+    },
+    "general": {
+      "title": "General",
+      "description": "Manage your language and appearance preferences.",
+      "language": {
+        "label": "Language",
+        "searchPlaceholder": "Search language",
+        "noResults": "No language found",
+        "updating": "Updating language..."
+      },
+      "appearance": {
+        "label": "Appearance"
+      }
+    },
+    "security": {
+      "title": "Security",
+      "description": "Manage your password and sign-in methods.",
+      "loading": "Loading security settings...",
+      "retry": "Try again",
+      "fields": {
+        "currentPassword": "Current password",
+        "newPassword": "New password"
+      },
+      "passwordStatus": {
+        "label": "Password",
+        "set": "Set",
+        "notSet": "Not set"
+      },
+      "providers": {
+        "label": "Linked providers",
+        "none": "No linked providers",
+        "google": "Google"
+      },
+      "setPassword": {
+        "title": "Set password",
+        "description": "Create a password to sign in with email.",
+        "submit": "Set password",
+        "submitting": "Setting password...",
+        "success": "Your password has been set."
+      },
+      "updatePassword": {
+        "title": "Update password",
+        "description": "Change your current password.",
+        "submit": "Update password",
+        "submitting": "Updating password...",
+        "success": "Your password has been updated."
+      },
+      "removePassword": {
+        "title": "Remove password",
+        "description": "Remove password login from this account.",
+        "providerRequired": "To remove your password, link at least one provider first.",
+        "submit": "Remove password",
+        "submitting": "Removing password...",
+        "success": "Your password has been removed."
+      },
+      "errors": {
+        "default": "Something went wrong. Please try again.",
+        "load": "Unable to load security settings."
+      }
+    }
   }
 }

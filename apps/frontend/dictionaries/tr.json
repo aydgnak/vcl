@@ -8,6 +8,7 @@
     },
     "user": {
       "ariaLabel": "Kullanıcı menüsünü aç",
+      "settings": "Ayarlar",
       "logout": "Çıkış yap",
       "loggingOut": "Çıkış yapılıyor..."
     }
@@ -54,5 +55,71 @@
   "home": {
     "description": "Bu metin seçilen dile göre render edilir.",
     "title": "i18n test mesajı"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "tabs": {
+      "general": "Genel",
+      "security": "Güvenlik"
+    },
+    "general": {
+      "title": "Genel",
+      "description": "Dil ve görünüm tercihlerinizi yönetin.",
+      "language": {
+        "label": "Dil",
+        "searchPlaceholder": "Dil ara",
+        "noResults": "Dil bulunamadı",
+        "updating": "Dil güncelleniyor..."
+      },
+      "appearance": {
+        "label": "Görünüm"
+      }
+    },
+    "security": {
+      "title": "Güvenlik",
+      "description": "Şifre ve giriş yöntemlerinizi yönetin.",
+      "loading": "Güvenlik ayarları yükleniyor...",
+      "retry": "Tekrar dene",
+      "fields": {
+        "currentPassword": "Mevcut şifre",
+        "newPassword": "Yeni şifre"
+      },
+      "passwordStatus": {
+        "label": "Şifre",
+        "set": "Tanımlı",
+        "notSet": "Tanımlı değil"
+      },
+      "providers": {
+        "label": "Bağlı sağlayıcılar",
+        "none": "Bağlı sağlayıcı yok",
+        "google": "Google"
+      },
+      "setPassword": {
+        "title": "Şifre belirle",
+        "description": "E-posta ile giriş için bir şifre oluşturun.",
+        "submit": "Şifreyi belirle",
+        "submitting": "Şifre belirleniyor...",
+        "success": "Şifreniz başarıyla belirlendi."
+      },
+      "updatePassword": {
+        "title": "Şifre güncelle",
+        "description": "Mevcut şifrenizi değiştirin.",
+        "submit": "Şifreyi güncelle",
+        "submitting": "Şifre güncelleniyor...",
+        "success": "Şifreniz başarıyla güncellendi."
+      },
+      "removePassword": {
+        "title": "Şifreyi kaldır",
+        "description": "Bu hesap için şifre ile giriş yöntemini kaldırın.",
+        "providerRequired": "Şifreyi kaldırmak için önce en az bir sağlayıcı bağlamalısınız.",
+        "submit": "Şifreyi kaldır",
+        "submitting": "Şifre kaldırılıyor...",
+        "success": "Şifreniz kaldırıldı."
+      },
+      "errors": {
+        "default": "Bir hata oluştu. Lütfen tekrar deneyin.",
+        "load": "Güvenlik ayarları yüklenemedi."
+      }
+    }
   }
 }
