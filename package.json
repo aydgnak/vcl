@@ -2,7 +2,7 @@
   "name": "vcl",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.32.0",
+  "packageManager": "pnpm@10.32.1",
   "description": "Vehicle Cost Ledger",
   "scripts": {
     "build": "pnpm --filter \"./apps/**\" run build",
