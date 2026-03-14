@@ -203,11 +203,11 @@ export function SettingsPanel({ activeTab }: { activeTab: SettingsTab }) {
     { key: 'dark', labelKey: 'header.theme.dark' },
   ]
 
-  const filteredLocaleOptions = useMemo(() => {
+  const matchingLocaleOptions = useMemo(() => {
     const query = languageSearchQuery.trim().toLocaleLowerCase(locale)
 
     if (query.length === 0)
-      return locales
+      return [...locales]
 
     return locales.filter((itemLocale) => {
       const option = localeMeta[itemLocale]
@@ -216,6 +216,16 @@ export function SettingsPanel({ activeTab }: { activeTab: SettingsTab }) {
       return label.includes(query) || itemLocale.includes(query)
     })
   }, [languageSearchQuery, locale])
+
+  const localeOptionsForSelect = useMemo(() => {
+    if (matchingLocaleOptions.includes(locale))
+      return matchingLocaleOptions
+
+    return [locale, ...matchingLocaleOptions]
+  }, [locale, matchingLocaleOptions])
+
+  const hasLanguageSearchResults = matchingLocaleOptions.length > 0
+  const isSelectedLocaleInjected = !matchingLocaleOptions.includes(locale)
 
   const refreshSecurityState = useCallback(async () => {
     setIsSecurityLoading(true)
@@ -398,6 +408,10 @@ export function SettingsPanel({ activeTab }: { activeTab: SettingsTab }) {
                     selectedKey={locale}
                     isDisabled={isLocalePending}
                     aria-label={t('settings.general.language.label')}
+                    onOpenChange={(isOpen) => {
+                      if (!isOpen)
+                        setLanguageSearchQuery('')
+                    }}
                     onSelectionChange={(key) => {
                       if (typeof key !== 'string' || !isLocale(key))
                         return
@@ -423,30 +437,29 @@ export function SettingsPanel({ activeTab }: { activeTab: SettingsTab }) {
                         />
                       </div>
 
-                      {filteredLocaleOptions.length > 0
-                        ? (
-                            <ListBox className="max-h-56 overflow-auto p-1 pt-0">
-                              {filteredLocaleOptions.map((itemLocale) => {
-                                const option = localeMeta[itemLocale]
+                      <ListBox className="max-h-56 overflow-auto p-1 pt-0">
+                        {localeOptionsForSelect.map((itemLocale) => {
+                          const option = localeMeta[itemLocale]
+                          const shouldHideOption = isSelectedLocaleInjected && itemLocale === locale
 
-                                return (
-                                  <ListBox.Item
-                                    key={itemLocale}
-                                    id={itemLocale}
-                                    textValue={option.label}
-                                    className="rounded-md px-3 py-2 text-sm"
-                                  >
-                                    {option.label}
-                                  </ListBox.Item>
-                                )
-                              })}
-                            </ListBox>
+                          return (
+                            <ListBox.Item
+                              key={itemLocale}
+                              id={itemLocale}
+                              textValue={option.label}
+                              className={shouldHideOption ? 'hidden' : 'rounded-md px-3 py-2 text-sm'}
+                            >
+                              {option.label}
+                            </ListBox.Item>
                           )
-                        : (
-                            <p className="px-3 py-2 text-xs text-foreground/60">
-                              {t('settings.general.language.noResults')}
-                            </p>
-                          )}
+                        })}
+                      </ListBox>
+
+                      {!hasLanguageSearchResults && (
+                        <p className="px-3 py-2 text-xs text-foreground/60">
+                          {t('settings.general.language.noResults')}
+                        </p>
+                      )}
                     </Select.Popover>
                   </Select>
                 </div>
