@@ -1,4 +1,16 @@
+import type { Metadata } from 'next'
 import { RegisterForm } from '@/components/register-form'
+import { getDictionary, resolveRequestLocale } from '@/i18n/dictionaries'
+import { translate } from '@/i18n/messages'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await resolveRequestLocale()
+  const messages = await getDictionary(locale)
+
+  return {
+    title: translate(messages, 'auth.register.page.title'),
+  }
+}
 
 export default function RegisterPage() {
   return (

@@ -1,6 +1,11 @@
+import type { Metadata } from 'next'
 import { getDictionary, resolveRequestLocale } from '@/i18n/dictionaries'
 import { Providers } from './providers'
 import './globals.css'
+
+export const metadata: Metadata = {
+  title: 'VCL',
+}
 
 export default async function RootLayout({
   children,

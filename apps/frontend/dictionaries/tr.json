@@ -53,8 +53,7 @@
     }
   },
   "home": {
-    "description": "Bu metin seçilen dile göre render edilir.",
-    "title": "i18n test mesajı"
+    "title": "Kontrol Paneli"
   },
   "settings": {
     "title": "Ayarlar",

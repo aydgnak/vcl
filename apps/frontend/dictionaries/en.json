@@ -53,8 +53,7 @@
     }
   },
   "home": {
-    "description": "This text is rendered based on your selected language.",
-    "title": "i18n test message"
+    "title": "Dashboard"
   },
   "settings": {
     "title": "Settings",
