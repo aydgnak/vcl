@@ -27,7 +27,7 @@
     "@eslint-react/eslint-plugin": "2.13.0",
     "@next/eslint-plugin-next": "16.1.6",
     "@tailwindcss/postcss": "4.2.1",
-    "@types/node": "20.19.37",
+    "@types/node": "24.12.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
