@@ -3,7 +3,16 @@
   "private": true,
   "packageManager": "bun@1.3.14",
   "description": "Vehicle Cost Ledger",
-  "workspaces":[],
-  "scripts": {},
-  "devDependencies": {}
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "lint:root": "eslint . --cache",
+    "lint:root:fix": "eslint . --cache --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.0.0",
+    "eslint": "^10.5.0"
+  }
 }
