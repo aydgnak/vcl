@@ -4,9 +4,11 @@
     "target": "ES2023",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "baseUrl": "./",
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "paths": {
+      "@app/*": ["./src/*"]
+    },
     "resolvePackageJsonExports": true,
     "types": [
       "node",
