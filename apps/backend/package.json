@@ -18,10 +18,13 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.1.26",
+    "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.1.26",
     "@nestjs/platform-express": "^11.1.26",
+    "@valibot/i18n": "^1.2.0",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.2"
+    "rxjs": "^7.8.2",
+    "valibot": "^1.4.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "9.0.0",
