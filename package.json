@@ -8,8 +8,12 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "bun run --workspaces build",
     "lint:root": "eslint . --cache",
-    "lint:root:fix": "eslint . --cache --fix"
+    "lint:root:fix": "eslint . --cache --fix",
+    "lint": "bun run lint:root && bun run --workspaces lint",
+    "lint:fix": "bun run lint:root:fix && bun run --workspaces lint:fix",
+    "typecheck": "bun run --workspaces typecheck"
   },
   "devDependencies": {
     "@antfu/eslint-config": "9.0.0",
