@@ -12,7 +12,7 @@
     "lint:root:fix": "eslint . --cache --fix"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.0.0",
-    "eslint": "^10.5.0"
+    "@antfu/eslint-config": "9.0.0",
+    "eslint": "10.5.0"
   }
 }
