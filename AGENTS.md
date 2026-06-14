@@ -35,6 +35,12 @@
 - **SKL-03** - Monorepo, workspace, Turborepo/Nx veya shared dependency işleri için `monorepo-management` skill'i kullanılır.
 - **SKL-04** - NestJS kodu yazma, inceleme veya refactor işlerinde `nestjs-best-practices` skill'i kullanılır.
 - **SKL-05** - Validation, parsing ve runtime type safety işlerinde yalnızca `valibot` kullanılır; ilgili işlerde `valibot` skill'i kullanılır.
+- **SKL-06** - UI/UX, görsel tasarım, interaction, accessibility, responsive davranış veya frontend polish içeren işlerde ilgili UI skill'i değerlendirilir.
+- **SKL-07** - Landing page, portfolio, marketing sayfası veya redesign işlerinde `design-taste-frontend` veya `frontend-design` skill'i kullanılır.
+- **SKL-08** - Ürün arayüzü, dashboard, form, component, UX review veya genel UI kalite işleri için `ui-ux-pro-max` veya `impeccable` skill'i kullanılır.
+- **SKL-09** - Responsive layout, container query, fluid typography veya mobile-first düzen işleri için `responsive-design` skill'i kullanılır.
+- **SKL-10** - UI animation, micro-interaction veya motion polish işleri için `emil-design-eng` skill'i kullanılır.
+- **SKL-11** - Bir iş birden fazla kapsama giriyorsa ilgili tüm skill'ler birlikte değerlendirilebilir ve gerektiğinde birden fazla skill aynı çalışmada kullanılabilir.
 
 ## Work Completion (WCP)
 
