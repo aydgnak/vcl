@@ -13,5 +13,8 @@
   "rangeStrategy": "bump",
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
-  }
+  },
+  "ignorePaths": [
+    ".agents/**"
+  ]
 }
