@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "build": "bun run --workspaces build",
+    "dev": "bun run --filter \"./apps/*\" dev",
     "lint:root": "eslint . --cache",
     "lint:root:fix": "eslint . --cache --fix",
     "lint": "bun run lint:root && bun run --workspaces lint",

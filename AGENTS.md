@@ -28,6 +28,20 @@
 - **KNB-08** - `.brain/` içindeki dosya içerikleri Türkçe yazılmalı ve Türkçe karakterler doğru şekilde korunmalıdır.
 - **KNB-09** - `.brain/` içindeki notlarda ilişkili sayfa ve kavramlara bağlantı vermek için wikilink formatı kullanılır: `[[page-name]]`.
 
+## Work Completion (WCP)
+
+- **WCP-01** - Her işin sonunda, yapılan çalışmanın `.brain/` içine kaydedilmesi gereken kalıcı proje bilgisi, karar, not veya uzun vadeli bağlam üretip üretmediği değerlendirilir.
+- **WCP-02** - `.brain/` içine kayıt gerekiyorsa, ilgili dosya `.brain/templates/` içindeki uygun şablona göre oluşturulur veya güncellenir.
+- **WCP-03** - `.brain/` güncellemeleri `KNB` kurallarına uygun şekilde İngilizce `kebab-case` dosya adı, Türkçe içerik ve gerektiğinde wikilink formatı kullanılarak yapılır.
+
+## Quality Gate (QGT)
+
+- **QGT-01** - Her iş tamamlandıktan sonra sırasıyla `lint:fix`, `typecheck` ve `build` scriptleri çalıştırılır.
+- **QGT-02** - `lint:fix` sonrasında oluşan dosya değişiklikleri kontrol edilir.
+- **QGT-03** - `lint:fix`, `typecheck` veya `build` çıktısında hata ya da uyarı varsa düzeltilir.
+- **QGT-04** - Düzeltme yapıldıysa ilgili script tekrar çalıştırılır.
+- **QGT-05** - Bu scriptler başarılı tamamlanmadan iş tamamlanmış sayılmaz.
+
 ## Git (GIT)
 
 - **GIT-01** - User açıkça istemedikçe commit oluşturma veya remote'a pushlama.

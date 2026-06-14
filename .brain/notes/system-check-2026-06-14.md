@@ -25,4 +25,3 @@ created_at: 2026-06-14 17:10 +03:00
 ## Related Pages
 - [[project-overview]]
 - [[knowledge-base-structure]]
-- [[agent-rules]]

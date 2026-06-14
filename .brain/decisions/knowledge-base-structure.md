@@ -32,4 +32,3 @@ Kabul edildi
 
 ## Related Pages
 - [[project-overview]]
-- [[agent-rules]]

@@ -1,5 +1,5 @@
+import { env } from 'node:process'
 import { NestFactory } from '@nestjs/core'
-import { env } from 'bun'
 import { AppModule } from './app.module'
 
 async function bootstrap() {
