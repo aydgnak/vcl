@@ -1,2 +1,11 @@
-node_modules
+# Dependencies
+node_modules/
+
+# Eslint
 .eslintcache
+
+# Environment
+.env
+
+# Obsidian
+.brain/.obsidian/
