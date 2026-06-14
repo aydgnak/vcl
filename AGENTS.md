@@ -35,12 +35,14 @@
 - **SKL-03** - Monorepo, workspace, Turborepo/Nx veya shared dependency işleri için `monorepo-management` skill'i kullanılır.
 - **SKL-04** - NestJS kodu yazma, inceleme veya refactor işlerinde `nestjs-best-practices` skill'i kullanılır.
 - **SKL-05** - Validation, parsing ve runtime type safety işlerinde yalnızca `valibot` kullanılır; ilgili işlerde `valibot` skill'i kullanılır.
-- **SKL-06** - UI/UX, görsel tasarım, interaction, accessibility, responsive davranış veya frontend polish içeren işlerde ilgili UI skill'i değerlendirilir.
-- **SKL-07** - Landing page, portfolio, marketing sayfası veya redesign işlerinde `design-taste-frontend` veya `frontend-design` skill'i kullanılır.
-- **SKL-08** - Ürün arayüzü, dashboard, form, component, UX review veya genel UI kalite işleri için `ui-ux-pro-max` veya `impeccable` skill'i kullanılır.
-- **SKL-09** - Responsive layout, container query, fluid typography veya mobile-first düzen işleri için `responsive-design` skill'i kullanılır.
-- **SKL-10** - UI animation, micro-interaction veya motion polish işleri için `emil-design-eng` skill'i kullanılır.
-- **SKL-11** - Bir iş birden fazla kapsama giriyorsa ilgili tüm skill'ler birlikte değerlendirilebilir ve gerektiğinde birden fazla skill aynı çalışmada kullanılabilir.
+- **SKL-06** - Next.js sayfa, route handler, RSC boundary, metadata, image/font optimization, async API veya App Router işleri için `next-best-practices` skill'i kullanılır.
+- **SKL-07** - React/Next.js component, data fetching, bundle size, rendering performance veya performans refactor işlerinde `vercel-react-best-practices` skill'i kullanılır.
+- **SKL-08** - UI/UX, görsel tasarım, interaction, accessibility, responsive davranış veya frontend polish içeren işlerde ilgili UI skill'i değerlendirilir.
+- **SKL-09** - Landing page, portfolio, marketing sayfası veya redesign işlerinde `design-taste-frontend` veya `frontend-design` skill'i kullanılır.
+- **SKL-10** - Ürün arayüzü, dashboard, form, component, UX review veya genel UI kalite işleri için `ui-ux-pro-max` veya `impeccable` skill'i kullanılır.
+- **SKL-11** - Responsive layout, container query, fluid typography veya mobile-first düzen işleri için `responsive-design` skill'i kullanılır.
+- **SKL-12** - UI animation, micro-interaction veya motion polish işleri için `emil-design-eng` skill'i kullanılır.
+- **SKL-13** - Bir iş birden fazla kapsama giriyorsa ilgili tüm skill'ler birlikte değerlendirilebilir ve gerektiğinde birden fazla skill aynı çalışmada kullanılabilir.
 
 ## Work Completion (WCP)
 
@@ -59,5 +61,7 @@
 ## Git (GIT)
 
 - **GIT-01** - User açıkça istemedikçe commit oluşturma veya remote'a pushlama.
-- **GIT-02** - User commit message isterse önce son 20 commit message'ı incele.
-- **GIT-03** - Yeni commit message'ı mevcut commit history içindeki style ve convention'a uygun yaz.
+- **GIT-02** - Commit message hazırlanırken önce değişikliğin kapsamı incelenir ve Conventional Commit type buna göre seçilir: kullanıcıya görünen yeni özellikler için `feat`, hata düzeltmeleri için `fix`, tooling/configuration/rule/dependency/maintenance işleri için `chore`, dokümantasyon-only değişiklikler için `docs` kullanılır.
+- **GIT-03** - Değişiklik belirli bir paket veya uygulama alanındaysa scope parantez içinde yazılır: `feat(frontend): ...`, `fix(backend): ...`, `chore(deps): ...`. Repo-geneli agent, kural veya yapılandırma değişikliklerinde scope opsiyoneldir.
+- **GIT-04** - User commit message isterse önce son 20 commit message'ı incele.
+- **GIT-05** - Yeni commit message'ı mevcut commit history içindeki style ve convention'a uygun yaz.
