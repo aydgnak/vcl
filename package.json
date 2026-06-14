@@ -1,0 +1,9 @@
+{
+  "name": "vcl",
+  "private": true,
+  "packageManager": "bun@1.3.14",
+  "description": "Vehicle Cost Ledger",
+  "workspaces":[],
+  "scripts": {},
+  "devDependencies": {}
+}
