@@ -31,9 +31,10 @@
 ## Skills (SKL)
 
 - **SKL-01** - İşin kapsamına uygun bir skill varsa, çalışmaya başlamadan önce ilgili skill değerlendirilir ve gerekiyorsa kullanılır.
-- **SKL-02** - NestJS kodu yazma, inceleme veya refactor işlerinde `nestjs-best-practices` skill'i kullanılır.
-- **SKL-03** - Bun scriptleri, dependency yönetimi, test veya build işleri için `Bun` skill'i kullanılır.
-- **SKL-04** - Monorepo, workspace, Turborepo/Nx veya shared dependency işleri için `monorepo-management` skill'i kullanılır.
+- **SKL-02** - Bun scriptleri, dependency yönetimi, test veya build işleri için `Bun` skill'i kullanılır.
+- **SKL-03** - Monorepo, workspace, Turborepo/Nx veya shared dependency işleri için `monorepo-management` skill'i kullanılır.
+- **SKL-04** - NestJS kodu yazma, inceleme veya refactor işlerinde `nestjs-best-practices` skill'i kullanılır.
+- **SKL-05** - Validation, parsing ve runtime type safety işlerinde yalnızca `valibot` kullanılır; ilgili işlerde `valibot` skill'i kullanılır.
 
 ## Work Completion (WCP)
 
