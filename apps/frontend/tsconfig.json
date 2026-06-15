@@ -10,6 +10,9 @@
       "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
+    "types": [
+      "next"
+    ],
     "allowJs": true,
     "strict": true,
     "noEmit": true,
