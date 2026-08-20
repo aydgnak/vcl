@@ -1,0 +1,7 @@
+{
+    "name": "vcl",
+    "description": "Vehicle Cost Ledger",
+    "packageManager": "pnpm@11.22.0",
+    "scripts": {},
+    "devDependencies": {}
+}
