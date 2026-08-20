@@ -15,7 +15,7 @@ importers:
         specifier: 10.8.1
         version: 10.8.1
       husky:
-        specifier: ^9.1.7
+        specifier: 9.1.7
         version: 9.1.7
 
 packages:
