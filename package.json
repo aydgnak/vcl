@@ -1,7 +1,14 @@
 {
-    "name": "vcl",
-    "description": "Vehicle Cost Ledger",
-    "packageManager": "pnpm@11.22.0",
-    "scripts": {},
-    "devDependencies": {}
+  "name": "vcl",
+  "packageManager": "pnpm@11.22.0",
+  "description": "Vehicle Cost Ledger",
+  "scripts": {
+    "lint": "eslint --cache",
+    "lint:fix": "eslint --cache --fix",
+    "typecheck": "pnpm run -r typecheck"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.3.0",
+    "eslint": "^10.8.1"
+  }
 }
