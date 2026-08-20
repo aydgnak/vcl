@@ -5,8 +5,8 @@
   "scripts": {
     "prepare": "husky",
     "build": "pnpm run -r build",
-    "lint": "eslint --cache",
-    "lint:fix": "eslint --cache --fix",
+    "lint": "eslint --cache && pnpm run -r lint",
+    "lint:fix": "eslint --cache --fix && pnpm run -r lint:fix",
     "typecheck": "pnpm run -r typecheck"
   },
   "devDependencies": {

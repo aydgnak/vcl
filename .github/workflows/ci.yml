@@ -1,4 +1,4 @@
-name: CI Quality
+name: CI
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   quality:
-    name: Lint and Typecheck
+    name: Lint, Typecheck and Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,3 +36,6 @@ jobs:
 
       - name: Typecheck
         run: pnpm run typecheck
+
+      - name: Build
+        run: pnpm run build
