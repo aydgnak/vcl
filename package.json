@@ -4,6 +4,7 @@
   "description": "Vehicle Cost Ledger",
   "scripts": {
     "prepare": "husky",
+    "build": "pnpm run -r build",
     "lint": "eslint --cache",
     "lint:fix": "eslint --cache --fix",
     "typecheck": "pnpm run -r typecheck"
