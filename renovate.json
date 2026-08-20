@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "group:allNonMajor",
+    ":semanticCommitTypeAll(chore)",
+    ":widenPeerDependencies",
+    ":approveMajorUpdates"
+  ],
+  "env": {
+    "PNPM_MAX_WORKERS": "1"
+  },
+  "meteor": {
+    "enabled": false
+  },
+  "rangeStrategy": "bump",
+  "npm": {
+    "commitMessageTopic": "{{prettyDepType}} {{depName}}"
+  },
+  "ignorePaths": [
+    ".agents/**",
+    ".claude/**"
+  ]
+}
