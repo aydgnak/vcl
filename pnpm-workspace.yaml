@@ -11,5 +11,6 @@ packages:
 
 allowBuilds:
   '@prisma/engines': false
+  bcrypt: false
   prisma: false
   unrs-resolver: false
