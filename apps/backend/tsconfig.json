@@ -6,7 +6,11 @@
     "experimentalDecorators": true,
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "paths": {
+      "@app/*": ["./src/*"]
+    },
     "resolvePackageJsonExports": true,
+    "strict": true,
     "strictBindCallApply": false,
     "strictNullChecks": true,
     "noFallthroughCasesInSwitch": false,
