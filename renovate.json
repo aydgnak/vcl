@@ -17,6 +17,12 @@
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
+  "packageRules": [
+    {
+      "matchPackageNames": ["node", "@types/node"],
+      "allowedVersions": ">=24.0.0 <25.0.0"
+    }
+  ],
   "ignorePaths": [
     ".agents/**",
     ".claude/**"
