@@ -14,4 +14,12 @@ export class UserService {
       },
     })
   }
+
+  async findOne(uuid: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        uuid,
+      },
+    })
+  }
 }

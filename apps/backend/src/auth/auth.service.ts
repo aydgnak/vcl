@@ -1,11 +1,18 @@
+import type { CookieOptions, Request, Response } from 'express'
+import { ConfigO } from '@app/core/config'
 import { UserService } from '@app/user'
 import { Injectable, UnauthorizedException } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
+import ms, { StringValue } from 'ms'
 
 @Injectable()
 export class AuthService {
   constructor(
+    private readonly configService: ConfigService<ConfigO, true>,
     private readonly userService: UserService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async validateLocalAuth(email: string, password: string) {
@@ -21,8 +28,28 @@ export class AuthService {
       throw new UnauthorizedException('Invalid email or password')
     }
 
-    const { password: _password, ...safeUser } = user
+    return user
+  }
 
-    return safeUser
+  async validateJwtAuth(userUUID: string) {
+    const user = await this.userService.findOne(userUUID)
+
+    if (!user) {
+      throw new UnauthorizedException()
+    }
+  }
+
+  async login(req: Request, res: Response) {
+    const cookieOptions: CookieOptions = {
+      httpOnly: true,
+      secure: this.configService.get('NODE_ENV', { infer: true }) === 'production',
+      sameSite: 'lax',
+    }
+
+    const accessToken = this.jwtService.sign(req.user)
+    res.cookie('accessToken', accessToken, {
+      ...cookieOptions,
+      maxAge: ms(this.configService.get<StringValue>('JWT_ACCESS_TOKEN_EXPIRES_IN')),
+    })
   }
 }

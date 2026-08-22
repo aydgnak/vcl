@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { PassportStrategy } from '@nestjs/passport'
 import { Strategy } from 'passport-local'
 import { AuthService } from '../auth.service'
-import { UserPayload } from '../types'
+import { JwtPayload } from '../types'
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
@@ -18,8 +18,7 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
     const user = await this.authService.validateLocalAuth(email, password)
 
     return {
-      uuid: user.uuid,
-      email: user.email,
-    } satisfies UserPayload
+      sub: user.uuid,
+    } satisfies JwtPayload
   }
 }
