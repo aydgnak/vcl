@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { APP_GUARD } from '@nestjs/core'
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
+import { minutes, ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
 import { loads, validate } from './config'
 
 @Module({
@@ -13,10 +13,7 @@ import { loads, validate } from './config'
     }),
     ThrottlerModule.forRoot({
       throttlers: [
-        {
-          ttl: 60000,
-          limit: 100,
-        },
+        { ttl: minutes(1), limit: 100 },
       ],
     }),
   ],

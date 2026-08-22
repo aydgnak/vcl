@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express'
 import { Controller, Post, Req, Res, UseGuards } from '@nestjs/common'
-import { Throttle } from '@nestjs/throttler'
+import { minutes, Throttle } from '@nestjs/throttler'
 import { AuthService } from './auth.service'
 import { Public } from './decorators'
 import { LocalGuard } from './guards'
@@ -12,7 +12,7 @@ export class AuthController {
     private readonly authService: AuthService,
   ) {}
 
-  @Throttle({ default: { ttl: 60000, limit: 5 } })
+  @Throttle({ default: { ttl: minutes(1), limit: 5 } })
   @Post('login')
   @UseGuards(LocalGuard)
   async login(
