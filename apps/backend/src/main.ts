@@ -1,3 +1,4 @@
+import type { NestExpressApplication } from '@nestjs/platform-express'
 import type { ConfigO } from './core/config'
 import { Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
@@ -6,9 +7,11 @@ import cookieParser from 'cookie-parser'
 import { AppModule } from './app.module'
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
+  const app = await NestFactory.create<NestExpressApplication>(AppModule)
 
   app.use(cookieParser())
+
+  app.set('trust proxy', 'loopback')
 
   const configService = app.get(ConfigService<ConfigO, true>)
 
