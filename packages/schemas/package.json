@@ -1,0 +1,27 @@
+{
+  "name": "schemas",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "lint": "eslint --cache",
+    "lint:fix": "eslint --cache --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "valibot": "^1.4.2"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "9.3.0",
+    "eslint": "10.8.1",
+    "tsdown": "^0.22.14",
+    "typescript": "5.9.3"
+  }
+}

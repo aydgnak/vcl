@@ -1,0 +1,22 @@
+import type { InferInput, InferOutput } from 'valibot'
+import { emailSchema, passwordSchema } from '@app/common'
+import { forward, object, partialCheck, pipe } from 'valibot'
+
+export const registerSchema = pipe(
+  object({
+    email: emailSchema,
+    password: passwordSchema,
+    confirmPassword: passwordSchema,
+  }),
+  forward(
+    partialCheck(
+      [['password'], ['confirmPassword']],
+      input => input.password === input.confirmPassword,
+      'Passwords do not match.',
+    ),
+    ['confirmPassword'],
+  ),
+)
+
+export type RegisterI = InferInput<typeof registerSchema>
+export type RegisterO = InferOutput<typeof registerSchema>
