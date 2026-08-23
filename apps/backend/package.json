@@ -29,6 +29,7 @@
     "@prisma/adapter-pg": "^7.9.1",
     "@prisma/client": "^7.9.1",
     "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
     "cookie-parser": "^1.4.7",
     "ioredis": "^6.0.0",
     "ms": "^2.1.3",

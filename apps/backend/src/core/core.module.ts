@@ -1,7 +1,7 @@
 import { ThrottlerStorageRedisService } from '@nest-lab/throttler-storage-redis'
-import { Module } from '@nestjs/common'
+import { ClassSerializerInterceptor, Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
-import { APP_GUARD } from '@nestjs/core'
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core'
 import { minutes, seconds, ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
 import { ConfigO, loads, validate } from './config'
 
@@ -30,6 +30,10 @@ import { ConfigO, loads, validate } from './config'
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ClassSerializerInterceptor,
     },
   ],
 })
