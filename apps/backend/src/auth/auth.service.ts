@@ -1,11 +1,12 @@
 import type { CookieOptions, Request, Response } from 'express'
 import { ConfigO } from '@app/core/config'
 import { UserService } from '@app/user'
-import { Injectable, UnauthorizedException } from '@nestjs/common'
+import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
 import ms, { StringValue } from 'ms'
+import { RegisterO } from 'schemas'
 
 @Injectable()
 export class AuthService {
@@ -51,5 +52,16 @@ export class AuthService {
       ...cookieOptions,
       maxAge: ms(this.configService.get<StringValue>('JWT_ACCESS_TOKEN_EXPIRES_IN')),
     })
+  }
+
+  async register(register: RegisterO) {
+    const { email, password } = register
+
+    const user = await this.userService.findByEmail(email)
+    if (user) {
+      throw new ConflictException('The user already exists.')
+    }
+
+    return this.userService.create(email, password)
   }
 }
