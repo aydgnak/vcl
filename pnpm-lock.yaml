@@ -179,7 +179,7 @@ importers:
         specifier: 10.8.1
         version: 10.8.1(jiti@2.7.0)(supports-color@8.1.1)
       tsdown:
-        specifier: ^0.22.14
+        specifier: 0.22.14
         version: 0.22.14(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
