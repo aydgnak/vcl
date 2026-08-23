@@ -4,6 +4,7 @@ trustPolicy: no-downgrade
 trustPolicyExclude:
   - chokidar@4.0.3
   - semver@6.3.1
+  - undici-types@6.21.0
 
 packages:
   - apps/*
@@ -14,4 +15,5 @@ allowBuilds:
   '@swc/core': false
   bcrypt: false
   prisma: false
+  sharp: false
   unrs-resolver: false
