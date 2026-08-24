@@ -37,6 +37,12 @@
       "skillPath": "prisma-driver-adapter-implementation/SKILL.md",
       "computedHash": "cc487f1bf36f616ddb3a9478b3527d288dd706d77a9e5dbee9af52dca1eee8e4"
     },
+    "shadcn": {
+      "source": "shadcn/ui",
+      "sourceType": "github",
+      "skillPath": "skills/shadcn/SKILL.md",
+      "computedHash": "c1a68ee06a668aced9ab2b5fbdea5f989864123794eb2e056b339a072dbb7f10"
+    },
     "valibot": {
       "source": "open-circle/agent-skills",
       "sourceType": "github",
