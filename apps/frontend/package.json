@@ -11,10 +11,13 @@
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "next": "16.3.2",
+    "postcss": "^8.5.26",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "schemas": "workspace:*"
+    "schemas": "workspace:*",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "9.3.0",
