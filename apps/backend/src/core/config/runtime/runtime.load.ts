@@ -5,4 +5,5 @@ import { registerAs } from '@nestjs/config'
 export default registerAs('runtime', (): RuntimeO => ({
   PORT: env.PORT,
   NODE_ENV: env.NODE_ENV,
+  CLIENT_ORIGIN: env.CLIENT_ORIGIN,
 }))
