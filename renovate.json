@@ -24,7 +24,6 @@
     }
   ],
   "ignorePaths": [
-    ".agents/**",
-    ".claude/**"
+    ".agents/**"
   ]
 }
