@@ -7,7 +7,7 @@ import { registerSchema } from 'schemas'
 import { AuthService } from './auth.service'
 import { Public } from './decorators'
 import { RegisterDto } from './dto'
-import { LocalGuard } from './guards'
+import { JwtRefreshGuard, LocalGuard } from './guards'
 
 @Public()
 @SerializeOptions({ type: RegisterDto })
@@ -25,6 +25,16 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ) {
     await this.authService.login(req, res)
+  }
+
+  @Post('refresh')
+  @Throttle({ default: { ttl: minutes(1), limit: 5 } })
+  @UseGuards(JwtRefreshGuard)
+  async refresh(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    await this.authService.refresh(req, res)
   }
 
   @Throttle({ default: { ttl: minutes(5), limit: 5 } })

@@ -7,6 +7,7 @@ import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
 import ms, { StringValue } from 'ms'
 import { RegisterO } from 'schemas'
+import { JwtPayload } from './types'
 
 @Injectable()
 export class AuthService {
@@ -41,17 +42,43 @@ export class AuthService {
   }
 
   async login(req: Request, res: Response) {
-    const cookieOptions: CookieOptions = {
+    this.setAuthCookies(req.user, res)
+  }
+
+  async refresh(req: Request, res: Response) {
+    this.setAccessTokenCookie(req.user, res)
+  }
+
+  private setAuthCookies(payload: JwtPayload, res: Response) {
+    this.setAccessTokenCookie(payload, res)
+
+    const refreshToken = this.jwtService.sign(payload, {
+      secret: this.configService.get('JWT_REFRESH_TOKEN_SECRET', { infer: true }),
+      expiresIn: this.configService.get<StringValue>('JWT_REFRESH_TOKEN_EXPIRES_IN'),
+    })
+
+    res.cookie('refreshToken', refreshToken, {
+      ...this.getCookieOptions(),
+      maxAge: ms(this.configService.get<StringValue>('JWT_REFRESH_TOKEN_EXPIRES_IN')),
+      path: '/auth/refresh',
+    })
+  }
+
+  private setAccessTokenCookie(payload: JwtPayload, res: Response) {
+    const accessToken = this.jwtService.sign(payload)
+
+    res.cookie('accessToken', accessToken, {
+      ...this.getCookieOptions(),
+      maxAge: ms(this.configService.get<StringValue>('JWT_ACCESS_TOKEN_EXPIRES_IN')),
+    })
+  }
+
+  private getCookieOptions(): CookieOptions {
+    return {
       httpOnly: true,
       secure: this.configService.get('NODE_ENV', { infer: true }) === 'production',
       sameSite: 'lax',
     }
-
-    const accessToken = this.jwtService.sign(req.user)
-    res.cookie('accessToken', accessToken, {
-      ...cookieOptions,
-      maxAge: ms(this.configService.get<StringValue>('JWT_ACCESS_TOKEN_EXPIRES_IN')),
-    })
   }
 
   async register(register: RegisterO) {
