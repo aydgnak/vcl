@@ -6,9 +6,10 @@
 - **SEC-002:** Sensitive data `.env` dosyasında tutulmalı ve bu dosya version control sistemine eklenmemeli.
 - **SEC-003:** `.env.example` dosyası yalnızca gerekli environment variable adlarını ve güvenli placeholder değerleri içermeli; gerçek sensitive data içermemeli.
 
-## Knowledge Rules
+## Knowledge Base Rules
 
-- **KNW-001:** `.knowledge` klasörü projenin beyni ve merkezi bilgi kaynağıdır.
+- Projenin `knowledge base` içeriği `.knowledge/` dizininde tutulur.
+- Her göreve başlamadan önce [knowledge base giriş belgesini](./.knowledge/README.md) oku ve yönlendirdiği ilgili belgelerdeki kuralları uygula.
 
 ## Quality Rules
 
@@ -18,5 +19,12 @@
 
 ## Git Rules
 
-- **GIT-001:** Kullanıcı açıkça belirtmedikçe commit oluşturma ve push etme.
-- **GIT-002:** Commit message istendiğinde staged, unstaged ve untracked tüm değişiklikleri kontrol et; son 20 commit'in yalnızca message'larını oku ve mevcut değişikliklere ve kullanılan commit message kalıplarına uygun bir message öner.
+- Kullanıcı açıkça belirtmedikçe commit oluşturma ve push etme.
+- Commit mesajı istendiğinde aşağıdaki kurallara göre commit mesajını ver.
+    - Staged değişiklik varsa commit mesajını yalnızca staged değişikliklere göre öner; unstaged ve untracked değişiklikleri bu mesaja dahil etme.
+    - Staged değişiklik yoksa commit mesajını unstaged ve untracked tüm değişikliklere göre öner.
+    - Son 20 commit'in yalnızca mesajlarını oku
+    - Mevcut değişikliklere ve kullanılan commit mesaj kalıplarına uygun bir mesaj öner
+    - Commit mesajı aşağıdaki dillere göre ver
+        - İngilizce
+        - Türkçe
