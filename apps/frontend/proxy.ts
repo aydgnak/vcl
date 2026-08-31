@@ -27,7 +27,7 @@ export function proxy(request: NextRequest) {
     )
   }
 
-  if (accessToken && isPublicRoute) {
+  if (accessToken && (isPublicRoute || pathname === '/')) {
     return NextResponse.redirect(
       new URL('/dashboard', origin),
     )
