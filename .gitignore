@@ -6,3 +6,6 @@ node_modules
 
 # obsidian
 .knowledge/.obsidian/
+
+# playwright
+.playwright-mcp/

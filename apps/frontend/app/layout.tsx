@@ -6,10 +6,14 @@ import './globals.css'
 const roboto = Roboto({
   subsets: ['latin'],
   variable: '--font-sans',
+  preload: false,
 })
 
 export const metadata: Metadata = {
-  title: 'Vehicle Cost Ledger',
+  title: {
+    default: 'Vehicle Cost Ledger',
+    template: '%s | VCL',
+  },
 }
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
