@@ -42,11 +42,11 @@ import { ConfigO, loads, validate } from './config'
           ...(isDevelopment && {
             typesOutputPath: join(__dirname, '../../src/generated/i18n.generated.ts'),
           }),
-          resolvers: [
-            { use: CookieResolver, options: ['lang'] },
-          ],
         }
       },
+      resolvers: [
+        { use: CookieResolver, options: ['lang'] },
+      ],
     }),
   ],
   providers: [
