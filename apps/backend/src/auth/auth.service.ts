@@ -1,11 +1,13 @@
 import type { CookieOptions, Request, Response } from 'express'
 import { ConfigO } from '@app/core/config'
+import { I18nTranslations } from '@app/generated/i18n.generated'
 import { UserService } from '@app/user'
 import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
 import ms, { StringValue } from 'ms'
+import { I18nService } from 'nestjs-i18n'
 import { RegisterO } from 'schemas'
 import { JwtPayload } from './types'
 
@@ -15,19 +17,20 @@ export class AuthService {
     private readonly configService: ConfigService<ConfigO, true>,
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
+    private readonly i18nService: I18nService<I18nTranslations>,
   ) {}
 
   async validateLocalAuth(email: string, password: string) {
     const user = await this.userService.findByEmail(email)
 
     if (!user || user.password === null) {
-      throw new UnauthorizedException('Invalid email or password')
+      throw new UnauthorizedException(this.i18nService.t('auth.invalidCredentials'))
     }
 
     const isMatch = await compare(password, user.password)
 
     if (!isMatch) {
-      throw new UnauthorizedException('Invalid email or password')
+      throw new UnauthorizedException(this.i18nService.t('auth.invalidCredentials'))
     }
 
     return user
@@ -86,7 +89,7 @@ export class AuthService {
 
     const user = await this.userService.findByEmail(email)
     if (user) {
-      throw new ConflictException('The user already exists.')
+      throw new ConflictException(this.i18nService.t('auth.userAlreadyExists'))
     }
 
     return this.userService.create(email, password)

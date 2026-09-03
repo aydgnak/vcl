@@ -12,6 +12,7 @@ packages:
   - packages/*
 
 allowBuilds:
+  '@parcel/watcher': false
   '@prisma/engines': false
   '@swc/core': false
   bcrypt: false
