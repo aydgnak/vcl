@@ -1,0 +1,9 @@
+{
+  "Login": {
+    "title": "Giriş",
+    "button": "Giriş"
+  },
+  "Register": {
+    "title": "Kayıt Ol"
+  }
+}

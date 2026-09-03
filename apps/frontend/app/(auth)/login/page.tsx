@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { LockKeyhole, Mail } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
-
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -13,11 +14,17 @@ import {
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 
-export const metadata: Metadata = {
-  title: 'Giriş',
+export async function generateMetadata() {
+  const t = await getTranslations('Login')
+
+  return {
+    title: t('title'),
+  } satisfies Metadata
 }
 
 export default function LoginPage() {
+  const t = useTranslations('Login')
+
   return (
     <main className="flex min-h-svh items-center justify-center bg-muted px-5 sm:px-8">
       <section className="w-full max-w-md">
@@ -75,7 +82,7 @@ export default function LoginPage() {
 
           <CardFooter className="flex-col items-stretch gap-5 border-0 px-6 pb-6 pt-0 sm:px-8">
             <Button type="button" className="h-10 w-full text-sm">
-              Giriş yap
+              {t('button')}
             </Button>
             <p className="text-center text-sm text-muted-foreground">
               Henüz hesabınız yok mu?
