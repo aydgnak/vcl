@@ -3,10 +3,10 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 
 export async function generateMetadata() {
-  const t = await getTranslations('Register')
+  const t = await getTranslations('auth')
 
   return {
-    title: t('title'),
+    title: t('register.title'),
   } satisfies Metadata
 }
 

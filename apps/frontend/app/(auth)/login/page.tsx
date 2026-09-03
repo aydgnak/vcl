@@ -3,43 +3,39 @@ import { LockKeyhole, Mail } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
+import { LocaleSwitcher } from '@/components/auth/locale-switcher'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 
 export async function generateMetadata() {
-  const t = await getTranslations('Login')
+  const t = await getTranslations('auth')
 
   return {
-    title: t('title'),
+    title: t('login.title'),
   } satisfies Metadata
 }
 
 export default function LoginPage() {
-  const t = useTranslations('Login')
+  const t = useTranslations()
 
   return (
     <main className="flex min-h-svh items-center justify-center bg-muted px-5 sm:px-8">
       <section className="w-full max-w-md">
+        <LocaleSwitcher />
         <Card className="w-full max-w-md bg-background py-6 shadow-sm [--card-spacing:--spacing(5)] sm:py-8">
           <CardHeader className="px-6 sm:px-8">
             <CardTitle className="text-2xl text-center font-semibold tracking-[-0.03em]">
-              Vehicle Cost Ledger
+              {t('app.name')}
             </CardTitle>
           </CardHeader>
 
           <CardContent className="px-6 sm:px-8">
-            <FieldGroup aria-label="Giriş bilgileri">
+            <FieldGroup>
               <Field>
                 <FieldLabel className="text-sm" htmlFor="email">
-                  E-posta
+                  {t('auth.form.email.label')}
                 </FieldLabel>
                 <div className="relative">
                   <Mail
@@ -51,7 +47,7 @@ export default function LoginPage() {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    placeholder="ornek@eposta.com"
+                    placeholder={t('auth.form.email.placeholder')}
                     required
                     className="h-10 pl-9 text-sm md:text-sm"
                   />
@@ -59,7 +55,7 @@ export default function LoginPage() {
               </Field>
               <Field>
                 <FieldLabel className="text-sm" htmlFor="password">
-                  Parola
+                  {t('auth.form.password.label')}
                 </FieldLabel>
                 <div className="relative">
                   <LockKeyhole
@@ -71,7 +67,7 @@ export default function LoginPage() {
                     name="password"
                     type="password"
                     autoComplete="current-password"
-                    placeholder="Parolanızı girin"
+                    placeholder={t('auth.form.password.placeholder')}
                     required
                     className="h-10 pl-9 text-sm md:text-sm"
                   />
@@ -82,16 +78,16 @@ export default function LoginPage() {
 
           <CardFooter className="flex-col items-stretch gap-5 border-0 px-6 pb-6 pt-0 sm:px-8">
             <Button type="button" className="h-10 w-full text-sm">
-              {t('button')}
+              {t('auth.login.button')}
             </Button>
             <p className="text-center text-sm text-muted-foreground">
-              Henüz hesabınız yok mu?
+              {t('auth.login.noAccount')}
               {' '}
               <Link
                 href="/register"
                 className="font-medium text-foreground underline underline-offset-4 hover:text-primary"
               >
-                Hesap oluşturun
+                {t('auth.login.createAccount')}
               </Link>
             </p>
           </CardFooter>

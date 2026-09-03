@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { Roboto } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import './globals.css'
@@ -10,11 +11,15 @@ const roboto = Roboto({
   preload: false,
 })
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Vehicle Cost Ledger',
-    template: '%s | VCL',
-  },
+export async function generateMetadata() {
+  const t = await getTranslations('app')
+
+  return {
+    title: {
+      default: t('name'),
+      template: '%s | VCL',
+    },
+  } satisfies Metadata
 }
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {

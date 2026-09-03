@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "Araç Maliyet Defteri"
+  },
+  "auth": {
+    "login": {
+      "title": "Giriş",
+      "button": "Giriş",
+      "noAccount": "Henüz hesabınız yok mu?",
+      "createAccount": "Hesap oluşturun"
+    },
+    "register": {
+      "title": "Kayıt Ol"
+    },
+    "form": {
+      "email": {
+        "label": "E-posta",
+        "placeholder": "ornek@eposta.com"
+      },
+      "password": {
+        "label": "Parola",
+        "placeholder": "Parolanızı girin"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "Vehicle Cost Ledger"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "button": "Login",
+      "noAccount": "Don't have an account yet?",
+      "createAccount": "Create an account"
+    },
+    "register": {
+      "title": "Register"
+    },
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "name@example.com"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      }
+    }
+  }
+}
