@@ -13,9 +13,9 @@
 
 ## Quality Rules
 
-- **QLT-001:** Kod değişikliği gerektiren işler tamamlandıktan sonra sırasıyla `pnpm run lint:fix`, `pnpm run typecheck` ve `pnpm run build` çalıştırılmalı.
-- **QLT-002:** Bu kontrollerden herhangi biri hata verirse hata giderilmeli ve üç kontrol de yeniden çalıştırılmalı.
-- **QLT-003:** Üç kontrolün tamamı başarıyla sonuçlanmadan iş tamamlanmış veya başarılı kabul edilmemeli. Kontroller ortam kaynaklı bir nedenle çalıştırılamıyorsa bu durum kullanıcıya açıkça bildirilmeli.
+- **QLT-001:** Kod değişikliği gerektiren işler tamamlandıktan sonra, değişiklik yapılan her workspace paketinin kendi dizininde sırasıyla `pnpm run lint:fix`, `pnpm run typecheck` ve `pnpm run build` çalıştırılmalı. Monoreponun tamamını çalıştıran kök komutlar kullanılmamalı.
+- **QLT-002:** Etkilenen paketlerdeki bu kontrollerden herhangi biri hata verirse hata giderilmeli ve o paketin üç kontrolü de yeniden çalıştırılmalı.
+- **QLT-003:** Etkilenen her pakette üç kontrolün tamamı başarıyla sonuçlanmadan iş tamamlanmış veya başarılı kabul edilmemeli. Kontroller ortam kaynaklı bir nedenle çalıştırılamıyorsa bu durum kullanıcıya açıkça bildirilmeli.
 
 ## Git Rules
 
