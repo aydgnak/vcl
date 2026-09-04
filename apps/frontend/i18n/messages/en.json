@@ -22,5 +22,14 @@
         "placeholder": "Enter your password"
       }
     }
+  },
+  "validation": {
+    "email": "Enter a valid email address.",
+    "password": {
+      "minLength": "Password must be at least 10 characters.",
+      "digit": "Password must contain at least one digit.",
+      "specialCharacter": "Password must contain at least one special character."
+    },
+    "passwordsMismatch": "Passwords do not match."
   }
 }

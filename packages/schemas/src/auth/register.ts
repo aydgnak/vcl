@@ -2,6 +2,12 @@ import type { InferInput, InferOutput } from 'valibot'
 import { emailSchema, passwordSchema } from '@app/common'
 import { forward, object, partialCheck, pipe } from 'valibot'
 
+const registerValidationMessage = {
+  passwordsMismatch: 'validation.passwordsMismatch',
+} as const
+
+export type RegisterValidationMessage = typeof registerValidationMessage[keyof typeof registerValidationMessage]
+
 export const registerSchema = pipe(
   object({
     email: emailSchema,
@@ -12,7 +18,7 @@ export const registerSchema = pipe(
     partialCheck(
       [['password'], ['confirmPassword']],
       input => input.password === input.confirmPassword,
-      'Passwords do not match.',
+      registerValidationMessage.passwordsMismatch,
     ),
     ['confirmPassword'],
   ),

@@ -50,9 +50,6 @@ importers:
       '@prisma/client':
         specifier: ^7.10.0
         version: 7.10.0(prisma@7.10.0(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@5.9.3))(typescript@5.9.3)
-      '@valibot/i18n':
-        specifier: ^1.2.0
-        version: 1.2.0(valibot@1.4.2(typescript@5.9.3))
       bcrypt:
         specifier: ^6.0.0
         version: 6.0.0
@@ -2605,11 +2602,6 @@ packages:
     resolution: {integrity: sha512-nAB74NfSNKknqQ1RrYj6uz8FcXEomu/MATJZxh/x+BArzN2U3JbOYC0APYzUIGhVY3m5hRxA8VPNdPBoG8txlA==}
     cpu: [x64]
     os: [win32]
-
-  '@valibot/i18n@1.2.0':
-    resolution: {integrity: sha512-vpSWlLB/or0GjF8dqQlUn9HIO+sBMWj74tw/w85KpkZAKsrdfdXb97EtXXRlEVgdYK8/AoUqe8GIGuqwmxiu1Q==}
-    peerDependencies:
-      valibot: ^1.4.0
 
   '@visx/curve@4.0.1-alpha.0':
     resolution: {integrity: sha512-jRu61Uz274pV1zyioXmboyrLutYbnKsgjj4njSGCnhdXj5GkZvZbg+ThDb6oOzoAnJOBRLz4rzPlWvNJOzuVMg==}
@@ -9466,10 +9458,6 @@ snapshots:
 
   '@unrs/resolver-binding-win32-x64-msvc@1.12.2':
     optional: true
-
-  '@valibot/i18n@1.2.0(valibot@1.4.2(typescript@5.9.3))':
-    dependencies:
-      valibot: 1.4.2(typescript@5.9.3)
 
   '@visx/curve@4.0.1-alpha.0':
     dependencies:

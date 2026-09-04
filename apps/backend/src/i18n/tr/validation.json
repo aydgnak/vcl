@@ -1,3 +1,10 @@
 {
-  "failed": "Doğrulama başarısız oldu."
+  "failed": "Doğrulama başarısız oldu.",
+  "email": "Geçerli bir e-posta adresi girin.",
+  "password": {
+    "minLength": "Parola en az 10 karakter olmalıdır.",
+    "digit": "Parola en az bir rakam içermelidir.",
+    "specialCharacter": "Parola en az bir özel karakter içermelidir."
+  },
+  "passwordsMismatch": "Parolalar eşleşmiyor."
 }

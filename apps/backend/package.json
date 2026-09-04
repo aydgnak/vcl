@@ -28,7 +28,6 @@
     "@nestjs/throttler": "^6.5.0",
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",
-    "@valibot/i18n": "^1.2.0",
     "bcrypt": "^6.0.0",
     "class-transformer": "^0.5.1",
     "cookie-parser": "^1.4.7",
