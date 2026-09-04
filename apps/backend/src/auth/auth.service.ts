@@ -56,6 +56,7 @@ export class AuthService {
     this.setAccessTokenCookie(payload, res)
 
     const refreshToken = this.jwtService.sign(payload, {
+      algorithm: 'HS256',
       secret: this.configService.get('JWT_REFRESH_TOKEN_SECRET', { infer: true }),
       expiresIn: this.configService.get<StringValue>('JWT_REFRESH_TOKEN_EXPIRES_IN'),
     })

@@ -8,3 +8,4 @@ Bu dosya, proje kararlarını listeler.
 - [ADR-0004: Use PostgreSQL with Prisma](./ADR-0004-use-postgresql-with-prisma.md)
 - [ADR-0005: Use cookie-based JWT authentication](./ADR-0005-use-cookie-based-jwt-authentication.md)
 - [ADR-0006: Use Redis-backed distributed rate limiting](./ADR-0006-use-redis-backed-distributed-rate-limiting.md)
+- [ADR-0007: Use asymmetric access token signing](./ADR-0007-use-asymmetric-access-token-signing.md)

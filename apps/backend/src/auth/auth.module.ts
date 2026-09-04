@@ -1,3 +1,5 @@
+import { Buffer } from 'node:buffer'
+import { createPrivateKey, createPublicKey } from 'node:crypto'
 import { ConfigO } from '@app/core/config'
 import { UserModule } from '@app/user'
 import { Module } from '@nestjs/common'
@@ -20,8 +22,10 @@ import { JwtRefreshStrategy, JwtStrategy, LocalStrategy } from './strategies'
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService<ConfigO, true>) => ({
-        secret: configService.get('JWT_ACCESS_TOKEN_SECRET', { infer: true }),
+        privateKey: createPrivateKey(Buffer.from(configService.get('JWT_ACCESS_TOKEN_PRIVATE_KEY', { infer: true }), 'base64')),
+        publicKey: createPublicKey(Buffer.from(configService.get('JWT_ACCESS_TOKEN_PUBLIC_KEY', { infer: true }), 'base64')),
         signOptions: {
+          algorithm: 'RS256',
           expiresIn: configService.get<StringValue>('JWT_ACCESS_TOKEN_EXPIRES_IN'),
         },
       }),
