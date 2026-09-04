@@ -10,7 +10,10 @@
       "createAccount": "Create an account"
     },
     "register": {
-      "title": "Register"
+      "title": "Register",
+      "button": "Create account",
+      "hasAccount": "Already have an account?",
+      "login": "Log in"
     },
     "form": {
       "email": {
@@ -20,6 +23,10 @@
       "password": {
         "label": "Password",
         "placeholder": "Enter your password"
+      },
+      "confirmPassword": {
+        "label": "Confirm password",
+        "placeholder": "Enter your password again"
       }
     }
   },

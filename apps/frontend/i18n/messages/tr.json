@@ -10,7 +10,10 @@
       "createAccount": "Hesap oluşturun"
     },
     "register": {
-      "title": "Kayıt Ol"
+      "title": "Kayıt Ol",
+      "button": "Hesap oluştur",
+      "hasAccount": "Zaten hesabınız var mı?",
+      "login": "Giriş yapın"
     },
     "form": {
       "email": {
@@ -20,6 +23,10 @@
       "password": {
         "label": "Parola",
         "placeholder": "Parolanızı girin"
+      },
+      "confirmPassword": {
+        "label": "Parolayı doğrulayın",
+        "placeholder": "Parolanızı tekrar girin"
       }
     }
   },
