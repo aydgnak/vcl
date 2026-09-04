@@ -38,7 +38,7 @@ jobs:
         run: pnpm -F backend exec prisma generate
 
       - name: Generate i18n types
-        run: pnpm -F backend exec nestjs-i18n -p src/i18n -o src/generated/i18n.generated.ts
+        run: pnpm -F backend exec nestjs-i18n -p src/core/i18n -o src/generated/i18n.generated.ts
 
       - name: Lint
         run: pnpm run lint
