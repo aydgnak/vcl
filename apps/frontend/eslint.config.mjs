@@ -7,4 +7,7 @@ export default antfu({
   },
   react: true,
   nextjs: true,
+  rules: {
+    'node/prefer-global/process': 'off',
+  },
 })
