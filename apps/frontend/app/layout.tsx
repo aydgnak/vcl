@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import { Roboto } from 'next/font/google'
+import { Toaster } from '@/components/ui/toast'
 import { cn } from '@/lib/utils'
 import './globals.css'
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body>
         <NextIntlClientProvider>
           {children}
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>
