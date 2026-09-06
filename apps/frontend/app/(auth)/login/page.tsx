@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
-import { LocaleSwitcher } from '@/components/auth/locale-switcher'
-import { LoginForm } from '@/components/auth/login-form'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { LocaleSwitcher } from '../_components/locale-switcher'
+import { LoginForm } from './login-form'
 
 export async function generateMetadata() {
   const t = await getTranslations('auth')

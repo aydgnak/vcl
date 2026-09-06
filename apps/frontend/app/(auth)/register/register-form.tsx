@@ -1,31 +1,32 @@
 'use client'
 
-import type { LoginI } from 'schemas'
+import type { RegisterI } from 'schemas'
 import type { ValidationMessage } from 'schemas/messages'
 import { valibotResolver } from '@hookform/resolvers/valibot'
-import { LockKeyhole, Mail } from 'lucide-react'
+import { KeyRound, LockKeyhole, Mail } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { Controller, useForm } from 'react-hook-form'
-import { loginSchema } from 'schemas'
+import { registerSchema } from 'schemas'
+import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
+import { Input } from '@/components/ui/input'
 import { toast } from '@/lib/toast'
-import { Field, FieldError, FieldGroup, FieldLabel } from '../ui/field'
-import { Input } from '../ui/input'
 
-export function LoginForm() {
+export function RegisterForm() {
   const router = useRouter()
   const t = useTranslations()
 
-  const form = useForm<LoginI>({
-    resolver: valibotResolver(loginSchema),
+  const form = useForm({
+    resolver: valibotResolver(registerSchema),
     defaultValues: {
       email: '',
       password: '',
+      confirmPassword: '',
     },
   })
 
-  async function onSubmit(data: LoginI) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
+  async function onSubmit(data: RegisterI) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,11 +50,11 @@ export function LoginForm() {
       return
     }
 
-    router.replace('/dashboard')
+    router.replace('/login')
   }
 
   return (
-    <form id="login-form" noValidate onSubmit={event => void form.handleSubmit(onSubmit)(event)}>
+    <form id="register-form" noValidate onSubmit={event => void form.handleSubmit(onSubmit)(event)}>
       <FieldGroup>
         <Controller
           name="email"
@@ -83,6 +84,7 @@ export function LoginForm() {
             </Field>
           )}
         />
+
         <Controller
           name="password"
           control={form.control}
@@ -98,11 +100,40 @@ export function LoginForm() {
                 />
                 <Input
                   {...field}
-                  id="password"
+                  id={field.name}
                   type="password"
+                  placeholder={t('auth.form.password.placeholder')}
                   className="h-10 pl-9 text-sm md:text-sm"
                   aria-invalid={fieldState.invalid}
-                  placeholder={t('auth.form.password.placeholder')}
+                />
+              </div>
+              {fieldState.error && (
+                <FieldError>{t(fieldState.error.message as ValidationMessage)}</FieldError>
+              )}
+            </Field>
+          )}
+        />
+
+        <Controller
+          name="confirmPassword"
+          control={form.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel className="text-sm" htmlFor={field.name}>
+                {t('auth.form.confirmPassword.label')}
+              </FieldLabel>
+              <div className="relative">
+                <KeyRound
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
+                />
+                <Input
+                  {...field}
+                  id={field.name}
+                  type="password"
+                  placeholder={t('auth.form.confirmPassword.placeholder')}
+                  className="h-10 pl-9 text-sm md:text-sm"
+                  aria-invalid={fieldState.invalid}
                 />
               </div>
               {fieldState.error && (
