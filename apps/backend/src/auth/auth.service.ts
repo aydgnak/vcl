@@ -95,4 +95,15 @@ export class AuthService {
 
     return this.userService.create(email, password)
   }
+
+  async logout(res: Response) {
+    res.clearCookie('accessToken', {
+      ...this.getCookieOptions(),
+    })
+
+    res.clearCookie('refreshToken', {
+      ...this.getCookieOptions(),
+      path: '/auth/refresh',
+    })
+  }
 }
