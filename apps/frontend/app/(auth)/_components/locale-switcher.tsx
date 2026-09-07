@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button'
 import { useSetLocale } from '@/hooks/use-set-locale'
 
 const locales = [
-  { code: 'en', flag: '🇬🇧', label: 'English' },
   { code: 'tr', flag: '🇹🇷', label: 'Türkçe' },
+  { code: 'en', flag: '🇬🇧', label: 'English' },
 ] as const satisfies ReadonlyArray<{ code: AppLocale, flag: string, label: string }>
 
 export function LocaleSwitcher() {

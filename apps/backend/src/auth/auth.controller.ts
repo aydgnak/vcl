@@ -9,6 +9,7 @@ import { Public } from './decorators'
 import { RegisterDto } from './dto'
 import { JwtRefreshGuard, LocalGuard } from './guards'
 
+@Public()
 @SerializeOptions({ type: RegisterDto })
 @Controller('auth')
 export class AuthController {
@@ -16,7 +17,6 @@ export class AuthController {
     private readonly authService: AuthService,
   ) {}
 
-  @Public()
   @Post('login')
   @HttpCode(HttpStatus.NO_CONTENT)
   @Throttle({ default: { ttl: minutes(1), limit: 5 } })
@@ -28,7 +28,6 @@ export class AuthController {
     await this.authService.login(req, res)
   }
 
-  @Public()
   @Post('refresh')
   @HttpCode(HttpStatus.NO_CONTENT)
   @Throttle({ default: { ttl: minutes(1), limit: 20 } })
@@ -40,7 +39,6 @@ export class AuthController {
     await this.authService.refresh(req, res)
   }
 
-  @Public()
   @Post('register')
   @Throttle({ default: { ttl: minutes(5), limit: 5 } })
   async register(
@@ -51,6 +49,7 @@ export class AuthController {
 
   @Post('logout')
   @HttpCode(HttpStatus.NO_CONTENT)
+  @Throttle({ default: { ttl: minutes(1), limit: 5 } })
   async logout(
     @Res({ passthrough: true }) res: Response,
   ) {
