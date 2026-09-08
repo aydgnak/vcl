@@ -2,7 +2,6 @@ import { join } from 'node:path'
 import { ThrottlerStorageRedisService } from '@nest-lab/throttler-storage-redis'
 import { ClassSerializerInterceptor, Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
-import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core'
 import { minutes, seconds, ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
 import { CookieResolver, I18nModule } from 'nestjs-i18n'
 import { ConfigO, loads, validate } from './config'
@@ -50,14 +49,12 @@ import { ConfigO, loads, validate } from './config'
     }),
   ],
   providers: [
-    {
-      provide: APP_GUARD,
-      useClass: ThrottlerGuard,
-    },
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: ClassSerializerInterceptor,
-    },
+    ThrottlerGuard,
+    ClassSerializerInterceptor,
+  ],
+  exports: [
+    ThrottlerGuard,
+    ClassSerializerInterceptor,
   ],
 })
 export class CoreModule {}
