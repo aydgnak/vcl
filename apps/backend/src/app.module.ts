@@ -4,6 +4,7 @@ import { ThrottlerGuard } from '@nestjs/throttler'
 import { AuthModule } from './auth'
 import { JwtGuard } from './auth/guards'
 import { CoreModule } from './core'
+import { FeaturesModule } from './features'
 import { SharedModule } from './shared'
 import { UserModule } from './user'
 
@@ -13,6 +14,7 @@ import { UserModule } from './user'
     SharedModule,
     UserModule,
     AuthModule,
+    FeaturesModule,
   ],
   providers: [
     {
