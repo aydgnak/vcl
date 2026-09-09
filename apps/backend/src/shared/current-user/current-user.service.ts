@@ -5,7 +5,7 @@ import { ClsService } from 'nestjs-cls'
 import { I18nService } from 'nestjs-i18n'
 import { PrismaService } from '../prisma'
 import { RedisService } from '../redis'
-import { CurrentUserClsTypes } from './current-user.types'
+import { CurrentUserClsTypes } from './types'
 
 type User = Prisma.UserGetPayload<{
   omit: {

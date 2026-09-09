@@ -1,7 +1,7 @@
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common'
 import { Request } from 'express'
 import { ClsService } from 'nestjs-cls'
-import { CurrentUserClsTypes } from './current-user.types'
+import { CurrentUserClsTypes } from '../types'
 
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor {
