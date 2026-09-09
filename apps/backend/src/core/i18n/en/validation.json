@@ -6,5 +6,6 @@
     "digit": "Password must contain at least one digit.",
     "specialCharacter": "Password must contain at least one special character."
   },
-  "passwordsMismatch": "Passwords do not match."
+  "passwordsMismatch": "Passwords do not match.",
+  "emptyUpdate": "At least one field must be provided for update."
 }

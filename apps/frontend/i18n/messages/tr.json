@@ -37,6 +37,7 @@
       "digit": "Parola en az bir rakam içermelidir.",
       "specialCharacter": "Parola en az bir özel karakter içermelidir."
     },
-    "passwordsMismatch": "Parolalar eşleşmiyor."
+    "passwordsMismatch": "Parolalar eşleşmiyor.",
+    "emptyUpdate": "Güncellenecek en az bir alan gönderilmelidir."
   }
 }
