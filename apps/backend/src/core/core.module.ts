@@ -3,6 +3,7 @@ import { ThrottlerStorageRedisService } from '@nest-lab/throttler-storage-redis'
 import { ClassSerializerInterceptor, Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { minutes, seconds, ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
+import { ClsModule } from 'nestjs-cls'
 import { CookieResolver, I18nModule } from 'nestjs-i18n'
 import { ConfigO, loads, validate } from './config'
 
@@ -46,6 +47,11 @@ import { ConfigO, loads, validate } from './config'
       resolvers: [
         { use: CookieResolver, options: ['lang'] },
       ],
+    }),
+    ClsModule.forRoot({
+      middleware: {
+        mount: true,
+      },
     }),
   ],
   providers: [

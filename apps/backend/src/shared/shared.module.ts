@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common'
+import { CurrentUserModule } from './current-user'
 import { PrismaModule } from './prisma'
 import { RedisModule } from './redis'
 
@@ -6,6 +7,7 @@ import { RedisModule } from './redis'
   imports: [
     PrismaModule,
     RedisModule,
+    CurrentUserModule,
   ],
 })
 export class SharedModule {}
