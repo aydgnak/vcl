@@ -19,10 +19,10 @@ export default function LoginPage() {
   const t = useTranslations()
 
   return (
-    <main className="flex min-h-svh items-center justify-center bg-muted px-5 sm:px-8">
+    <main className="flex min-h-svh items-center justify-center px-5 sm:px-8">
       <section className="w-full max-w-md">
         <LocaleSwitcher />
-        <Card className="w-full max-w-md bg-background py-6 shadow-sm [--card-spacing:--spacing(5)] sm:py-8">
+        <Card className="w-full max-w-md py-6 shadow-sm [--card-spacing:--spacing(5)] sm:py-8">
           <CardHeader className="px-6 sm:px-8">
             <CardTitle className="text-2xl text-center font-semibold tracking-[-0.03em]">
               {t('app.name')}

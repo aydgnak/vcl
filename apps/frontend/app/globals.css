@@ -38,6 +38,7 @@
     --color-card: var(--card);
     --color-foreground: var(--foreground);
     --color-background: var(--background);
+    --color-canvas: var(--canvas);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -49,6 +50,7 @@
 
 :root {
     --background: oklch(1 0 0);
+    --canvas: var(--muted);
     --foreground: oklch(0.141 0.005 285.823);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.141 0.005 285.823);
@@ -84,6 +86,7 @@
 
 .dark {
     --background: oklch(0.141 0.005 285.823);
+    --canvas: var(--background);
     --foreground: oklch(0.985 0 0);
     --card: oklch(0.21 0.006 285.885);
     --card-foreground: oklch(0.985 0 0);
@@ -121,7 +124,7 @@
     @apply border-border outline-ring/50;
     }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-canvas text-foreground;
     }
   html {
     @apply font-sans;

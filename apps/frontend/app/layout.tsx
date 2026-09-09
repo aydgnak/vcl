@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
+import { ThemeProvider } from 'next-themes'
 import { Roboto } from 'next/font/google'
 import { Toaster } from '@/components/ui/toast'
 import { cn } from '@/lib/utils'
@@ -25,12 +26,19 @@ export async function generateMetadata() {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={cn('font-sans', roboto.variable)}>
+    <html lang="en" className={cn('font-sans', roboto.variable)} suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider>
-          {children}
-          <Toaster />
-        </NextIntlClientProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider>
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
