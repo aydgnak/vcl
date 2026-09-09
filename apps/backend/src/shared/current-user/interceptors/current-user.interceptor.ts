@@ -1,7 +1,6 @@
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common'
-import { Request } from 'express'
 import { ClsService } from 'nestjs-cls'
-import { CurrentUserClsTypes } from '../types'
+import { CurrentUserClsTypes, RequestWithOptionalUser } from '../types'
 
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor {
@@ -10,9 +9,11 @@ export class CurrentUserInterceptor implements NestInterceptor {
   ) {}
 
   intercept(context: ExecutionContext, next: CallHandler) {
-    const request = context.switchToHttp().getRequest<Request>()
+    const request = context.switchToHttp().getRequest<RequestWithOptionalUser>()
 
-    this.cls.set('uuid', request.user.sub)
+    if (request.user) {
+      this.cls.set('uuid', request.user.sub)
+    }
 
     return next.handle()
   }
