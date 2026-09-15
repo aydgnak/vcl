@@ -7,9 +7,6 @@
     ":widenPeerDependencies",
     ":approveMajorUpdates"
   ],
-  "env": {
-    "PNPM_MAX_WORKERS": "1"
-  },
   "meteor": {
     "enabled": false
   },
