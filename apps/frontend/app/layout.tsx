@@ -9,8 +9,7 @@ import './globals.css'
 
 const roboto = Roboto({
   subsets: ['latin'],
-  variable: '--font-sans',
-  preload: false,
+  variable: '--font-roboto',
 })
 
 export async function generateMetadata() {
