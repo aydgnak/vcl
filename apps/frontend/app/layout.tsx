@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
+import { cn } from 'cn'
 import { NextIntlClientProvider } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import { ThemeProvider } from 'next-themes'
 import { Roboto } from 'next/font/google'
 import { Toaster } from '@/components/ui/toast'
-import { cn } from '@/lib/utils'
 import './globals.css'
 
 const roboto = Roboto({

@@ -1,11 +1,11 @@
 'use client'
 
 import { Toast as ToastPrimitive } from '@base-ui/react/toast'
+import { cn } from 'cn'
 import { CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon, XIcon } from 'lucide-react'
 import * as React from 'react'
 import { Button } from '@/components/ui/button'
 import { toast, useToastManager } from '@/lib/toast'
-import { cn } from '@/lib/utils'
 
 function ToastProvider({ ...props }: ToastPrimitive.Provider.Props) {
   return <ToastPrimitive.Provider {...props} />
