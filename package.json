@@ -1,6 +1,6 @@
 {
   "name": "vcl",
-  "packageManager": "pnpm@12.3.2",
+  "packageManager": "pnpm@12.4.2",
   "description": "Vehicle Cost Ledger",
   "scripts": {
     "prepare": "husky",
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "9.5.1",
-    "eslint": "10.9.1",
+    "eslint": "10.10.0",
     "husky": "9.1.7"
   }
 }
