@@ -30,6 +30,19 @@
       }
     }
   },
+  "sidebar": {
+    "footer": {
+      "language": "Language",
+      "theme": {
+        "label": "Theme",
+        "appearance": "Appearance",
+        "system": "System",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "logout": "Logout"
+    }
+  },
   "validation": {
     "email": "Enter a valid email address.",
     "password": {

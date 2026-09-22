@@ -30,6 +30,19 @@
       }
     }
   },
+  "sidebar": {
+    "footer": {
+      "language": "Dil",
+      "theme": {
+        "label": "Tema",
+        "appearance": "Dış Görünüş",
+        "system": "Sistem",
+        "light": "Açık",
+        "dark": "Koyu"
+      },
+      "logout": "Çıkış Yap"
+    }
+  },
   "validation": {
     "email": "Geçerli bir e-posta adresi girin.",
     "password": {

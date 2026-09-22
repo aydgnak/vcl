@@ -17,16 +17,6 @@ async function getPublicKey() {
   return publicKey
 }
 
-export function redirectToLogin(request: NextRequest, clearAccessToken = false) {
-  const response = NextResponse.redirect(new URL('/login', request.nextUrl.origin))
-
-  if (clearAccessToken) {
-    response.cookies.delete(ACCESS_TOKEN_COOKIE_NAME)
-  }
-
-  return response
-}
-
 export async function isValidAccessToken(accessToken: string) {
   const key = await getPublicKey()
 
@@ -41,4 +31,14 @@ export async function isValidAccessToken(accessToken: string) {
   catch {
     return false
   }
+}
+
+export function redirectToLogin(request: NextRequest, clearAccessToken = false) {
+  const response = NextResponse.redirect(new URL('/login', request.nextUrl.origin))
+
+  if (clearAccessToken) {
+    response.cookies.delete(ACCESS_TOKEN_COOKIE_NAME)
+  }
+
+  return response
 }
