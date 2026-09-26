@@ -1,10 +1,15 @@
 ---
 id: ADR-0007
 name: Use asymmetric access token signing
-status: accepted
+status: superseded
 createdAt: 2026-09-04T05:54:20+03:00
-updatedAt: 2026-09-04T05:54:20+03:00
+updatedAt: 2026-09-27T02:20:18+03:00
+supersededBy: ADR-0009
 ---
+
+## Relations
+
+- Superseded by [ADR-0009: Use symmetric JWT secrets with cookie-based refresh flow](./ADR-0009-use-symmetric-jwt-secrets-with-cookie-based-refresh-flow.md).
 
 ## Context
 

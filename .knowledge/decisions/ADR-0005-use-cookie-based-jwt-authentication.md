@@ -3,7 +3,7 @@ id: ADR-0005
 name: Use cookie-based JWT authentication
 status: accepted
 createdAt: 2026-08-31T10:58:29+03:00
-updatedAt: 2026-08-31T11:51:51+03:00
+updatedAt: 2026-09-27T02:20:18+03:00
 ---
 
 ## Context
@@ -12,7 +12,7 @@ API endpoint'leri varsayılan olarak yetkilendirilmiş kullanıcı gerektirir. A
 
 ## Decision
 
-Authentication için JWT kullanılacak ve token `accessToken` adlı `httpOnly` cookie içinde taşınacaktır. JWT guard, `APP_GUARD` olarak uygulama geneline kaydedilecektir; yalnızca `@Public()` ile işaretlenen endpoint'ler authentication gerektirmez. Cookie, production ortamında `secure` ve tüm ortamlarda `sameSite=lax` olarak ayarlanacaktır. Her doğrulanmış JWT'de kullanıcı varlığı yeniden kontrol edilecektir. Girişte ayrı secret ve süreyle imzalanan `refreshToken` adlı bir `httpOnly` cookie de üretilecektir; bu cookie yalnızca `/auth/refresh` isteğine gönderilecek ve yeni access token almak için kullanılacaktır.
+Authentication için JWT kullanılacak ve token `accessToken` adlı `httpOnly` cookie içinde taşınacaktır. JWT guard, `APP_GUARD` olarak uygulama geneline kaydedilecektir; yalnızca `@Public()` ile işaretlenen endpoint'ler authentication gerektirmez. Cookie, production ortamında `secure` ve tüm ortamlarda `sameSite=lax` olarak ayarlanacaktır. Her doğrulanmış JWT'de kullanıcı varlığı yeniden kontrol edilecektir. Girişte ayrı secret ve süreyle imzalanan `refreshToken` adlı bir `httpOnly` cookie de üretilecektir. Cookie `Path` ile sınırlandırılmadığından tarayıcı tarafından uygun isteklerde gönderilebilir; refresh işlemi `/auth/refresh` endpoint'inde yapılır ve yeni access token üretir.
 
 ## Consequences
 
