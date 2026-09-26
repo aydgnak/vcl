@@ -1,6 +1,6 @@
 {
   "name": "vcl",
-  "packageManager": "pnpm@12.5.1",
+  "packageManager": "pnpm@12.6.0",
   "description": "Vehicle Cost Ledger",
   "scripts": {
     "prepare": "husky",
