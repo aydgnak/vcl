@@ -1,3 +1,4 @@
+import { CurrentUserService } from '@app/shared/current-user'
 import { PrismaService } from '@app/shared/prisma'
 import { Injectable } from '@nestjs/common'
 import { hash } from 'bcrypt'
@@ -6,6 +7,7 @@ import { hash } from 'bcrypt'
 export class UserService {
   constructor(
     private readonly prisma: PrismaService,
+    private readonly currentUser: CurrentUserService,
   ) {}
 
   async findByEmail(email: string) {
@@ -31,5 +33,14 @@ export class UserService {
         password: await hash(password, 10),
       },
     })
+  }
+
+  async me() {
+    const user = await this.currentUser.getUser()
+
+    return {
+      name: null,
+      email: user.email,
+    }
   }
 }

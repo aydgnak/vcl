@@ -1,6 +1,7 @@
 'use client'
 
 import { ChevronsUpDownIcon } from 'lucide-react'
+import useSWR from 'swr'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,12 +11,23 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import { useSidebar } from '@/components/ui/sidebar-context'
+import { api } from '@/lib/api'
 import { LanguageSwitcher } from './footer/language-switcher'
 import { LogoutButton } from './footer/logout-button'
 import { ThemeSwitcher } from './footer/theme-switcher'
 
+interface CurrentUser {
+  name: string
+  email: string
+}
+
 export function NavFooter() {
   const { isMobile } = useSidebar()
+  const { data: user } = useSWR('/user/me', async (url) => {
+    const { data } = await api.post<CurrentUser>(url)
+
+    return data
+  })
 
   return (
     <SidebarMenu>
@@ -24,8 +36,8 @@ export function NavFooter() {
           <DropdownMenuTrigger render={(
             <SidebarMenuButton size="lg">
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">Name Surname</span>
-                <span className="truncate text-xs">name.surname@mail.com</span>
+                <span className="truncate font-medium">{user?.name}</span>
+                <span className="truncate text-xs">{user?.email}</span>
               </div>
               <ChevronsUpDownIcon className="ml-auto size-4" />
             </SidebarMenuButton>

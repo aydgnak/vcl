@@ -1,6 +1,6 @@
 import type { Route } from 'next'
 import type { ReactNode } from 'react'
-import { LayoutDashboardIcon } from 'lucide-react'
+import { CarIcon, LayoutDashboardIcon } from 'lucide-react'
 import Link from 'next/link'
 import {
   SidebarGroup,
@@ -22,6 +22,11 @@ export function NavContent() {
       href: '/dashboard',
       label: 'Dashboard',
       icon: <LayoutDashboardIcon />,
+    },
+    {
+      href: '/car',
+      label: 'Car',
+      icon: <CarIcon />,
     },
   ]
 

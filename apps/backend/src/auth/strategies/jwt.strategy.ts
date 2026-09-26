@@ -1,4 +1,3 @@
-import { Buffer } from 'node:buffer'
 import { ConfigO } from '@app/core/config'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
@@ -19,10 +18,8 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
         (req: Request) => JwtStrategy.fromCookie(req),
       ]),
       ignoreExpiration: false,
-      algorithms: ['RS256'],
-      secretOrKey: Buffer
-        .from(configService.get('JWT_ACCESS_TOKEN_PUBLIC_KEY', { infer: true }), 'base64')
-        .toString('utf8'),
+      algorithms: ['HS256'],
+      secretOrKey: configService.get('JWT_ACCESS_TOKEN_SECRET', { infer: true }),
     })
   }
 

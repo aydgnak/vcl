@@ -46,13 +46,4 @@ export class AuthController {
   ) {
     return this.authService.register(register)
   }
-
-  @Post('logout')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  @Throttle({ default: { ttl: minutes(1), limit: 5 } })
-  async logout(
-    @Res({ passthrough: true }) res: Response,
-  ) {
-    await this.authService.logout(res)
-  }
 }

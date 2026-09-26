@@ -64,12 +64,15 @@ export class AuthService {
     res.cookie('refreshToken', refreshToken, {
       ...this.getCookieOptions(),
       maxAge: ms(this.configService.get<StringValue>('JWT_REFRESH_TOKEN_EXPIRES_IN')),
-      path: '/auth/refresh',
     })
   }
 
   private setAccessTokenCookie(payload: JwtPayload, res: Response) {
-    const accessToken = this.jwtService.sign(payload)
+    const accessToken = this.jwtService.sign(payload, {
+      algorithm: 'HS256',
+      secret: this.configService.get('JWT_ACCESS_TOKEN_SECRET', { infer: true }),
+      expiresIn: this.configService.get<StringValue>('JWT_ACCESS_TOKEN_EXPIRES_IN'),
+    })
 
     res.cookie('accessToken', accessToken, {
       ...this.getCookieOptions(),
@@ -94,16 +97,5 @@ export class AuthService {
     }
 
     return this.userService.create(email, password)
-  }
-
-  async logout(res: Response) {
-    res.clearCookie('accessToken', {
-      ...this.getCookieOptions(),
-    })
-
-    res.clearCookie('refreshToken', {
-      ...this.getCookieOptions(),
-      path: '/auth/refresh',
-    })
   }
 }
