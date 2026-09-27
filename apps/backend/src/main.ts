@@ -9,20 +9,30 @@ import { AppModule } from './app.module'
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
 
-  app.enableShutdownHooks()
-
   const configService = app.get(ConfigService<ConfigO, true>)
+
+  const clientOrigin = new URL(
+    configService.get('CLIENT_ORIGIN', { infer: true }),
+  ).origin
+
+  const port = configService.get('PORT', { infer: true })
 
   app.use(cookieParser())
 
+  app.set('trust proxy', 'loopback')
+
+  app.enableShutdownHooks()
+
   app.enableCors({
-    origin: configService.get('CLIENT_ORIGIN', { infer: true }),
+    origin: clientOrigin,
     credentials: true,
   })
 
-  app.set('trust proxy', 'loopback')
-
-  const port = configService.get('PORT', { infer: true })
+  app.enableCsrfProtection({
+    trustedOrigins: [
+      clientOrigin,
+    ],
+  })
 
   await app.listen(port, () => {
     Logger.log(`Application is running on port ${port}`, 'Bootstrap')
