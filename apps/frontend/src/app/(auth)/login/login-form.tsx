@@ -1,11 +1,12 @@
 'use client'
 
+import type { Route } from 'next'
 import type { LoginI } from 'schemas'
 import type { ValidationMessage } from 'schemas/messages'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { LockKeyhole, Mail } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Controller, useForm } from 'react-hook-form'
 import { loginSchema } from 'schemas'
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
@@ -14,6 +15,7 @@ import { toast } from '@/lib/toast'
 
 export function LoginForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const t = useTranslations()
 
   const form = useForm<LoginI>({
@@ -49,7 +51,13 @@ export function LoginForm() {
       return
     }
 
-    router.replace('/dashboard')
+    const redirect = searchParams.get('redirect')
+
+    const destination = isSafeRedirect(redirect)
+      ? redirect
+      : '/dashboard'
+
+    router.replace(destination)
   }
 
   return (
@@ -114,4 +122,10 @@ export function LoginForm() {
       </FieldGroup>
     </form>
   )
+}
+
+function isSafeRedirect(value: string | null): value is Route {
+  return value !== null
+    && value.startsWith('/')
+    && !value.startsWith('//')
 }

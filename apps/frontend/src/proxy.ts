@@ -1,8 +1,8 @@
 import type { Route } from 'next'
 import type { NextRequest, ProxyConfig } from 'next/server'
 import { NextResponse } from 'next/server'
-import { refreshAction, validateAction } from './actions/auth'
-import { ACCESS_TOKEN_COOKIE_NAME } from './lib/constants'
+import { refreshAction, validateAction } from '@/actions/auth'
+import { ACCESS_TOKEN_COOKIE_NAME, REFRESH_TOKEN_COOKIE_NAME } from '@/lib/constants'
 
 export const config: ProxyConfig = {
   matcher: [
@@ -51,15 +51,27 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
-  return redirectToLogin(url)
+  return redirectToLogin(request, true)
 }
 
 function redirectToDashboard(url: string) {
   return NextResponse.redirect(new URL('/dashboard', url))
 }
 
-function redirectToLogin(url: string) {
-  return NextResponse.redirect(new URL('/login', url))
+function redirectToLogin(request: NextRequest, clearCookies = false) {
+  const redirect = `${request.nextUrl.pathname}${request.nextUrl.search}`
+
+  const loginUrl = new URL('/login', request.url)
+  loginUrl.searchParams.set('redirect', redirect)
+
+  const response = NextResponse.redirect(loginUrl)
+
+  if (clearCookies) {
+    response.cookies.delete(ACCESS_TOKEN_COOKIE_NAME)
+    response.cookies.delete(REFRESH_TOKEN_COOKIE_NAME)
+  }
+
+  return response
 }
 
 function setCookies(response: NextResponse, cookies: string[]) {

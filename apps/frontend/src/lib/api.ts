@@ -70,7 +70,12 @@ api.interceptors.response.use(
       processQueue(refreshError)
 
       if (typeof window !== 'undefined') {
-        window.location.replace('/login')
+        const redirect = `${window.location.pathname}${window.location.search}`
+
+        const loginUrl = new URL('/login', window.location.origin)
+        loginUrl.searchParams.set('redirect', redirect)
+
+        window.location.replace(loginUrl)
       }
 
       throw refreshError
