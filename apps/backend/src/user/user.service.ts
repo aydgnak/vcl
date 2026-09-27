@@ -3,6 +3,12 @@ import { PrismaService } from '@app/shared/prisma'
 import { Injectable } from '@nestjs/common'
 import { hash } from 'bcrypt'
 
+interface CurrentUser {
+  name?: string | null
+  surname?: string | null
+  email: string
+}
+
 @Injectable()
 export class UserService {
   constructor(
@@ -31,16 +37,21 @@ export class UserService {
       data: {
         email,
         password: await hash(password, 10),
+        profile: {
+          create: {},
+        },
       },
     })
   }
 
   async me() {
-    const user = await this.currentUser.getUser()
+    const { profile, email } = await this.currentUser.getUser()
+    const { name, surname } = profile ?? {}
 
     return {
-      name: null,
-      email: user.email,
-    }
+      name,
+      surname,
+      email,
+    } satisfies CurrentUser
   }
 }

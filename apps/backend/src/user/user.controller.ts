@@ -1,4 +1,4 @@
-import { Controller, Post } from '@nestjs/common'
+import { Controller, HttpCode, HttpStatus, Post } from '@nestjs/common'
 import { UserService } from './user.service'
 
 @Controller('user')
@@ -8,6 +8,7 @@ export class UserController {
   ) {}
 
   @Post('me')
+  @HttpCode(HttpStatus.OK)
   async me() {
     return this.userService.me()
   }

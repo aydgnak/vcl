@@ -17,7 +17,8 @@ import { LogoutButton } from './footer/logout-button'
 import { ThemeSwitcher } from './footer/theme-switcher'
 
 interface CurrentUser {
-  name: string
+  name?: string | null
+  surname?: string | null
   email: string
 }
 
@@ -36,7 +37,11 @@ export function NavFooter() {
           <DropdownMenuTrigger render={(
             <SidebarMenuButton size="lg">
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user?.name}</span>
+                <span className="truncate font-medium">
+                  {user?.name}
+                  {' '}
+                  {user?.surname}
+                </span>
                 <span className="truncate text-xs">{user?.email}</span>
               </div>
               <ChevronsUpDownIcon className="ml-auto size-4" />

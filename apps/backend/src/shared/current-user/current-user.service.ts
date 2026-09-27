@@ -13,6 +13,14 @@ type User = Prisma.UserGetPayload<{
     createdAt: true
     updatedAt: true
   }
+  include: {
+    profile: {
+      omit: {
+        createdAt: true
+        updatedAt: true
+      }
+    }
+  }
 }>
 
 @Injectable()
@@ -47,6 +55,14 @@ export class CurrentUserService {
           password: true,
           createdAt: true,
           updatedAt: true,
+        },
+        include: {
+          profile: {
+            omit: {
+              createdAt: true,
+              updatedAt: true,
+            },
+          },
         },
       })
 
