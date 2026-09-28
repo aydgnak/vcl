@@ -1,0 +1,45 @@
+{
+  "name": "shared",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    "./schemas": {
+      "import": "./dist/schemas/index.js",
+      "require": "./dist/schemas/index.cjs"
+    },
+    "./schemas/messages": {
+      "import": "./dist/schemas/messages.js",
+      "require": "./dist/schemas/messages.cjs"
+    },
+    "./types": {
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": "^22.18.0 || ^24.11.0 || >=26.0.0"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "lint": "eslint --cache",
+    "lint:fix": "eslint --cache --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "valibot": "^1.5.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "9.5.1",
+    "@arethetypeswrong/core": "0.18.5",
+    "eslint": "10.11.0",
+    "publint": "0.3.24",
+    "tsdown": "0.23.0",
+    "typescript": "5.9.3"
+  }
+}
