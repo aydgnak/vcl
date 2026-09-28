@@ -16,4 +16,7 @@ export default defineConfig({
   exports: true,
   publint: true,
   attw: true,
+  checks: {
+    legacyCjs: false,
+  },
 })
