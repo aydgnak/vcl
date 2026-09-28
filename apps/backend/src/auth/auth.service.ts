@@ -8,7 +8,7 @@ import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
 import ms, { StringValue } from 'ms'
 import { I18nService } from 'nestjs-i18n'
-import { RegisterO } from 'schemas'
+import { RegisterO } from 'shared/schemas'
 import { JwtPayload } from './types'
 
 @Injectable()

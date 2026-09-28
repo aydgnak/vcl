@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express'
-import type { RegisterO } from 'schemas'
+import type { RegisterO } from 'shared/schemas'
 import { ValibotPipe } from '@app/common/pipes'
 import {
   Body,
@@ -14,7 +14,7 @@ import {
   UseGuards,
 } from '@nestjs/common'
 import { minutes, Throttle } from '@nestjs/throttler'
-import { registerSchema } from 'schemas'
+import { registerSchema } from 'shared/schemas'
 import { AuthService } from './auth.service'
 import { Public } from './decorators'
 import { RegisterDto } from './dto'

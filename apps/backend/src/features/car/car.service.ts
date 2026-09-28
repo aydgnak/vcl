@@ -3,7 +3,7 @@ import { CurrentUserService } from '@app/shared/current-user'
 import { PrismaService } from '@app/shared/prisma'
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common'
 import { I18nService } from 'nestjs-i18n'
-import { CreateCarO, UpdateCarO } from 'schemas'
+import { CreateCarO, UpdateCarO } from 'shared/schemas'
 
 @Injectable()
 export class CarService {

@@ -1,6 +1,6 @@
 import type { I18nTranslations } from '@app/generated/i18n.generated'
 import type { PipeTransform } from '@nestjs/common'
-import type { ValidationMessage } from 'schemas/messages'
+import type { ValidationMessage } from 'shared/schemas/messages'
 import type { GenericSchema, InferOutput } from 'valibot'
 import { UnprocessableEntityException } from '@nestjs/common'
 import { I18nContext } from 'nestjs-i18n'

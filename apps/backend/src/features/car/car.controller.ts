@@ -1,7 +1,7 @@
-import type { CreateCarO, UpdateCarO } from 'schemas'
+import type { CreateCarO, UpdateCarO } from 'shared/schemas'
 import { ValibotPipe } from '@app/common/pipes'
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseUUIDPipe, Patch, Post, SerializeOptions } from '@nestjs/common'
-import { createCarSchema, updateCarSchema } from 'schemas'
+import { createCarSchema, updateCarSchema } from 'shared/schemas'
 import { CarService } from './car.service'
 import { CarDto } from './dto'
 
