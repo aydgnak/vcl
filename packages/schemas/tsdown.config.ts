@@ -13,4 +13,7 @@ export default defineConfig({
   dts: {
     sourcemap: true,
   },
+  exports: true,
+  publint: true,
+  attw: true,
 })

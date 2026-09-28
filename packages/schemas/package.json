@@ -1,19 +1,26 @@
 {
   "name": "schemas",
   "type": "module",
+  "version": "0.0.0",
   "private": true,
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
     "./messages": {
-      "types": "./dist/messages.d.ts",
       "import": "./dist/messages.js",
       "require": "./dist/messages.cjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
@@ -26,7 +33,9 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "9.5.1",
+    "@arethetypeswrong/core": "^0.18.5",
     "eslint": "10.11.0",
+    "publint": "^0.3.24",
     "tsdown": "0.23.0",
     "typescript": "5.9.3"
   }
