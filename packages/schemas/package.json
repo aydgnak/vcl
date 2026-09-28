@@ -36,9 +36,9 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "9.5.1",
-    "@arethetypeswrong/core": "^0.18.5",
+    "@arethetypeswrong/core": "0.18.5",
     "eslint": "10.11.0",
-    "publint": "^0.3.24",
+    "publint": "0.3.24",
     "tsdown": "0.23.0",
     "typescript": "5.9.3"
   }
