@@ -1,7 +1,6 @@
 'use client'
 
 import { ChevronsUpDownIcon } from 'lucide-react'
-import useSWR from 'swr'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,24 +10,14 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import { useSidebar } from '@/components/ui/sidebar-context'
-import { api } from '@/lib/api'
+import { useCurrentUser } from '@/hooks/use-current-user'
 import { LanguageSwitcher } from './footer/language-switcher'
 import { LogoutButton } from './footer/logout-button'
 import { ThemeSwitcher } from './footer/theme-switcher'
 
-interface CurrentUser {
-  name?: string | null
-  surname?: string | null
-  email: string
-}
-
 export function NavFooter() {
   const { isMobile } = useSidebar()
-  const { data: user } = useSWR('/user/me', async (url) => {
-    const { data } = await api.post<CurrentUser>(url)
-
-    return data
-  })
+  const { data: user } = useCurrentUser()
 
   return (
     <SidebarMenu>
