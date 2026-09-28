@@ -1,6 +1,6 @@
 'use client'
 
-import type { RegisterI } from 'shared/schemas'
+import type { RegisterI, RegisterO } from 'shared/schemas'
 import type { ValidationMessage } from 'shared/schemas/messages'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { KeyRound, LockKeyhole, Mail } from 'lucide-react'
@@ -16,7 +16,7 @@ export function RegisterForm() {
   const router = useRouter()
   const t = useTranslations()
 
-  const form = useForm({
+  const form = useForm<RegisterI, unknown, RegisterO>({
     resolver: valibotResolver(registerSchema),
     defaultValues: {
       email: '',
@@ -25,7 +25,7 @@ export function RegisterForm() {
     },
   })
 
-  async function onSubmit(data: RegisterI) {
+  async function onSubmit(data: RegisterO) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`, {
       method: 'POST',
       headers: {

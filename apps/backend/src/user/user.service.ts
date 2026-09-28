@@ -2,12 +2,7 @@ import { CurrentUserService } from '@app/shared/current-user'
 import { PrismaService } from '@app/shared/prisma'
 import { Injectable } from '@nestjs/common'
 import { hash } from 'bcrypt'
-
-interface CurrentUser {
-  name?: string | null
-  surname?: string | null
-  email: string
-}
+import { MeR } from 'shared/types'
 
 @Injectable()
 export class UserService {
@@ -46,12 +41,11 @@ export class UserService {
 
   async me() {
     const { profile, email } = await this.currentUser.getUser()
-    const { name, surname } = profile ?? {}
 
     return {
-      name,
-      surname,
+      name: profile?.name ?? null,
+      surname: profile?.surname ?? null,
       email,
-    } satisfies CurrentUser
+    } satisfies MeR
   }
 }

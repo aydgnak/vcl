@@ -10,14 +10,14 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import { useSidebar } from '@/components/ui/sidebar-context'
-import { useCurrentUser } from '@/hooks/use-current-user'
+import { useMe } from '@/hooks/use-me'
 import { LanguageSwitcher } from './footer/language-switcher'
 import { LogoutButton } from './footer/logout-button'
 import { ThemeSwitcher } from './footer/theme-switcher'
 
 export function NavFooter() {
   const { isMobile } = useSidebar()
-  const { data: user } = useCurrentUser()
+  const { data: user } = useMe()
 
   return (
     <SidebarMenu>

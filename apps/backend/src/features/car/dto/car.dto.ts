@@ -1,7 +1,8 @@
 import { Exclude, Expose } from 'class-transformer'
+import { CarR } from 'shared/types'
 
 @Exclude()
-export class CarDto {
+export class CarDto implements CarR {
   @Expose()
   uuid: string
 

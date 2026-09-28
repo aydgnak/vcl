@@ -1,7 +1,7 @@
 'use client'
 
 import type { Route } from 'next'
-import type { LoginI } from 'shared/schemas'
+import type { LoginI, LoginO } from 'shared/schemas'
 import type { ValidationMessage } from 'shared/schemas/messages'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { LockKeyhole, Mail } from 'lucide-react'
@@ -18,7 +18,7 @@ export function LoginForm() {
   const searchParams = useSearchParams()
   const t = useTranslations()
 
-  const form = useForm<LoginI>({
+  const form = useForm<LoginI, unknown, LoginO>({
     resolver: valibotResolver(loginSchema),
     defaultValues: {
       email: '',
@@ -26,7 +26,7 @@ export function LoginForm() {
     },
   })
 
-  async function onSubmit(data: LoginI) {
+  async function onSubmit(data: LoginO) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: {
@@ -91,6 +91,7 @@ export function LoginForm() {
             </Field>
           )}
         />
+
         <Controller
           name="password"
           control={form.control}
