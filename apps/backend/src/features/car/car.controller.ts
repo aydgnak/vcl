@@ -1,9 +1,9 @@
-import type { CreateCarO, UpdateCarO } from 'shared/schemas'
+import type { CreateCarO, PaginationO, UpdateCarO } from 'shared/schemas'
 import { ValibotPipe } from '@app/common/pipes'
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseUUIDPipe, Patch, Post, SerializeOptions } from '@nestjs/common'
-import { createCarSchema, updateCarSchema } from 'shared/schemas'
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseUUIDPipe, Patch, Post, Query, SerializeOptions } from '@nestjs/common'
+import { createCarSchema, paginationSchema, updateCarSchema } from 'shared/schemas'
 import { CarService } from './car.service'
-import { CarDto } from './dto'
+import { CarDto, PaginatedCarDto } from './dto'
 
 @Controller('car')
 @SerializeOptions({ type: CarDto })
@@ -20,8 +20,11 @@ export class CarController {
   }
 
   @Get()
-  async findAll() {
-    return this.carService.findAll()
+  @SerializeOptions({ type: PaginatedCarDto })
+  async findAll(
+    @Query(new ValibotPipe(paginationSchema)) pagination: PaginationO,
+  ) {
+    return this.carService.findAll(pagination)
   }
 
   @Get(':uuid')

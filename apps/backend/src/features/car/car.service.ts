@@ -1,9 +1,9 @@
+import type { CreateCarO, PaginationO, UpdateCarO } from 'shared/schemas'
 import { I18nTranslations } from '@app/generated/i18n.generated'
 import { CurrentUserService } from '@app/shared/current-user'
 import { PrismaService } from '@app/shared/prisma'
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common'
 import { I18nService } from 'nestjs-i18n'
-import { CreateCarO, UpdateCarO } from 'shared/schemas'
 
 @Injectable()
 export class CarService {
@@ -26,14 +26,28 @@ export class CarService {
     })
   }
 
-  async findAll() {
+  async findAll({ page, limit }: PaginationO) {
     const user = await this.currentUser.getUser()
+    const where = { userId: user.id }
 
-    return this.prisma.car.findMany({
-      where: {
-        userId: user.id,
+    const [data, total] = await Promise.all([
+      this.prisma.car.findMany({
+        where,
+        skip: (page - 1) * limit,
+        take: limit,
+      }),
+      this.prisma.car.count({ where }),
+    ])
+
+    return {
+      data,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
       },
-    })
+    }
   }
 
   async findOne(uuid: string) {
