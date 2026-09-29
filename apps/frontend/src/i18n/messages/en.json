@@ -3,19 +3,11 @@
     "name": "Vehicle Cost Ledger"
   },
   "auth": {
-    "login": {
-      "title": "Login",
-      "button": "Login",
-      "noAccount": "Don't have an account yet?",
-      "createAccount": "Create an account"
-    },
-    "register": {
-      "title": "Register",
-      "button": "Create account",
-      "hasAccount": "Already have an account?",
-      "login": "Log in"
-    },
     "form": {
+      "confirmPassword": {
+        "label": "Confirm password",
+        "placeholder": "Enter your password again"
+      },
       "email": {
         "label": "Email",
         "placeholder": "name@example.com"
@@ -23,34 +15,73 @@
       "password": {
         "label": "Password",
         "placeholder": "Enter your password"
-      },
-      "confirmPassword": {
-        "label": "Confirm password",
-        "placeholder": "Enter your password again"
       }
+    },
+    "login": {
+      "button": "Login",
+      "createAccount": "Create an account",
+      "noAccount": "Don't have an account yet?",
+      "title": "Login"
+    },
+    "register": {
+      "button": "Create account",
+      "hasAccount": "Already have an account?",
+      "login": "Log in",
+      "title": "Register"
+    }
+  },
+  "car": {
+    "fields": {
+      "brand": "Brand",
+      "model": "Model",
+      "modelYear": "Model Year",
+      "plate": "Plate"
+    },
+    "list": {
+      "description": "Keep track of your vehicles and their key details in one place.",
+      "title": "Vehicles"
+    }
+  },
+  "dataTable": {
+    "error": "Vehicles could not be loaded. Refresh the page and try again.",
+    "noResults": "No records found.",
+    "pagination": {
+      "next": "Next page",
+      "page": "Page {current} of {total}",
+      "pageSize": "Rows per page",
+      "previous": "Previous page"
+    },
+    "search": {
+      "label": "Search table",
+      "placeholder": "Search this page...",
+      "scope": "Search applies to records on this page only."
     }
   },
   "sidebar": {
     "footer": {
       "language": "Language",
+      "logout": "Logout",
       "theme": {
-        "label": "Theme",
         "appearance": "Appearance",
-        "system": "System",
+        "dark": "Dark",
+        "label": "Theme",
         "light": "Light",
-        "dark": "Dark"
-      },
-      "logout": "Logout"
+        "system": "System"
+      }
+    },
+    "navigation": {
+      "car": "Cars",
+      "dashboard": "Dashboard"
     }
   },
   "validation": {
+    "emptyUpdate": "At least one field must be provided for update.",
     "email": "Enter a valid email address.",
     "password": {
-      "minLength": "Password must be at least 10 characters.",
       "digit": "Password must contain at least one digit.",
+      "minLength": "Password must be at least 10 characters.",
       "specialCharacter": "Password must contain at least one special character."
     },
-    "passwordsMismatch": "Passwords do not match.",
-    "emptyUpdate": "At least one field must be provided for update."
+    "passwordsMismatch": "Passwords do not match."
   }
 }

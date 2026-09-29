@@ -3,19 +3,11 @@
     "name": "Araç Maliyet Defteri"
   },
   "auth": {
-    "login": {
-      "title": "Giriş",
-      "button": "Giriş",
-      "noAccount": "Henüz hesabınız yok mu?",
-      "createAccount": "Hesap oluşturun"
-    },
-    "register": {
-      "title": "Kayıt Ol",
-      "button": "Hesap oluştur",
-      "hasAccount": "Zaten hesabınız var mı?",
-      "login": "Giriş yapın"
-    },
     "form": {
+      "confirmPassword": {
+        "label": "Parola tekrarı",
+        "placeholder": "Parolanızı tekrar girin"
+      },
       "email": {
         "label": "E-posta",
         "placeholder": "ornek@eposta.com"
@@ -23,34 +15,73 @@
       "password": {
         "label": "Parola",
         "placeholder": "Parolanızı girin"
-      },
-      "confirmPassword": {
-        "label": "Parolayı doğrulayın",
-        "placeholder": "Parolanızı tekrar girin"
       }
+    },
+    "login": {
+      "button": "Giriş",
+      "createAccount": "Hesap oluşturun",
+      "noAccount": "Henüz hesabınız yok mu?",
+      "title": "Giriş"
+    },
+    "register": {
+      "button": "Hesap oluştur",
+      "hasAccount": "Zaten hesabınız var mı?",
+      "login": "Giriş yapın",
+      "title": "Kayıt ol"
+    }
+  },
+  "car": {
+    "fields": {
+      "brand": "Marka",
+      "model": "Model",
+      "modelYear": "Model Yılı",
+      "plate": "Plaka"
+    },
+    "list": {
+      "description": "Araçlarınızı ve temel bilgilerini tek bir yerden takip edin.",
+      "title": "Araçlar"
+    }
+  },
+  "dataTable": {
+    "error": "Araçlar yüklenemedi. Lütfen sayfayı yenileyip tekrar deneyin.",
+    "noResults": "Kayıt bulunamadı.",
+    "pagination": {
+      "next": "Sonraki sayfa",
+      "page": "Sayfa {current} / {total}",
+      "pageSize": "Sayfa başına kayıt",
+      "previous": "Önceki sayfa"
+    },
+    "search": {
+      "label": "Tabloda ara",
+      "placeholder": "Bu sayfada ara...",
+      "scope": "Arama yalnızca bu sayfadaki kayıtları kapsar."
     }
   },
   "sidebar": {
     "footer": {
       "language": "Dil",
+      "logout": "Çıkış yap",
       "theme": {
+        "appearance": "Görünüm",
+        "dark": "Koyu",
         "label": "Tema",
-        "appearance": "Dış Görünüş",
-        "system": "Sistem",
         "light": "Açık",
-        "dark": "Koyu"
-      },
-      "logout": "Çıkış Yap"
+        "system": "Sistem"
+      }
+    },
+    "navigation": {
+      "car": "Araçlar",
+      "dashboard": "Panel"
     }
   },
   "validation": {
+    "emptyUpdate": "Güncellenecek en az bir alan gönderilmelidir.",
     "email": "Geçerli bir e-posta adresi girin.",
     "password": {
-      "minLength": "Parola en az 10 karakter olmalıdır.",
       "digit": "Parola en az bir rakam içermelidir.",
+      "minLength": "Parola en az 10 karakter olmalıdır.",
       "specialCharacter": "Parola en az bir özel karakter içermelidir."
     },
-    "passwordsMismatch": "Parolalar eşleşmiyor.",
-    "emptyUpdate": "Güncellenecek en az bir alan gönderilmelidir."
+    "passwordsMismatch": "Parolalar eşleşmiyor."
   }
 }

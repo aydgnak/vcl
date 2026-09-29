@@ -1,6 +1,7 @@
 import type { Route } from 'next'
 import type { ReactNode } from 'react'
 import { CarIcon, LayoutDashboardIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import {
   SidebarGroup,
@@ -17,15 +18,17 @@ interface LinkType {
 }
 
 export function NavContent() {
+  const t = useTranslations('sidebar.navigation')
+
   const links: LinkType[] = [
     {
       href: '/dashboard',
-      label: 'Dashboard',
+      label: t('dashboard'),
       icon: <LayoutDashboardIcon />,
     },
     {
       href: '/car',
-      label: 'Car',
+      label: t('car'),
       icon: <CarIcon />,
     },
   ]
