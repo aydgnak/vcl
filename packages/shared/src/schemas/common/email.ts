@@ -1,13 +1,13 @@
-import { email, pipe, string, trim } from 'valibot'
-
-const emailValidationMessage = {
-  email: 'validation.email',
-} as const
-
-export type EmailValidationMessage = typeof emailValidationMessage[keyof typeof emailValidationMessage]
+import { validationMessages } from '@schemas/messages'
+import { email, pipe, trim } from 'valibot'
+import { requiredStringSchema } from './required-string'
 
 export const emailSchema = pipe(
-  string(),
+  requiredStringSchema,
   trim(),
-  email(emailValidationMessage.email),
+  email(issue =>
+    issue.input.length === 0
+      ? validationMessages.required
+      : validationMessages.email,
+  ),
 )

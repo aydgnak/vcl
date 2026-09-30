@@ -1,24 +1,19 @@
 import type { InferInput, InferOutput } from 'valibot'
 import { emailSchema, passwordSchema } from '@schemas/common'
+import { validationMessages } from '@schemas/messages'
 import { forward, object, partialCheck, pipe } from 'valibot'
-
-const registerValidationMessage = {
-  passwordsMismatch: 'validation.passwordsMismatch',
-} as const
-
-export type RegisterValidationMessage = typeof registerValidationMessage[keyof typeof registerValidationMessage]
 
 export const registerSchema = pipe(
   object({
     email: emailSchema,
     password: passwordSchema,
     confirmPassword: passwordSchema,
-  }),
+  }, validationMessages.type.object),
   forward(
     partialCheck(
       [['password'], ['confirmPassword']],
       input => input.password === input.confirmPassword,
-      registerValidationMessage.passwordsMismatch,
+      validationMessages.password.mismatch,
     ),
     ['confirmPassword'],
   ),

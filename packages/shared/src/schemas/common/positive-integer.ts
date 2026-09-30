@@ -1,4 +1,6 @@
+import { validationMessages } from '@schemas/messages'
 import {
+  message,
   minValue,
   number,
   optional,
@@ -10,17 +12,20 @@ import {
   union,
 } from 'valibot'
 
-export const positiveIntegerSchema = pipe(
-  union([
-    number(),
-    pipe(
-      string(),
-      regex(/^[1-9]\d*$/),
-      toNumber(),
-    ),
-  ]),
-  safeInteger(),
-  minValue(1),
+export const positiveIntegerSchema = message(
+  pipe(
+    union([
+      number(),
+      pipe(
+        string(),
+        regex(/^[1-9]\d*$/),
+        toNumber(),
+      ),
+    ]),
+    safeInteger(),
+    minValue(1),
+  ),
+  validationMessages.positiveInteger,
 )
 
 export function optionalPositiveIntegerSchema(defaultValue: number) {

@@ -1,16 +1,19 @@
-import { minLength, pipe, regex, string } from 'valibot'
-
-const passwordValidationMessage = {
-  minLength: 'validation.password.minLength',
-  digit: 'validation.password.digit',
-  specialCharacter: 'validation.password.specialCharacter',
-} as const
-
-export type PasswordValidationMessage = typeof passwordValidationMessage[keyof typeof passwordValidationMessage]
+import { validationMessages } from '@schemas/messages'
+import { minLength, pipe, regex } from 'valibot'
+import { requiredStringSchema } from './required-string'
 
 export const passwordSchema = pipe(
-  string(),
-  minLength(10, passwordValidationMessage.minLength),
-  regex(/\d/, passwordValidationMessage.digit),
-  regex(/[\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]/, passwordValidationMessage.specialCharacter),
+  requiredStringSchema,
+  minLength(
+    10,
+    issue =>
+      issue.input.length === 0
+        ? validationMessages.required
+        : validationMessages.password.minLength,
+  ),
+  regex(/\d/, validationMessages.password.digit),
+  regex(
+    /[\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]/,
+    validationMessages.password.specialCharacter,
+  ),
 )

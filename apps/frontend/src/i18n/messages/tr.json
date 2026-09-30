@@ -75,13 +75,35 @@
     }
   },
   "validation": {
-    "emptyUpdate": "Güncellenecek en az bir alan gönderilmelidir.",
+    "required": "Bu alan zorunludur.",
+    "type": {
+      "string": "Bu alan metin olmalıdır.",
+      "object": "Değer bir nesne olmalıdır."
+    },
     "email": "Geçerli bir e-posta adresi girin.",
     "password": {
       "digit": "Parola en az bir rakam içermelidir.",
       "minLength": "Parola en az 10 karakter olmalıdır.",
-      "specialCharacter": "Parola en az bir özel karakter içermelidir."
+      "specialCharacter": "Parola en az bir özel karakter içermelidir.",
+      "mismatch": "Parolalar eşleşmiyor."
     },
-    "passwordsMismatch": "Parolalar eşleşmiyor."
+    "positiveInteger": "Pozitif bir tam sayı girin.",
+    "car": {
+      "plate": {
+        "maxLength": "Plaka en fazla 32 karakter olabilir."
+      },
+      "modelYear": {
+        "number": "Model yılı sayı olmalıdır.",
+        "integer": "Model yılı tam sayı olmalıdır.",
+        "minValue": "Model yılı 1900 veya daha büyük olmalıdır.",
+        "maxValue": "Model yılı 2100 veya daha küçük olmalıdır."
+      }
+    },
+    "pagination": {
+      "limit": {
+        "maxValue": "Limit en fazla 100 olabilir."
+      }
+    },
+    "emptyUpdate": "Güncellenecek en az bir alan gönderilmelidir."
   }
 }
