@@ -1,6 +1,6 @@
 {
   "name": "vcl",
-  "packageManager": "pnpm@12.6.0",
+  "packageManager": "pnpm@12.7.0",
   "description": "Vehicle Cost Ledger",
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
