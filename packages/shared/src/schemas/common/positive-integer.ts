@@ -6,7 +6,7 @@ import {
   regex,
   safeInteger,
   string,
-  transform,
+  toNumber,
   union,
 } from 'valibot'
 
@@ -16,10 +16,9 @@ export const positiveIntegerSchema = pipe(
     pipe(
       string(),
       regex(/^[1-9]\d*$/),
-      transform(Number),
+      toNumber(),
     ),
   ]),
-  number(),
   safeInteger(),
   minValue(1),
 )

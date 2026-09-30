@@ -7,11 +7,12 @@ import {
   minEntries,
   minLength,
   minValue,
-  number,
   object,
   partial,
   pipe,
   string,
+  toNumber,
+  toUpperCase,
   transform,
   trim,
 } from 'valibot'
@@ -19,7 +20,8 @@ import {
 const carSchema = object({
   plate: pipe(
     string(),
-    transform(value => value.replace(/\s+/g, '').toUpperCase()),
+    transform(value => value.replace(/\s+/g, '')),
+    toUpperCase(),
     minLength(1),
     maxLength(32),
   ),
@@ -37,7 +39,8 @@ const carSchema = object({
   ),
 
   modelYear: pipe(
-    number(),
+    string(),
+    toNumber(),
     integer(),
     minValue(1900),
     maxValue(2100),
