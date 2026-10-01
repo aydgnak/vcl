@@ -1,10 +1,11 @@
 import { join } from 'node:path'
+import { I18nTranslations } from '@app/generated/i18n.generated'
 import { ThrottlerStorageRedisService } from '@nest-lab/throttler-storage-redis'
-import { ClassSerializerInterceptor, Module } from '@nestjs/common'
+import { ClassSerializerInterceptor, ExecutionContext, Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { minutes, seconds, ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
 import { ClsModule } from 'nestjs-cls'
-import { CookieResolver, I18nModule } from 'nestjs-i18n'
+import { CookieResolver, I18nContext, I18nModule } from 'nestjs-i18n'
 import { ConfigO, loads, validate } from './config'
 
 @Module({
@@ -21,6 +22,11 @@ import { ConfigO, loads, validate } from './config'
         throttlers: [
           { ttl: minutes(1), limit: 100 },
         ],
+        errorMessage: (context: ExecutionContext) => {
+          const i18nContext = I18nContext.current<I18nTranslations>(context)
+
+          return i18nContext?.t('http.tooManyRequests') ?? 'Too many requests'
+        },
         storage: new ThrottlerStorageRedisService(configService.get('REDIS_URL', { infer: true }), {
           connectTimeout: seconds(5),
           maxRetriesPerRequest: 1,

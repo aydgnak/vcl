@@ -8,6 +8,7 @@ import {
   minEntries,
   minLength,
   minValue,
+  number,
   object,
   partial,
   pipe,
@@ -15,6 +16,7 @@ import {
   toUpperCase,
   transform,
   trim,
+  union,
 } from 'valibot'
 
 const carSchema = object({
@@ -39,10 +41,15 @@ const carSchema = object({
   ),
 
   modelYear: pipe(
-    requiredStringSchema,
-    trim(),
-    minLength(1, validationMessages.required),
-    toNumber(validationMessages.car.modelYear.number),
+    union([
+      number(),
+      pipe(
+        requiredStringSchema,
+        trim(),
+        minLength(1, validationMessages.required),
+        toNumber(validationMessages.car.modelYear.number),
+      ),
+    ], validationMessages.car.modelYear.number),
     integer(validationMessages.car.modelYear.integer),
     minValue(1900, validationMessages.car.modelYear.minValue),
     maxValue(2100, validationMessages.car.modelYear.maxValue),

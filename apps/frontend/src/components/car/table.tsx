@@ -17,7 +17,7 @@ export function CarTable() {
   const columnHelper = createColumnHelper<DataTableFeatures, CarR>()
   const columns = columnHelper.columns([
     columnHelper.accessor('plate', {
-      header: t('plate'),
+      header: t('plate.label'),
       cell: info => (
         <span className="inline-flex min-w-28 items-center justify-center border border-border bg-muted/40 px-2.5 py-1 font-mono text-xs font-semibold tracking-[0.08em]">
           {info.getValue()}
@@ -25,13 +25,13 @@ export function CarTable() {
       ),
     }),
     columnHelper.accessor('brand', {
-      header: t('brand'),
+      header: t('brand.label'),
     }),
     columnHelper.accessor('model', {
-      header: t('model'),
+      header: t('model.label'),
     }),
     columnHelper.accessor('modelYear', {
-      header: t('modelYear'),
+      header: t('modelYear.label'),
     }),
   ])
 

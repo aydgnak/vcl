@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl'
 import { features } from '@/components/data-table/features'
 import { pageSizeOptions } from '@/components/data-table/pagination'
 import { Button } from '@/components/ui/button'
-import { Field, FieldDescription } from '@/components/ui/field'
+import { Field } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -54,13 +54,12 @@ export function DataTable<TData extends RowData>({
       <div className="border-b border-border p-4">
         <Field className="max-w-sm gap-1.5">
           <Input
-            aria-label={t('search.label')}
+            aria-label={t('search')}
             onChange={event => table.setGlobalFilter(event.target.value)}
-            placeholder={t('search.placeholder')}
+            placeholder={t('search')}
             type="search"
             value={String(table.state.globalFilter ?? '')}
           />
-          <FieldDescription>{t('search.scope')}</FieldDescription>
         </Field>
       </div>
       <Table>

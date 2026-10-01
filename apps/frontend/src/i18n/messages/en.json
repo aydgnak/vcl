@@ -32,14 +32,38 @@
   },
   "car": {
     "fields": {
-      "brand": "Brand",
-      "model": "Model",
-      "modelYear": "Model Year",
-      "plate": "Plate"
+      "brand": {
+        "label": "Brand",
+        "placeholder": "Enter the vehicle brand"
+      },
+      "model": {
+        "label": "Model",
+        "placeholder": "Enter the vehicle model"
+      },
+      "modelYear": {
+        "label": "Model year",
+        "placeholder": "Enter the vehicle model year"
+      },
+      "plate": {
+        "label": "License plate",
+        "placeholder": "Enter the vehicle license plate"
+      }
     },
     "list": {
       "description": "Keep track of your vehicles and their key details in one place.",
       "title": "Vehicles"
+    },
+    "create": {
+      "title": "Add a vehicle",
+      "description": "Fill out the form to add a new vehicle."
+    },
+    "update": {
+      "title": "Update vehicle",
+      "description": "Fill out the form to update the vehicle details."
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel"
     }
   },
   "dataTable": {
@@ -51,11 +75,7 @@
       "pageSize": "Rows per page",
       "previous": "Previous page"
     },
-    "search": {
-      "label": "Search table",
-      "placeholder": "Search this page...",
-      "scope": "Search applies to records on this page only."
-    }
+    "search": "Search"
   },
   "sidebar": {
     "footer": {

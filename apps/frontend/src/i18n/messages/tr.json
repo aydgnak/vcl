@@ -32,14 +32,38 @@
   },
   "car": {
     "fields": {
-      "brand": "Marka",
-      "model": "Model",
-      "modelYear": "Model Yılı",
-      "plate": "Plaka"
+      "brand": {
+        "label": "Marka",
+        "placeholder": "Araç markasını girin"
+      },
+      "model": {
+        "label": "Model",
+        "placeholder": "Araç modelini girin"
+      },
+      "modelYear": {
+        "label": "Model yılı",
+        "placeholder": "Araç model yılını girin"
+      },
+      "plate": {
+        "label": "Plaka",
+        "placeholder": "Araç plakasını girin"
+      }
     },
     "list": {
-      "description": "Araçlarınızı ve temel bilgilerini tek bir yerden takip edin.",
-      "title": "Araçlar"
+      "title": "Araçlar",
+      "description": "Araçlarınızı ve temel bilgilerini tek bir yerden takip edin."
+    },
+    "create": {
+      "title": "Araç Ekle",
+      "description": "Yeni bir araç eklemek için formu doldurun."
+    },
+    "update": {
+      "title": "Araç Güncelle",
+      "description": "Araç bilgilerini güncellemek için formu doldurun."
+    },
+    "actions": {
+      "save": "Kaydet",
+      "cancel": "İptal"
     }
   },
   "dataTable": {
@@ -51,11 +75,7 @@
       "pageSize": "Sayfa başına kayıt",
       "previous": "Önceki sayfa"
     },
-    "search": {
-      "label": "Tabloda ara",
-      "placeholder": "Bu sayfada ara...",
-      "scope": "Arama yalnızca bu sayfadaki kayıtları kapsar."
-    }
+    "search": "Ara"
   },
   "sidebar": {
     "footer": {
