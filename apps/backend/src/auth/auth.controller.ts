@@ -29,7 +29,12 @@ export class AuthController {
   @Public()
   @Post('login')
   @HttpCode(HttpStatus.NO_CONTENT)
-  @Throttle({ default: { ttl: minutes(1), limit: 5 } })
+  @Throttle({
+    default: {
+      ttl: minutes(1),
+      limit: 5,
+    },
+  })
   @UseGuards(LocalGuard)
   async login(
     @Req() req: Request,
@@ -41,7 +46,12 @@ export class AuthController {
   @Public()
   @Post('refresh')
   @HttpCode(HttpStatus.NO_CONTENT)
-  @Throttle({ default: { ttl: minutes(1), limit: 20 } })
+  @Throttle({
+    default: {
+      ttl: minutes(1),
+      limit: 20,
+    },
+  })
   @UseGuards(JwtRefreshGuard)
   async refresh(
     @Req() req: Request,
@@ -52,7 +62,12 @@ export class AuthController {
 
   @Public()
   @Post('register')
-  @Throttle({ default: { ttl: minutes(5), limit: 5 } })
+  @Throttle({
+    default: {
+      ttl: minutes(5),
+      limit: 5,
+    },
+  })
   @SerializeOptions({ type: RegisterDto })
   async register(
     @Body(new ValibotPipe(registerSchema)) register: RegisterO,

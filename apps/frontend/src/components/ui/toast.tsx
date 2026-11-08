@@ -185,7 +185,9 @@ function ToastList() {
       key={toastItem.id}
       toast={toastItem}
       data-variant={toastItem.data?.variant}
-      className={toastItem.data?.variant === 'destructive' ? 'border-destructive/50 bg-[color-mix(in_oklab,var(--destructive)_10%,var(--popover))] text-destructive dark:bg-[color-mix(in_oklab,var(--destructive)_20%,var(--popover))]' : undefined}
+      className={toastItem.data?.variant === 'destructive'
+        ? 'border-destructive/50 bg-[color-mix(in_oklab,var(--destructive)_10%,var(--popover))] text-destructive dark:bg-[color-mix(in_oklab,var(--destructive)_20%,var(--popover))]'
+        : undefined}
     >
       <ToastContent>
         <ToastIcon type={toastItem.type} />

@@ -11,7 +11,10 @@ export const registerSchema = pipe(
   }, validationMessages.type.object),
   forward(
     partialCheck(
-      [['password'], ['confirmPassword']],
+      [
+        ['password'],
+        ['confirmPassword'],
+      ],
       input => input.password === input.confirmPassword,
       validationMessages.password.mismatch,
     ),

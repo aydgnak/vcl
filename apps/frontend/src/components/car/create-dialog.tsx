@@ -40,7 +40,13 @@ const fields: FormField[] = [
   { name: 'plate' },
   { name: 'brand' },
   { name: 'model' },
-  { name: 'modelYear', type: 'number', min: 1900, step: 1, max: 2100 },
+  {
+    name: 'modelYear',
+    type: 'number',
+    min: 1900,
+    step: 1,
+    max: 2100,
+  },
 ]
 
 export function CarCreateDialog() {

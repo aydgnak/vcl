@@ -14,7 +14,13 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { Skeleton } from '@/components/ui/skeleton'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
-const loadingRows = ['loading-row-1', 'loading-row-2', 'loading-row-3', 'loading-row-4', 'loading-row-5']
+const loadingRows = [
+  'loading-row-1',
+  'loading-row-2',
+  'loading-row-3',
+  'loading-row-4',
+  'loading-row-5',
+]
 
 type DataTableProps<TData extends RowData> = Pick<
   TableOptions<DataTableFeatures, TData>,
@@ -68,7 +74,9 @@ export function DataTable<TData extends RowData>({
             <TableRow className="bg-muted/40 hover:bg-muted/40" key={headerGroup.id}>
               {headerGroup.headers.map(header => (
                 <TableHead className="h-11 px-4 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground" key={header.id}>
-                  {header.isPlaceholder ? null : <FlexRender header={header} />}
+                  {header.isPlaceholder
+                    ? null
+                    : <FlexRender header={header} />}
                 </TableHead>
               ),
               )}
@@ -121,7 +129,9 @@ export function DataTable<TData extends RowData>({
       <div className="flex items-center justify-between border-t border-border px-4 py-3">
         <span aria-live="polite" className="text-sm text-muted-foreground">
           {t('pagination.page', {
-            current: pageCount === 0 ? 0 : pagination.pageIndex + 1,
+            current: pageCount === 0
+              ? 0
+              : pagination.pageIndex + 1,
             total: pageCount,
           })}
         </span>
