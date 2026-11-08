@@ -1,11 +1,10 @@
 minimumReleaseAgeExcludePrune: true
 
 trustPolicy: no-downgrade
+trustPolicyExcludePrune: true
 trustPolicyExclude:
-  - chokidar@4.0.3
   - semver@6.3.1
-  - undici-types@6.21.0
-  - prisma@7.10.0
+  - prisma@7.10.1
 
 shellEmulator: true
 
