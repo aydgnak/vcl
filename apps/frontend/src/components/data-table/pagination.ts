@@ -10,7 +10,9 @@ function getStoredPageSize() {
   const storedPageSize = window.localStorage.getItem(pageSizeStorageKey)
   const pageSize = Number(storedPageSize)
 
-  return pageSizeOptions.includes(pageSize) ? pageSize : 20
+  return pageSizeOptions.includes(pageSize)
+    ? pageSize
+    : 20
 }
 
 function subscribeToPageSize(callback: () => void) {
@@ -34,7 +36,9 @@ export function useDataTablePagination() {
   const pagination: PaginationState = { pageIndex, pageSize }
 
   function setPagination(updater: Updater<PaginationState>) {
-    const nextPagination = typeof updater === 'function' ? updater(pagination) : updater
+    const nextPagination = typeof updater === 'function'
+      ? updater(pagination)
+      : updater
 
     setPageIndex(nextPagination.pageIndex)
 

@@ -20,7 +20,10 @@ import { ConfigO, loads, validate } from './config'
       inject: [ConfigService],
       useFactory: (configService: ConfigService<ConfigO, true>) => ({
         throttlers: [
-          { ttl: minutes(1), limit: 100 },
+          {
+            ttl: minutes(1),
+            limit: 100,
+          },
         ],
         errorMessage: (context: ExecutionContext) => {
           const i18nContext = I18nContext.current<I18nTranslations>(context)
@@ -51,7 +54,10 @@ import { ConfigO, loads, validate } from './config'
         }
       },
       resolvers: [
-        { use: CookieResolver, options: ['lang'] },
+        {
+          use: CookieResolver,
+          options: ['lang'],
+        },
       ],
     }),
     ClsModule.forRoot({

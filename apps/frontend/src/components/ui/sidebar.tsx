@@ -56,7 +56,9 @@ function SidebarProvider({
   const open = openProp ?? internalOpen
   const setOpen = React.useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
-      const openState = typeof value === 'function' ? value(open) : value
+      const openState = typeof value === 'function'
+        ? value(open)
+        : value
       if (setOpenProp) {
         setOpenProp(openState)
       }
@@ -72,7 +74,9 @@ function SidebarProvider({
 
   // Helper to toggle the sidebar.
   const toggleSidebar = React.useCallback(() => {
-    return isMobile ? setOpenMobile(open => !open) : setOpen(open => !open)
+    return isMobile
+      ? setOpenMobile(open => !open)
+      : setOpen(open => !open)
   }, [isMobile, setOpen, setOpenMobile])
 
   // Adds a keyboard shortcut to toggle the sidebar.
@@ -105,7 +109,15 @@ function SidebarProvider({
       setOpenMobile,
       toggleSidebar,
     }),
-    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar],
+    [
+      state,
+      open,
+      setOpen,
+      isMobile,
+      openMobile,
+      setOpenMobile,
+      toggleSidebar,
+    ],
   )
 
   return (
@@ -191,7 +203,9 @@ function Sidebar({
     <div
       className="group peer hidden text-sidebar-foreground md:block"
       data-state={state}
-      data-collapsible={state === 'collapsed' ? collapsible : ''}
+      data-collapsible={state === 'collapsed'
+        ? collapsible
+        : ''}
       data-variant={variant}
       data-side={side}
       data-slot="sidebar"
@@ -500,7 +514,9 @@ function SidebarMenuButton({
       },
       props,
     ),
-    render: tooltip === undefined || tooltip === '' ? render : <TooltipTrigger delay={0} render={render} />,
+    render: tooltip === undefined || tooltip === ''
+      ? render
+      : <TooltipTrigger delay={0} render={render} />,
     state: {
       slot: 'sidebar-menu-button',
       sidebar: 'menu-button',
